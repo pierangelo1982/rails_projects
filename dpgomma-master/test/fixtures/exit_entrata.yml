@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exit_id: 
+  entratum_id: 
+
+two:
+  exit_id: 
+  entratum_id: 

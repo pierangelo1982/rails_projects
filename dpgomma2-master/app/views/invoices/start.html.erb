@@ -1,0 +1,7 @@
+
+
+
+  <%= form_for '/invoice/new' do |f| %>
+  	    <%= f.collection_select :temp_azienda, Azienda.all, :id, :denominazione, {include_blank: true}, class: 'form-control' %>
+
+  <% end %>

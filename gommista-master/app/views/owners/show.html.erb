@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-md-4">
+<p>
+  <strong>Denominazione:</strong>
+  <%= @owner.denominazione %>
+</p>
+
+<p>
+  <strong>Indirizzo:</strong>
+  <%= @owner.indirizzo %>
+</p>
+
+<p>
+  <strong>Cap:</strong>
+  <%= @owner.cap %>
+</p>
+
+<p>
+  <strong>Citta:</strong>
+  <%= @owner.citta %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @owner.telefono %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @owner.fax %>
+</p>
+
+<p>
+  <strong>Cellulare:</strong>
+  <%= @owner.cellulare %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @owner.email %>
+</p>
+
+<p>
+  <strong>Piva:</strong>
+  <%= @owner.piva %>
+</p>
+
+<p>
+  <strong>Codfisc:</strong>
+  <%= @owner.codfisc %>
+</p>
+
+<p>
+  <strong>Car:</strong>
+  <%= @owner.car %>
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @owner.created %>
+</p>
+
+<p>
+  <strong>Modified:</strong>
+  <%= @owner.modified %>
+</p>
+
+<%= link_to 'Edit', edit_owner_path(@owner) %> |
+<%= link_to 'Back', owners_path %>
+</div>
+
+
+<div class="col-md-4">
+
+
+<h2>Veicoli</h2>
+
+<% @owner.cars.each do |car| %>
+  <p>Targa: <%= car.targa %></p>
+  <p>Marca: <%= car.marca %></p>
+  <hr>
+<% end %>
+
+</div>
+<div class="col-md-4">
+
+<h2>Gomme</h2>
+
+<% @owner.tyres.each do |tyre| %>
+  <p>Marca: <%= tyre.marca %></p>
+   <p>Modello: <%= tyre.modello %></p>
+  <p>Tipologia: <%= tyre.tipologia %></p>
+  <hr>
+<% end %>
+
+</div>
+
+
+</div><!-- ROW -->

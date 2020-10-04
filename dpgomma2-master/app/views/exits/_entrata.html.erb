@@ -1,0 +1,35 @@
+
+  </thead>
+
+  <tbody>
+        <table class="table table-striped">
+         <thead>
+    <tr>
+      <th>Pezzo</th>
+      <th>Lavorazione</th>
+      <th>Quantita Lavorata</th>
+      <th>Reso Non Lavorato</th>
+      <th>Quantità</th>
+      <th>Peso</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exit.exitdata.where('quantita >? OR reso >?', '0', '0').each do |ex| %>
+      <tr>
+        <td><%= ex.lavorazione.pezzo.nome %></td>
+        <td>
+          <%= ex.lavorazione.titolo %> <% if ex.inscatolamentoprezzo > 0 %> + inscatolamento <% end %>
+
+        </td>
+        <td><%= number_with_delimiter(ex.quantita, delimiter: ".") %></td>
+        <td><span style="color: red"><%= number_with_delimiter(ex.reso, delimiter: ".") %></span></td>
+        <td><b><%= number_with_delimiter(ex.quantitatotale, delimiter: ".") %></b></td>
+        <td><%= ex.peso %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>

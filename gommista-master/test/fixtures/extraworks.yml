@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  car_id_id: 
+  lavoro: MyString
+  note: MyText
+  tempo: 2014-08-11 14:46:40
+  prezzo: MyString
+
+two:
+  car_id_id: 
+  lavoro: MyString
+  note: MyText
+  tempo: 2014-08-11 14:46:40
+  prezzo: MyString

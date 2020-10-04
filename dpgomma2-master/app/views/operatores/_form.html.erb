@@ -1,0 +1,73 @@
+<%= form_for(@operatore) do |f| %>
+  <% if @operatore.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@operatore.errors.count, "error") %> prohibited this operatore from being saved:</h2>
+
+      <ul>
+      <% @operatore.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-xs-12">
+    <%= f.label :denominazione %><br>
+    <%= f.text_field :denominazione, class: 'form-control' %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome, class: 'form-control' %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.label :cognome %><br>
+    <%= f.text_field :cognome, class: 'form-control' %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.label :piva %><br>
+    <%= f.text_field :piva, class: 'form-control' %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.label :codfisc %><br>
+    <%= f.text_field :codfisc, class: 'form-control' %>
+  </div>
+  <div class="col-xs-10">
+    <%= f.label :indirizzo %><br>
+    <%= f.text_field :indirizzo, class: 'form-control' %>
+  </div>
+  <div class="col-xs-2">
+    <%= f.label :civico %><br>
+    <%= f.text_field :civico, class: 'form-control' %>
+  </div>
+  <div class="col-xs-3">
+    <%= f.label :cap %><br>
+    <%= f.text_field :cap, class: 'form-control' %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.label :citta %><br>
+    <%= f.text_field :citta, class: 'form-control' %>
+  </div>
+  <div class="col-xs-3">
+    <%= f.label :provincia %><br>
+    <%= f.text_field :provincia, class: 'form-control' %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.label :tel %><br>
+    <%= f.text_field :tel, class: 'form-control' %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.label :fax %><br>
+    <%= f.text_field :fax, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.label :note %><br>
+    <%= f.text_field :note, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.submit 'salva' %>
+  </div>
+<% end %>

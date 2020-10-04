@@ -1,0 +1,8 @@
+<div class="col-lg-11" style="padding-bottom: 20px; margin-left:0px;padding-left:0px;">
+	<div class="col-lg-11">
+		<%= f.collection_select(:worktypology_id, Worktypology.all, :id, :nome, {include_blank: true}, class: 'form-control')%>
+	</div>
+	<div class="col-lg-1">
+		<%=link_to_remove_association("rimuovi", f, { wrapper_class: 'col-lg-11', class:"btn btn-danger"}) %>
+	</div>
+</div>

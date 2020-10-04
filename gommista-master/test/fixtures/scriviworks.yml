@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  extrawork_id: 
+  descrizione: MyString
+  codice: MyString
+  quantita: 1
+  importo: MyString
+
+two:
+  extrawork_id: 
+  descrizione: MyString
+  codice: MyString
+  quantita: 1
+  importo: MyString

@@ -1,0 +1,8 @@
+
+	<div class="col-lg-12">
+		<h1>SCEGLI AZIENDA</h1>
+		<%= form_tag({ controller: 'exits', action: 'new' }, method: 'get') do %>
+		<%= select_tag 'temp_azienda', options_from_collection_for_select(Azienda.all, :id, :denominazione),  class: 'form-control' %>
+		<button type="submit" class="btn btn-primary" style="float:right">PROSEGUI</button>
+		<% end %>
+	</div>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Azienda:</strong>
+  <%= @magazzino.azienda %>
+</p>
+
+<p>
+  <strong>Npezzi:</strong>
+  <%= @magazzino.npezzi %>
+</p>
+
+<p>
+  <strong>Inlavorazio:</strong>
+  <%= @magazzino.inlavorazio %>
+</p>
+
+<p>
+  <strong>Pronti:</strong>
+  <%= @magazzino.pronti %>
+</p>
+
+<%= link_to 'Edit', edit_magazzino_path(@magazzino) %> |
+<%= link_to 'Back', magazzinos_path %>

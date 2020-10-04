@@ -1,0 +1,41 @@
+<%= form_for(@lavorazione) do |f| %>
+  <% if @lavorazione.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lavorazione.errors.count, "error") %> prohibited this lavorazione from being saved:</h2>
+
+      <ul>
+      <% @lavorazione.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pezo_id %><br>
+    <%= f.text_field :pezo_id %>
+  </div>
+  <div class="field">
+    <%= f.label :codice %><br>
+    <%= f.text_field :codice %>
+  </div>
+  <div class="field">
+    <%= f.label :titolo %><br>
+    <%= f.text_field :titolo %>
+  </div>
+  <div class="field">
+    <%= f.label :descrizione %><br>
+    <%= f.text_area :descrizione %>
+  </div>
+  <div class="field">
+    <%= f.label :prezzo %><br>
+    <%= f.text_field :prezzo %>
+  </div>
+  <div class="field">
+    <%= f.label :sconto %><br>
+    <%= f.text_field :sconto %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

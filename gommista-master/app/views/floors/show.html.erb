@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Block:</strong>
+  <%= @floor.block.try(:nome) %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @floor.nome %>
+</p>
+
+<%= link_to 'Edit', edit_floor_path(@floor) %> |
+<%= link_to 'Back', floors_path %>

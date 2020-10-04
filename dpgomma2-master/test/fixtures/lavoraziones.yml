@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pezo_id: 
+  codice: MyString
+  titolo: MyString
+  descrizione: MyText
+  prezzo: MyString
+  sconto: MyString
+
+two:
+  pezo_id: 
+  codice: MyString
+  titolo: MyString
+  descrizione: MyText
+  prezzo: MyString
+  sconto: MyString

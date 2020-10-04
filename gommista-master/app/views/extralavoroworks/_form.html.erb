@@ -1,0 +1,53 @@
+<%= form_for(@extralavorowork) do |f| %>
+  <% if @extralavorowork.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@extralavorowork.errors.count, "error") %> prohibited this extralavorowork from being saved:</h2>
+
+      <ul>
+      <% @extralavorowork.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :extrawork_id %><br>
+    <%= f.number_field :extrawork_id %>
+  </div>
+
+   <div class="field">
+    <%= f.label :catextrawork_id %><br>
+    <%= f.collection_select :catextrawork_id, Catextrawork.all, :id, :nome, {include_blank: true}, class: 'form-control' %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :lavoro %><br>
+    <%= f.number_field :lavoro %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descrizione %><br>
+    <%= f.number_field :descrizione %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantita %><br>
+    <%= f.number_field :quantita %>
+  </div>
+
+  <div class="field">
+    <%= f.label :codice %><br>
+    <%= f.number_field :codice %>
+  </div>
+
+  <div class="field">
+    <%= f.label :importo %><br>
+    <%= f.number_field :importo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

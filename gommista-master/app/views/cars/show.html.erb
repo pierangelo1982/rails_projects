@@ -1,0 +1,241 @@
+<!-- <%= debug @car %> -->
+<% javascript 'dynamic_works' %>
+<div class="col-lg-12">
+  <div class="row" style="float: right; margin-top:10px">
+  <a href="/cars/<%= @car.id %>/stampamagazzino.pdf" target="_Blank" class="btn btn-primary">STAMPA MAGAZZINO</a>
+  <a href="/cars/<%= @car.id %>/stampatarga.pdf" target="_Blank" class="btn btn-primary">STAMPA BAR CODE</a>
+  <a href="/cars/<%= @car.id %>/stampagomme.pdf" target="_Blank" class="btn btn-primary">STAMPA ETICHETTE</a>
+</div>
+</div>
+<div class="col-lg-12">
+<% if @car.tyres.empty? %>
+      <h3 style="background-color: #000000; color: #ffffff; padding: 10px; text-align: center;">
+        NESSUN TRENO DI GOMME ASSOCIATO ALLA VETTURA
+      </h3>
+      <% else %>
+
+  <% @car.tyres.each do |tyre| %>
+  <% if tyre.status == 1 %>
+    <% if tyre.deposito == true %>
+    <h3 style="background-color: #000000; color: #ffffff; padding: 10px; text-align: center; margin-bottom:0px">
+      IL TRENO DI GOMME <%= tyre.marca %>/<%= tyre.modello %> SI TROVA:
+    </h3>
+  <h2 style="background-color: #000000; color: #ffffff; padding: 10px; text-align: center; margin-top:0px">
+  <i class="fa fa-home"></i> Loc. <span style="color: #fe6601; padding-right: 30px;"><%= tyre.location.try(:nome) %></span>
+  <i class="fa fa-building"></i> Scaffale: <span style="color: #fe6601; padding-right: 30px;"><%= tyre.shelf.try(:nome) %></span>   <i class="fa fa-cubes"></i> Blocco: <span style="color: #fe6601; padding-right: 30px;"><%= tyre.block.try(:nome) %></span>    <i class="fa fa-align-justify"></i> Piano: <span style="color: #fe6601; padding-right: 30px;"><%= tyre.floor.try(:nome) %></span>   </h1>
+  <% else %>
+  <h3 style="background-color: #000000; color: #ffffff; padding: 10px; text-align: center;">
+   IL TRENO DI GOMME <%= tyre.marca %>/<%= tyre.modello %>E' INSTALLATO SULLA VETTURA
+  </h3>
+    <% end %><!-- end if -->
+    <% end %>
+  <% end %><!-- amd For each -->
+<% end %><!-- end EMPTY -->
+</div>
+
+<div class="col-lg-4">
+  <h2 style="background-color: #ffffff; color: #000000; padding: 10px;"><i class="fa fa-car"></i> VEICOLO:</h2>
+<p>
+  <strong>Targa:</strong>
+  <%= @car.targa %>
+</p>
+<%= image_tag("barcodes/#{@car.targa}.png") %>
+
+<p>
+  <% if @car.libretto.present? %>
+  <a href="<%= @car.libretto.url %>" target="_Blank">
+  <br>
+  <br>
+  <i class="fa fa-file-pdf-o"> VEDI LIBRETTO</i>
+  </a>
+  <% else %>
+  <h4 class="bg-warning">NESSUN LIBRETTO INSERITO
+    <a href="/cars/<%= @car.id %>/edit">
+  <br>CLICCA QUI PER INSERIRLO</a></h4>
+  <% end %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @car.owner.denominazione %>
+</p>
+
+
+<p>
+  <strong>Marca:</strong>
+  <%= @car.marca %>
+</p>
+
+<p>
+  <strong>Modello:</strong>
+  <%= @car.modello %>
+</p>
+
+<p>
+  <strong>Numero Telaio:</strong>
+  <%= @car.try(:telaio) %>
+</p>
+
+<p>
+  <strong>Anno:</strong>
+  <%= @car.anno %>
+</p>
+
+<p>
+  <strong>Tyre:</strong>
+  <%= @car.tyre %>
+</p>
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>
+</div>
+
+<div class="col-lg-4">
+<h2 style="background-color: #ffffff; color: #000000; padding: 10px;"><i class="fa fa-users"></i> CLIENTE:</h2>
+
+
+<p>
+  <strong>Owner:</strong>
+  <%= @car.owner.denominazione %>
+</p>
+ <p>
+  <strong>Indirizzo:</strong>
+  <%= @car.owner.indirizzo %>
+</p>
+
+<p>
+  <strong>Cap:</strong>
+  <%= @car.owner.cap %>
+</p>
+
+
+<p>
+  <strong>citta:</strong>
+  <%= @car.owner.citta %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @car.owner.telefono %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @car.owner.fax %>
+</p>
+
+<p>
+  <strong>Cellulare:</strong>
+  <%= @car.owner.cellulare %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @car.owner.email %>
+</p>
+
+<p>
+  <strong>Piva:</strong>
+  <%= @car.owner.piva %>
+</p>
+
+<p>
+  <strong>Codfisc:</strong>
+  <%= @car.owner.codfisc %>
+</p>
+
+</div>
+
+<div class="col-lg-4">
+
+
+<h2 style="background-color: #ffffff; color: #000000; padding: 10px;"><i class="fa fa-circle-o-notch"></i> GOMME ASSOCIATE:</h2>
+<div class="col-xs-12">
+ <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModalpneu" style="text-align: center">
+  Aggiungi Pneumatico
+</button>
+<%= render 'tyre_modal2' %>
+</div>
+<div class = "col-xs-12">
+
+<hr>
+</div> 
+
+<% @car.tyres.each do |tyre| %>
+<% if tyre.status == 1 %>
+
+<%= link_to "In Deposito", submitdeposito_tyre_path(tyre.id), method: :put, class: "btn btn-primary" %>
+
+<%= link_to "Installate su Veicolo", submitinstallation_tyre_path(tyre.id), method: :put, class: "btn btn-primary" %>
+
+<%= link_to "Esaurita", submitusurata_tyre_path(tyre.id), method: :put, class: "btn btn-danger" %>
+
+  <p><b>Marca:</b><%= tyre.marca %></p>
+  <p><b>Mod:</b><%= tyre.modello %></p>
+  <p><b>Tipo:</b><%= tyre.tipologia %></p>
+  <p><b>Km:</b><%= tyre.km %></p>
+  <p><b>Usura:</b><%= tyre.usura %></p>
+  <p><b>Marca:</b><%= tyre.marca %></p>
+  <p><b>Kit:</b><% if tyre.kit == true %> SI<% else %> NO<% end %></p>
+  <p><b>Consegna:</b><%= tyre.consegna.strftime "%d-%m-%Y %H:%M:%S" %></p>
+  <p><b>Ritiro:</b><%= tyre.ritiro.strftime "%d-%m-%Y %H:%M:%S" %></p>
+  <p><b>Posizione:</b></br>
+  <i class="fa fa-home"></i> <%= tyre.location.try(:nome) %><br>
+  <i class="fa fa-building"></i><%= tyre.shelf.try(:nome) %> <i class="fa fa-cubes"></i><%= tyre.block.try(:nome) %> <i class="fa fa-align-justify"></i><%= tyre.floor.try(:nome) %> <i class="fa fa-ellipsis-v"></i><%= tyre.floor.try(:nome) %></p>
+      <a href="/tyres/<%=tyre.id %>/edit" class="btn btn-warning">Modifica Pneumatico</a>
+
+  <hr>
+<% end %>
+<% end %>
+<hr>
+<!-- USURATE -->
+<% @car.tyres.each do |tyre| %>
+<% if tyre.status == 0 %>
+<div class="col-lg-12" style="margin-left: 0px; padding-left: 0px;, background-color: red">
+  <p style="background-color: red; color: white; font-size: 12px, padding: 10px;"><a href="/tyres/<%= tyre.id %>"><%= tyre.marca %></a> - </b><%= tyre.modello %> - <%= tyre.tipologia %>
+<%= link_to "riattiva", submitusuratariattiva_tyre_path(tyre.id), method: :put, class: "btn btn-success btn-xs" %></p>
+<hr>
+</div>
+<% end %>
+<% end %>
+<!-- FINE USURATE -->
+</div>
+
+<hr>
+<div class="col-lg-12">
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          + INSERISCI LAVORI SU PNEUMATICI
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <%= render "worksform" %>       
+
+      </div>
+    </div>
+  </div>
+<!--
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          + INSERISCI LAVORI EXTRA
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        
+        <%= render "extraworksform" %>
+
+      </div>
+    </div>
+  </div> -->
+
+</div>

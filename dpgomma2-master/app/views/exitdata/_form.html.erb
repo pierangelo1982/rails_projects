@@ -1,0 +1,37 @@
+<%= form_for(@exitdatum) do |f| %>
+  <% if @exitdatum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exitdatum.errors.count, "error") %> prohibited this exitdatum from being saved:</h2>
+
+      <ul>
+      <% @exitdatum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :azienda_id %><br>
+    <%= f.text_field :azienda_id %>
+  </div>
+  <div class="field">
+    <%= f.label :quantita %><br>
+    <%= f.number_field :quantita %>
+  </div>
+  <div class="field">
+    <%= f.label :pezzo_id %><br>
+    <%= f.text_field :pezzo_id %>
+  </div>
+  <div class="field">
+    <%= f.label :lavorazione_id %><br>
+    <%= f.text_field :lavorazione_id %>
+  </div>
+  <div class="field">
+    <%= f.label :descrizione %><br>
+    <%= f.text_field :descrizione %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

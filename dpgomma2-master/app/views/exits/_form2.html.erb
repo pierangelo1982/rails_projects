@@ -1,0 +1,218 @@
+<%= form_for(@exit) do |f| %>
+
+
+  <div class="form-inputs">
+<div class="col-md-8"></div>
+<div class="col-md-2">
+            <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+            Vedi Magazzino
+          </button>
+</div>
+
+<div class="col-ms-2">
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal2">
+  Vedi DDT in entrata
+</button>
+</diV>
+
+
+<div class="col-md-12">
+    <% if params[:temp_azienda] %>
+    <%= f.label :azienda_id %><br>
+    <%= f.collection_select :azienda_id, Azienda.where('id=?', params[:temp_azienda]), :id, :denominazione, {include_blank: true}, class: 'form-control', :required => true %>
+    <% else %>
+    <%= f.collection_select :azienda_id, Azienda.all, :id, :denominazione, {include_blank: true}, class: 'form-control', :required => true %>
+    <% end %>
+</div>
+
+
+<div class="col-md-6">
+    <%= f.label 'data' %><br>
+    <%= f.date_select :data, class: 'form-control' %>
+</div>
+
+<div class="col-md-6">
+    <%= f.label 'Numero DDT' %><br>
+    <%= f.number_field :numero, class: 'form-control'%>
+</div>
+
+
+
+ <!-- NESTED -->
+ <div class="col-lg-12" style="margin-left: 0px;">
+    <h3>INSERISCI</h3>
+    <fieldset id="entratadata">
+      <%= f.fields_for (:exitdata) do |item| %>
+        <%= render 'exitdatum_fields', f: item %>
+      <% end %>
+      <div class="col-lg-1">
+      <br>
+      <%= link_to_add_association 'aggiungi', f, :exitdata, { class:"btn btn-primary" } %>
+      </div>
+    </fieldset>
+  </div>
+
+  <!-- FINE NESTED -->
+
+
+
+
+
+
+<div class="col-md-4">
+    <%= f.label 'numero colli' %><br>
+    <%= f.number_field :colli, class: 'form-control' %>
+</div>
+
+<div class="col-md-4">
+    <%= f.label 'Quantita Pezzi' %><br>
+    <%= f.number_field :quantita, class: 'form-control' %>
+</div>
+
+<div class="col-md-4">
+    <%= f.label 'pezzi scartati' %><br>
+    <%= f.number_field :scarti, class: 'form-control' %>
+</div>
+
+<div class="col-md-12">
+    <%= f.label 'Note'%><br>
+    <%= f.text_field :note, class: 'form-control' %>
+</div>
+
+<div class="col-md-6">
+    <%= f.label 'Trasporto a Carico di:' %><br>
+    <%= f.text_field :tipo_trasporto, class: 'form-control' %>
+</div>
+
+<div class="col-md-6">
+      <%= f.label 'Responsabile Trasporto:' %><br>   
+    <%= f.text_field :responsabile_trasporto, class: 'form-control' %>
+</div>
+
+
+<div class="col-md-12">
+    <%= f.label 'Aspetto dei Beni' %><br>    
+    <%= f.text_field :aspetto, class: 'form-control' %>
+</div>
+
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">MAGAZZINO</h4>
+      </div>
+      <div class="modal-body">
+            <% Azienda.where('id=?', params[:temp_azienda]).each do |azienda| %>
+
+                                          <table class="table table-striped">
+                                                  <thead>
+                                                    <tr>
+                                                      <th>Pezzo</th>
+                                                      <th>Lavorazione</th>
+                                                      <th>Quantità in Magazzino</th>
+                                                      <th>Quantita in Lavorazione</th>
+                                                      <th>Quantità Pronto Consegna</th>
+                                                    </tr>
+                                                  </thead>
+
+                                                  <tbody>
+                                                    <% azienda.pezzos.each do |az| %>
+                                                      <tr>
+                                                        <td><%= az.nome %></td>
+                                                        <td></td>
+                                                        <td><%= @ciao.where('pezzo_id=?', az.id).sum(:quantita) %></td>
+                                                        <td><%= @ciao.where('pezzo_id=?', az.id).sum(:quantita) %></td>
+                                                        <td><%= @ciao.where('pezzo_id=?', az.id).sum(:quantita) %></td>
+                                                      </tr>
+                                                      <% end %>
+                                                  </tbody>
+                                                </table>
+                                                <% end %>
+                        </div>
+                        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">DDT di USCITA</h4>
+      </div>
+      <div class="modal-body">
+      
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Azienda</th>
+      <th>Numero ddt</th>
+      <th>Data</th>
+      <th>Data ricezione</th>
+      <th>Colli</th>
+      <th>Riserva</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Entratum.where('azienda_id=?', params[:temp_azienda]).each do |entratum| %>
+      <tr>
+        <td><%= entratum.azienda.denominazione %></td>
+        <td><%= entratum.numero %></td>
+        <td><%= entratum.data %></td>
+        <td><%= entratum.data_ricezione %></td>
+        <td><%= entratum.colli %></td>
+        <!-- RISERVA -->
+        <td>
+            <% if entratum.riserva == true %>
+              <%= link_to "", submittop_entratum_path(entratum.id), method: :put, class: "fa fa-thumbs-o-down" %>
+            <% else %>
+              <%= link_to "", submitdown_entratum_path(entratum.id), method: :put, class: "fa fa-thumbs-o-up" %>
+            <% end %>
+        </td> <!-- Fine Riserva -->
+    <% end %>
+  </tbody>
+</table>
+
+      </div>
+                        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

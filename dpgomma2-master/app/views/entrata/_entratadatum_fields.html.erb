@@ -1,0 +1,37 @@
+<div class="col-lg-12 cocoonx">
+	<div class="col-lg-11" style="margin-left: 0px; padding-left: 0px;">
+	
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <% if params[:temp_azienda] %>
+    <%= f.label :lavorazione_id %><br>
+    <%= f.grouped_collection_select :lavorazione_id, Pezzo.where('azienda_id=?', params[:temp_azienda]), :lavoraziones, :nome, :id, :titolo, {include_blank: true}, class: 'form-control' %>
+    <% else %>
+    <%= f.label :lavorazione_id %><br>
+    <%= f.grouped_collection_select :lavorazione_id, Pezzo.all, :lavoraziones, :nome, :id, :titolo, {include_blank: true}, class: 'form-control' %>
+    <% end %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :quantita %><br>
+    <%= f.text_field :quantita, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :colli %><br>
+    <%= f.text_field :colli, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :peso %><br>
+    <%= f.text_field :peso, class: 'form-control' %>
+  </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :note %><br>
+    <%= f.text_area :note, class: 'form-control' %>
+  </div>
+	
+	</div><!-- col-lg-11 -->
+	
+	<div class="col-lg-1">
+    	<br>
+			<%=link_to_remove_association("rimuovi", f, { wrapper_class: 'cocoonx', class:"btn btn-danger"}) %>
+	</div>
+</div>
+

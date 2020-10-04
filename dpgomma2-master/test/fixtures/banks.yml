@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  azienda_id: 
+  nome: MyString
+  abi: MyString
+  cab: MyString
+  numeroconto: MyString
+  iban: MyString
+
+two:
+  azienda_id: 
+  nome: MyString
+  abi: MyString
+  cab: MyString
+  numeroconto: MyString
+  iban: MyString

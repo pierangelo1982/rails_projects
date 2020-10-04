@@ -1,0 +1,25 @@
+<div class="col-lg-11" style="padding-bottom: 20px; margin-left:0px;padding-left:0px;">
+	<div class="col-lg-11">
+   <div class="col-md-5">
+    Descrizione:</br>
+    <%= f.collection_select :catextrawork_id, Catextrawork.all, :id, :nome, {include_blank: true}, class: 'form-control' %>
+  </div>
+   <div class="col-md-2">
+    Quantità:</br>
+    <%= f.text_field :quantita, class: 'form-control' %>
+  </div>
+   <div class="col-md-3">
+    Codice:</br>
+    <%= f.text_field :codice, class: 'form-control' %>
+  </div>
+    <div class="col-md-2">
+    Importo (€.)<br>
+    <%= f.text_field :importo, class: 'form-control' %>
+  </div>
+  
+  </div>
+  <div class="col-lg-1">
+    <br>
+    <%=link_to_remove_association("rimuovi", f, { wrapper_class: 'col-lg-11', class:"btn btn-danger"}) %>
+  </div>
+</div>

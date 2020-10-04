@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Invoice:</strong>
+  <%= @scadenzapagamento.invoice %>
+</p>
+
+<p>
+  <strong>Scadenza:</strong>
+  <%= @scadenzapagamento.scadenza %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @scadenzapagamento.note %>
+</p>
+
+<%= link_to 'Edit', edit_scadenzapagamento_path(@scadenzapagamento) %> |
+<%= link_to 'Back', scadenzapagamentos_path %>

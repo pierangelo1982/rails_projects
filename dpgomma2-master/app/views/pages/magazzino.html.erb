@@ -1,0 +1,64 @@
+
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% @aziendas.each do |azienda| %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#ciao<%= azienda.id %>" aria-expanded="false" aria-controls="collapseTwo">
+          <%= azienda.denominazione %>
+      	</a>
+      </h4>
+    </div>
+    <div id="ciao<%= azienda.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Pezzo</th>
+                                    <th>Lavorazione</th>
+                                    <th>Totale Merce Entrata</th>
+                                    <th>Totale Merce Lavorata</th>
+                                    <th>Totale Resi non Lavorati</th>
+                                    <th>Totale Merce Uscita</th>
+                                    <th>Totale a Magazzino</th>
+                                  </tr>
+                                </thead>
+
+                                <tbody>
+                                  <% azienda.pezzos.each do |pz| %>
+                                    <% pz.lavoraziones.where('pezzo_id', pz.id).each do |lav| %>
+
+                                    <tr>
+                                      <td><%= lav.pezzo.nome %></td>
+                                      <td><%= lav.titolo %></td>
+                                      <td>
+                                        <%= number_with_delimiter(@entradatum.where('lavorazione_id=?', lav.id).sum(:quantita), delimiter: ".") %>
+                                      </td>
+                                      <td>
+                                        <%= number_with_delimiter(@exitdatum.where('lavorazione_id=?', lav.id).sum(:quantita), delimiter: ".") %>
+                                      </td>
+                                      <td>
+                                        <%= number_with_delimiter(@exitdatum.where('lavorazione_id=?', lav.id).sum(:reso), delimiter: ".") %>
+                                      </td>
+                                      <td>
+                                        <%= number_with_delimiter(@exitdatum.where('lavorazione_id=?', lav.id).sum(:quantita) + @exitdatum.where('lavorazione_id=?', lav.id).sum(:reso), delimiter: ".") %>
+                                      </td>
+                                      <td>
+                                          <b>
+                                          <%= number_with_delimiter(@entradatum.where('lavorazione_id=?', lav.id).sum(:quantita) - @exitdatum.where('lavorazione_id=?', lav.id).sum(:quantita) - @exitdatum.where('lavorazione_id=?', lav.id).sum(:reso), delimiter: ".") %>
+                                          <b>
+                                      </td>
+                                    </tr>
+                                    <% end %>
+                                    <% end %>
+                                </tbody>
+                              </table>
+        </div>
+    </div> 
+  </div>
+<% end %>
+
+</div>

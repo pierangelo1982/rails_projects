@@ -1,0 +1,29 @@
+<h1>Listing extralavoroworks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Work</th>
+      <th>Lavoro</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @extralavoroworks.each do |extralavorowork| %>
+      <tr>
+        <td><%= extralavorowork.extrawork_id %></td>
+        <td><%= extralavorowork.lavoro %></td>
+        <td><%= link_to 'Show', extralavorowork %></td>
+        <td><%= link_to 'Edit', edit_extralavorowork_path(extralavorowork) %></td>
+        <td><%= link_to 'Destroy', extralavorowork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Extralavorowork', new_extralavorowork_path %>

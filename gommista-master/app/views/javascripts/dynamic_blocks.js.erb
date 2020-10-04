@@ -1,0 +1,112 @@
+//// Filter shelf Trought location
+var shelves = new Array();
+<% for shelf in @shelves -%>
+  shelves.push(new Array(<%= shelf.location_id %>, '<%=h shelf.nome %>', <%= shelf.id %>));
+<% end -%>
+
+function locationSelected() {
+  location_id = $('tyre_location_id').getValue();
+  options = $('tyre_shelf_id').options;
+  options.length = 1;
+  shelves.each(function(shelf) {
+    if (shelf[0] == location_id) {
+      options[options.length] = new Option(shelf[1], shelf[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('scaffali').hide();
+  } else {
+    $('scaffali').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  locationSelected();
+  $('tyre_location_id').observe('change', locationSelected);
+});
+
+
+
+//// Filter Block Trought Shelf
+var blocks = new Array();
+<% for block in @blocks -%>
+  blocks.push(new Array(<%= block.shelf_id %>, '<%=h block.nome %>', <%= block.id %>));
+<% end -%>
+
+function scaffaliSelected() {
+  shelf_id = $('tyre_shelf_id').getValue();
+  options = $('tyre_block_id').options;
+  options.length = 1;
+  blocks.each(function(block) {
+    if (block[0] == shelf_id) {
+      options[options.length] = new Option(block[1], block[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('blocchi').hide();
+  } else {
+    $('blocchi').show();
+  }
+}
+
+
+document.observe('dom:loaded', function() {
+  scaffaliSelected();
+  $('tyre_shelf_id').observe('change', scaffaliSelected);
+});
+
+
+//// Filter Floor from Blocks
+var floors = new Array();
+<% for floor in @floors -%>
+  floors.push(new Array(<%= floor.block_id %>, '<%=h floor.nome %>', <%= floor.id %>));
+<% end -%>
+
+function blocchiSelected() {
+  block_id = $('tyre_block_id').getValue();
+  options = $('tyre_floor_id').options;
+  options.length = 1;
+  floors.each(function(floor) {
+    if (floor[0] == block_id) {
+      options[options.length] = new Option(floor[1], floor[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('piani').hide();
+  } else {
+    $('piani').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  blocchiSelected();
+  $('tyre_block_id').observe('change', blocchiSelected);
+});
+
+
+/// filter columns from floor
+var columns = new Array();
+<% for column in @columns -%>
+  columns.push(new Array(<%= column.floor_id %>, '<%=h column.nome %>', <%= column.id %>));
+<% end -%>
+
+function pianiSelected() {
+  floor_id = $('tyre_floor_id').getValue();
+  options = $('tyre_column_id').options;
+  options.length = 1;
+  columns.each(function(column) {
+    if (column[0] == floor_id) {
+      options[options.length] = new Option(column[1], column[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('colonne').hide();
+  } else {
+    $('colonne').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  pianiSelected();
+  $('tyre_floor_id').observe('change', pianiSelected);
+});

@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20141223074813_add_fieldiva_to_entratadatum.rb

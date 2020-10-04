@@ -1,0 +1,150 @@
+<!-- <%= debug @car %> -->
+<% javascript 'dynamic_works' %>
+
+
+
+  <% @car.tyres.each do |tyre| %>
+<h2 style="background-color: #000000; color: #ffffff; padding: 10px; text-align: center;">
+  <i class="fa fa-home"></i> Loc. <span style="color: #fe6601; padding-right: 30px;"><%= tyre.location.nome %></span>
+  <i class="fa fa-building"></i> Scaffale: <span style="color: #fe6601; padding-right: 30px;"><%= tyre.shelf.nome %></span>   <i class="fa fa-cubes"></i> Blocco: <span style="color: #fe6601; padding-right: 30px;"><%= tyre.block.nome %></span>    <i class="fa fa-align-justify"></i> Piano: <span style="color: #fe6601; padding-right: 30px;"><%= tyre.floor.nome %></span>   <i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i> Colonna: <span style="color: #fe6601; padding-right: 30px;"><%= tyre.column.nome %></span></h1>
+  <% end %>
+
+<div class="col-lg-4">
+  <h2 style="background-color: #ffffff; color: #000000; padding: 10px;"><i class="fa fa-car"></i> VEICOLO:</h2>
+<p>
+  <strong>Targa:</strong>
+  <%= @car.targa %>
+</p>
+<%= image_tag("barcodes/#{@car.targa}.png") %>
+<p>
+  <strong>Owner:</strong>
+  <%= @car.owner.denominazione %>
+</p>
+
+
+<p>
+  <strong>Marca:</strong>
+  <%= @car.marca %>
+</p>
+
+<p>
+  <strong>Modello:</strong>
+  <%= @car.modello %>
+</p>
+
+<p>
+  <strong>Anno:</strong>
+  <%= @car.anno %>
+</p>
+
+<p>
+  <strong>Tyre:</strong>
+  <%= @car.tyre %>
+</p>
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>
+</div>
+
+<div class="col-lg-4">
+<h2 style="background-color: #ffffff; color: #000000; padding: 10px;"><i class="fa fa-users"></i> CLIENTE:</h2>
+
+
+<p>
+  <strong>Owner:</strong>
+  <%= @car.owner.denominazione %>
+</p>
+ <p>
+  <strong>Indirizzo:</strong>
+  <%= @car.owner.indirizzo %>
+</p>
+
+<p>
+  <strong>Cap:</strong>
+  <%= @car.owner.cap %>
+</p>
+
+
+<p>
+  <strong>citta:</strong>
+  <%= @car.owner.citta %>
+</p>
+
+</div>
+
+<div class="col-lg-4">
+
+
+<h2 style="background-color: #ffffff; color: #000000; padding: 10px;"><i class="fa fa-circle-o-notch"></i> GOMME ASSOCIATE:</h2>
+
+
+<% @car.tyres.each do |tyre| %>
+  <p><b>Marca:</b><%= tyre.marca %></p>
+  <p><b>Mod:</b><%= tyre.modello %></p>
+  <p><b>Tipo:</b><%= tyre.tipologia %></p>
+  <p><b>Km:</b><%= tyre.marca %></p>
+  <p><b>Usura:</b><%= tyre.marca %></p>
+  <p><b>Marca:</b><%= tyre.marca %></p>
+  <p><b>Consegna:</b><%= tyre.consegna.strftime "%d-%m-%Y %H:%M:%S" %></p>
+  <p><b>Ritiro:</b><%= tyre.ritiro.strftime "%d-%m-%Y %H:%M:%S" %></p>
+  <p><b>Posizione:</b></br>
+  <i class="fa fa-home"></i> <%= tyre.location.nome %><br>
+  <i class="fa fa-building"></i><%= tyre.shelf.nome %> <i class="fa fa-cubes"></i><%= tyre.block.nome %> <i class="fa fa-align-justify"></i><%= tyre.floor.nome %> <i class="fa fa-ellipsis-v"></i><%= tyre.floor.nome %></p>
+  <hr>
+<% end %>
+
+</div>
+
+<hr>
+<div class="col-lg-12">
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          + INSERISCI LAVORI SU PNEUMATICI
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <%= render "worksform" %>       
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          + INSERISCI LAVORI EXTRA
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        
+        <%= render "extraworksform" %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
+</div>

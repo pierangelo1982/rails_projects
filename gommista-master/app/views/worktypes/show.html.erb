@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Work:</strong>
+  <%= @worktype.work_id %>
+</p>
+
+<p>
+  <strong>Worktypolgy:</strong>
+  <%= @worktype.worktypolgy %>
+</p>
+
+<%= link_to 'Edit', edit_worktype_path(@worktype) %> |
+<%= link_to 'Back', worktypes_path %>

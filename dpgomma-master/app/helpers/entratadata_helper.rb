@@ -1,0 +1,2 @@
+module EntratadataHelper
+end

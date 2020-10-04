@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Valore:</strong>
+  <%= @taxation.valore %>
+</p>
+
+<p>
+  <strong>Titolo:</strong>
+  <%= @taxation.titolo %>
+</p>
+
+<p>
+  <strong>Descrizione:</strong>
+  <%= @taxation.descrizione %>
+</p>
+
+<%= link_to 'Edit', edit_taxation_path(@taxation) %> |
+<%= link_to 'Back', taxations_path %>

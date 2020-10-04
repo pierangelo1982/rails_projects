@@ -1,0 +1,26 @@
+<div class="col-lg-11 scrivi" style="padding-left: 0px;">
+   <div class="col-md-5">
+    Descrizione:</br>
+    <%= f.text_field :descrizione, class: 'form-control' %>
+  </div>
+   <div class="col-md-2">
+    Quantita:</br>
+    <%= f.text_field :quantita, class: 'form-control' %>
+  </div>
+    <div class="col-md-2">
+    Codice<br>
+    <%= f.text_field :codice, class: 'form-control' %>
+  </div>
+  <div class="col-md-2">
+    Importo (€.)<br>
+    <%= f.text_field :importo, class: 'form-control' %>
+  </div>
+
+
+<div class="col-md-1">
+	<br>
+		<%=link_to_remove_association("rimuovi", f, { wrapper_class: 'scrivi', class:"btn btn-danger"}) %>
+ </div>
+</div>
+
+

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  azienda_id: 
+  operatore_id: 
+  data: 2015-01-21
+  riconsegnato: false
+  rif_ddt: MyString
+  note: MyText
+  trasporto: MyString
+  colli: MyString
+  aspetto: MyString
+  note: MyText
+
+two:
+  azienda_id: 
+  operatore_id: 
+  data: 2015-01-21
+  riconsegnato: false
+  rif_ddt: MyString
+  note: MyText
+  trasporto: MyString
+  colli: MyString
+  aspetto: MyString
+  note: MyText

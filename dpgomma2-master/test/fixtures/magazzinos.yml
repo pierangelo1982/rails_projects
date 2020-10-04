@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  azienda_id: 
+  npezzi: 1
+  inlavorazio: 1
+  pronti: 1
+
+two:
+  azienda_id: 
+  npezzi: 1
+  inlavorazio: 1
+  pronti: 1

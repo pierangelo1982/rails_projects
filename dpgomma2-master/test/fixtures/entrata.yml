@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  azienda_id: 
+  mumero: MyString
+  data: MyString
+  data_ricezione: MyString
+  consegnato_da: MyString
+  imballo: MyString
+  colli: MyString
+  riserva: false
+  note: MyText
+
+two:
+  azienda_id: 
+  mumero: MyString
+  data: MyString
+  data_ricezione: MyString
+  consegnato_da: MyString
+  imballo: MyString
+  colli: MyString
+  riserva: false
+  note: MyText

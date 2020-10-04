@@ -1,0 +1,24 @@
+<div class="col-lg-12 cocoonx">
+	<div class="col-lg-10" style="margin-left: 0px; padding-left: 0px;">
+	
+  <div class="col-xs-12">
+    <% if params[:temp_azienda] %>
+    <%= f.label :descrizione %><br>
+    <%= f.grouped_collection_select :descrizione, Pezzo.where('azienda_id=?', params[:temp_azienda]).order(:nome), :lavoraziones, :nome, :id, :titolo, {include_blank: true}, class: 'form-control' %>
+    <% else %>
+    <%= f.label :descrizione %><br>
+    <%= f.grouped_collection_select :descrizione, Pezzo.order(:nome), :lavoraziones, :nome, :id, :titolo, {include_blank: true}, class: 'form-control' %>
+    <% end %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.label :quantita %><br>
+    <%= f.number_field :quantita, class: 'form-control' %>
+  </div>
+	
+	</div><!-- col-lg-11 -->
+	
+	<div class="col-lg-2">
+    	<br>
+			<%=link_to_remove_association("rimuovi", f, { wrapper_class: 'cocoonx', class:"btn btn-danger"}) %>
+	</div>
+</div>

@@ -1,0 +1,15 @@
+<%= simple_form_for(@scriviwork) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :extrawork %>
+    <%= f.input :descrizione %>
+    <%= f.input :codice %>
+    <%= f.input :quantita %>
+    <%= f.input :importo %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

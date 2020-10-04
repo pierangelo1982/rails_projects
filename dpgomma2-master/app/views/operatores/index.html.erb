@@ -1,0 +1,39 @@
+<h1>Operatori Lavorazione</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Denominazione</th>
+      <th>Nome</th>
+      <th>Cognome</th>
+      <th>Piva</th>
+      <th>Codfisc</th>
+      <th>Tel</th>
+      <th>Fax</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operatores.each do |operatore| %>
+      <tr>
+        <td><%= operatore.denominazione %></td>
+        <td><%= operatore.nome %></td>
+        <td><%= operatore.cognome %></td>
+        <td><%= operatore.piva %></td>
+        <td><%= operatore.codfisc %></td>
+        <td><%= operatore.tel %></td>
+        <td><%= operatore.fax %></td>
+        <td><%= operatore.email %></td>
+        <td><%= link_to 'Show', operatore, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Edit', edit_operatore_path(operatore), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Destroy', operatore, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Aggiungi Nuovo Operatore', new_operatore_path, class: 'btn btn-info btn-md' %>

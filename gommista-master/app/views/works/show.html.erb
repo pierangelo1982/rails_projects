@@ -1,0 +1,60 @@
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Car:</strong>
+  <%= @work.car.targa %>
+</p>
+
+<p>
+  <strong>Tyre:</strong>
+  <%= @work.tyre.try(:marca) %>
+</p>
+
+<p>
+  <strong>Worktypology:</strong>
+  <%= @work.worktypology_id %>
+</p>
+
+<p>
+  <strong>Descrizione:</strong>
+  <%= @work.descrizione %>
+</p>
+
+<p>
+  <strong>Km:</strong>
+  <%= @work.km %>
+</p>
+
+<p>
+  <strong>Posteriore:</strong>
+  <%= @work.posteriore %>
+</p>
+
+<p>
+  <strong>Anteriore:</strong>
+  <%= @work.anteriore %>
+</p>
+
+<p>
+  <strong>Tempo:</strong>
+  <%= @work.tempo %>
+</p>
+
+<p>
+  <strong>Prezzo:</strong>
+  <%= @work.prezzo %>
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @work.created %>
+</p>
+
+<p>
+  <strong>Modified:</strong>
+  <%= @work.modified %>
+</p>
+
+<%= link_to 'Edit', edit_work_path(@work) %> |
+<%= link_to 'Back', works_path %>

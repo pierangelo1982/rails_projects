@@ -1,0 +1,45 @@
+<div class="col-md-8">
+  <h1>DDT</h1>
+</div>
+
+<div class="col-md-4">
+  <%= link_to 'Nuovo DDT di Uscita', '/pages/exit', class: 'btn btn-info btn-xs' %>
+</div>
+
+
+
+<%= grid(@tasks_grid) do |g|
+    g.column name:  'ID', attribute: 'id', filter: false
+    g.column name:  'Azienda',  attribute: 'denominazione', attribute: 'azienda_id' do |ex| # joined table
+    ex.azienda.denominazione
+    end
+
+    g.column name:  'Numero' do |ex| ex.number_exit
+    end
+    g.column name:  'Data', attribute: 'data', filter: false do |entratum| entratum.data.strftime "%d-%m-%Y"
+    end
+    g.column name:  'Netto',  attribute: 'netto', filter: false, class: 'soldi' do |ex| number_to_currency(ex.netto, :unit=>'€. ')
+    end
+    g.column name:  'Tax',  attribute: 'tax', filter: false, class: 'soldi' do |ex| number_to_currency(ex.tax, :unit=>'€. ')
+    end
+    g.column name:  'Totale',  attribute: 'totale', filter: false, class: 'soldi' do |ex| number_to_currency(ex.totale, :unit=>'€. ')
+    end
+    g.column do |exit| link_to('Vedi', exit, class: 'btn btn-info btn-xs')
+    end
+    g.column do |exit| link_to('Modifica', edit_exit_path(exit),  class: 'btn btn-warning btn-xs')
+    end
+    g.column do |exit| link_to('Cancella', exit, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' })
+    end
+    g.column do |exit| link_to('', "/exits/#{exit.id}/pdf.pdf", class: 'fa fa-print fa-2x', target: '_Blank')
+    end
+
+end -%>
+
+
+
+
+
+
+
+
+

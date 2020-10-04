@@ -1,0 +1,88 @@
+<!-- Modal PNEUMATICI -->
+<div class="modal fade" id="myModalpneu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">AGGIUNGI ANAGRAFIVA</h4>
+      </div>
+      <div class="modal-body">
+        <% javascript 'dynamic_blocks' %>
+        <% #= form_for(@tyre, validate: true, remote: true, html:{class: 'form-horizontal new_car_tyre', "data-type" => :json}) do |f| %>
+        <%= f.fields_for :tyres do |builder| %>
+
+
+
+            <div class="col-lg-6">
+            <%= builder.label :marca %><br>
+            <%= builder.text_field :marca, class: 'form-control' %>
+          </div>
+            <div class="col-lg-6">
+            <%= builder.label :modello %><br>
+            <%= builder.text_field :modello, class: 'form-control' %>
+          </div>
+            <div class="col-lg-6">
+            <%= builder.label :tipologia %><br>
+            <%= builder.text_field :tipologia, class: 'form-control' %>
+          </div>
+           <div class="col-lg-6">
+            <%= builder.label :consegna %><br>
+            <%= builder.datetime_select :consegna, class: 'form-control' %>
+          </div>
+            <div class="col-lg-6">
+            <%= builder.label :ritiro %><br>
+            <%= builder.datetime_select :ritiro, class: 'form-control' %>
+          </div>
+           <div class="col-lg-6">
+            <%= builder.label :km %><br>
+            <%= builder.text_field :km, class: 'form-control' %>
+          </div>
+            <div class="col-lg-6">
+            <%= builder.label :usura %><br>
+            <%= builder.text_field :usura, class: 'form-control' %>
+          </div>
+        <div class="col-lg-12"><hr></div>
+        <div class="col-lg-12" style="background-color: #999999; padding: 15px">
+          <div class="col-lg-3" id="location">
+            <%= builder.label 'Area' %><br>
+            <%= builder.collection_select :location_id, Location.all, :id, :nome, {include_blank: true}, class: 'form-control' %>
+          </div>
+
+          <div class="col-lg-3" id="scaffali">
+            <%= builder.label 'Scaffale' %><br>
+            <%= builder.collection_select :shelf_id, Shelf.all, :id, :nome, {include_blank: true}, class: 'form-control' %>
+          </div>
+          <div class="col-lg-3" id="blocchi">
+            <%= builder.label 'Blocco' %><br>
+            <%= builder.collection_select :block_id, Block.find(:all), :id, :nome, {include_blank: true}, class: 'form-control' %>
+          </div>
+          <div class="col-lg-3" id="piani">
+            <%= builder.label 'Piano' %><br>
+            <%= builder.collection_select :floor_id, Floor.all, :id, :nome, {include_blank: true}, class: 'form-control' %>
+          </div>
+          <div class="col-lg-12" id="colonne">
+            <%= builder.label 'Colonna' %><br>
+            <%= builder.collection_select :column_id, Column.all, :id, :nome, {include_blank: true}, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-lg-1">
+          <%= builder.check_box :kit, class: 'form-control' %>
+        </div>
+        <div class="col-lg-11">
+          <%= builder.label 'KIT' %>
+        </div>
+
+        <div class="col-lg-12"><hr></div>
+        <div class="col-lg-12">
+        <div class="actions">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Salva</button>
+        </div>
+<% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

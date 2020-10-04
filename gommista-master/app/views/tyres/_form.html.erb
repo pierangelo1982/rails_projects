@@ -1,0 +1,94 @@
+<%= form_for(@tyre) do |f| %>
+  <% if @tyre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tyre.errors.count, "error") %> prohibited this tyre from being saved:</h2>
+
+      <ul>
+      <% @tyre.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  
+
+   <% if Car.exists?(targa: session['ciao']) %>
+      <div class="col-lg-6">
+        <%= f.label :car_id %><br>
+        <%= f.collection_select :car_id, Car.where(targa: session['ciao']), :id, :targa, class: 'form-control' %>
+    </div>
+  <% else %>
+       <div class="col-lg-6">
+      <%= f.label :car_id %><br>
+      <%= f.collection_select :car_id, Car.all, :id, :selecttarga, {include_blank: true}, class: 'form-control' %>
+    </div>
+  <% end %>
+
+
+    <div class="col-lg-6">
+    <%= f.label :marca %><br>
+    <%= f.text_field :marca, class: 'form-control' %>
+  </div>
+    <div class="col-lg-6">
+    <%= f.label 'Misura' %><br>
+    <%= f.text_field :modello, class: 'form-control' %>
+  </div>
+    <div class="col-lg-6">
+    <%= f.label :tipologia %><br>
+    <%= f.text_field :tipologia, class: 'form-control' %>
+  </div>
+   <div class="col-lg-6">
+    <%= f.label :consegna %><br>
+    <%= f.datetime_select :consegna, class: 'form-control' %>
+  </div>
+    <div class="col-lg-6">
+    <%= f.label :ritiro %><br>
+    <%= f.datetime_select :ritiro, class: 'form-control' %>
+  </div>
+   <div class="col-lg-6">
+    <%= f.label :km %><br>
+    <%= f.text_field :km, class: 'form-control' %>
+  </div>
+    <div class="col-lg-6">
+    <%= f.label :usura %><br>
+    <%= f.text_field :usura, class: 'form-control' %>
+  </div>
+<div class="col-lg-12"><hr></div>
+<div class="col-lg-12" style="background-color: #999999; padding: 15px">
+  <div class="col-lg-3" id="location">
+    <%= f.label 'Area' %><br>
+    <%= f.collection_select :location_id, Location.all, :id, :nome, {include_blank: true}, class: 'form-control' %>
+  </div>
+
+  <div class="col-lg-3" id="scaffali">
+    <%= f.label 'Scaffale' %><br>
+    <%= f.collection_select :shelf_id, Shelf.all, :id, :nome, {include_blank: true}, class: 'form-control' %>
+  </div>
+  <div class="col-lg-3" id="blocchi">
+    <%= f.label 'Blocco' %><br>
+    <%= f.collection_select :block_id, Block.find(:all), :id, :nome, {include_blank: true}, class: 'form-control' %>
+  </div>
+  <div class="col-lg-3" id="piani">
+    <%= f.label 'Piano' %><br>
+    <%= f.collection_select :floor_id, Floor.all, :id, :nome, {include_blank: true}, class: 'form-control' %>
+  </div>
+  <div class="col-lg-12" id="colonne">
+    <%= f.label 'Colonna' %><br>
+    <%= f.collection_select :column_id, Column.all, :id, :nome, {include_blank: true}, class: 'form-control' %>
+  </div>
+</div>
+<div class="col-lg-1">
+  <%= f.check_box :kit, class: 'form-control' %>
+</div>
+<div class="col-lg-11">
+  <%= f.label 'KIT' %>
+</div>
+
+<div class="col-lg-12"><hr></div>
+<div class="col-lg-12">
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

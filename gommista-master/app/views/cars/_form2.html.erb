@@ -1,0 +1,60 @@
+<%= form_for(@car) do |f| %>
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+      <% @car.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-lg-6">
+    <%= f.label :targa %><br>
+    <%= f.text_field :targa, class: 'form-control', :required => true %>
+  </div>
+
+  <div class="col-lg-6"> 
+    <%= f.label 'Proprietario' %><br>
+    <%= f.collection_select :owner_id, Owner.order('denominazione DESC').all, :id, :denominazione, {include_blank: true}, class: 'form-control', :required => true %>
+  </div>
+
+  <div class="col-lg-6">
+    <%= f.label :marca %><br>
+    <%= f.text_field :marca, class: 'form-control' %>
+  </div>
+
+  <div class="col-lg-6">
+    <%= f.label :modello %><br>
+    <%= f.text_field :modello, class: 'form-control' %>
+  </div>
+
+  <div class="col-lg-6">
+    <%= f.label :anno %><br>
+    <%= f.text_field :anno, class: 'form-control' %>
+  </div>
+
+  <div class="col-lg-6">
+    <%= f.label :telaio, 'Numero di Telaio' %><br>
+    <%= f.text_field :telaio, class: 'form-control' %>
+  </div>
+  
+  <div class="col-lg-12">
+    <%= f.label 'Carica Libretto' %><br>
+    <%= f.file_field :libretto %>
+  </div>
+  
+  <div class="col-lg-12">
+  </br>
+  <div class="actions">
+    <%= f.submit 'SALVA', class: 'btn btn-primary' %>
+  </div>
+</div>
+<% end %>
+
+
+
+
+

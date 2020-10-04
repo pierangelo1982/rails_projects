@@ -1,0 +1,19 @@
+<div class="col-lg-12 cocoonx">
+	<div class="col-lg-11" style="margin-left: 0px; padding-left: 0px;">
+
+  <div class="col-md-12">
+    <%= f.label :scadenza, 'Scadenze Pagamento' %><br>
+    <%= f.date_select(:scadenza, order: [:day, :month, :year], class: 'form-control') %>
+  </div>
+  <div class="col-md-12">
+    <%= f.label :note %><br>
+    <%= f.text_field :note, class: 'form-control' %>
+  </div>
+	
+	</div><!-- col-lg-11 -->
+	
+	<div class="col-lg-1">
+    	<br>
+			<%=link_to_remove_association("rimuovi", f, { wrapper_class: 'cocoonx', class:"btn btn-danger"}) %>
+	</div>
+</div>

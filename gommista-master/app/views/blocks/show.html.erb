@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Shelf:</strong>
+  <%= @block.shelf.nome %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @block.nome %>
+</p>
+
+<%= link_to 'Edit', edit_block_path(@block) %> |
+<%= link_to 'Back', blocks_path %>

@@ -1,0 +1,42 @@
+<div class="container">
+<div class="col-md-12">
+<a href="/welcome/resettarga" class="btn btn-danger" style="float: right">RESET TARGA</a>
+</div>
+<div class="row" style="margin-bottom: 25px; margin-top: 25px;">
+
+<img src="/img/logo_delbarba.png" style="width: 200px; margin-right: 50px;">
+<!-- Standard button -->
+<a href="/welcome/index"><button type="button" class="btn btn-default">Home</button></a>
+
+<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+<%= link_to 'Anagrafica Clienti', owners_path, :class => 'btn btn-primary' %>
+
+<!-- Indicates a successful or positive action -->
+<%= link_to 'Pneumatici', tyres_path, :class => 'btn btn-success' %>
+
+<!-- Contextual button for informational alert messages -->
+<%= link_to 'Automezzi', cars_path, :class => 'btn btn-info' %>
+
+<!-- Indicates caution should be taken with this action -->
+<%= link_to 'Storico Lavori', works_path, :class => 'btn btn-warning' %>
+
+<!-- Indicates a dangerous or potentially negative action -->
+<%= link_to 'Lavori Extra', extraworks_path, :class => 'btn btn-danger' %>
+
+<!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+<form accept-charset="UTF-8" action="/cars/" method="save" name="ricerca" style="float: right; margin-top:50px;">
+			<input name="ricerca" type="text" value="" />
+		</form>
+
+</div><!-- row -->
+
+
+
+<div class="row">
+  <div class="col-xs-4" style="background-color: #02840a; height: 15px;"></div>
+  <div class="col-xs-4" style="background-color: #ffffff; height: 15px;"></div>
+  <div class="col-xs-4" style="background-color: #fd0d00; height: 15px;"></div>
+</div>
+
+</div><!-- contrainer -->
+

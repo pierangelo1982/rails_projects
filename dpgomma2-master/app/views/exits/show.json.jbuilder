@@ -1,0 +1,1 @@
+json.extract! @exit, :id, :azienda_id, :data, :numero, :entratum_ids, :colli, :quantita, :scarti, :netto, :tax, :totale, :note, :tipo_trasporto, :aspetto, :responsabile_trasporto, :altro, :consegnato, :created_at, :updated_at

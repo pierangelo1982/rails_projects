@@ -1,0 +1,50 @@
+<h3>Merce in Entrata (rif. ddt)</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Azienda</th>
+      <th>Numero ddt</th>
+      <th>Data</th>
+      <th>Data ricezione</th>
+      <th>Colli</th>
+      <th>Riserva</th>
+      <th>Manda in Lavorazione</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entratainlavorazioneoff.each do |entratum| %>
+      <tr>
+        <td><%= entratum.azienda.denominazione %></td>
+        <td><%= entratum.numero %></td>
+        <td><%= entratum.data %></td>
+        <td><%= entratum.data_ricezione %></td>
+        <td><%= entratum.colli %></td>
+        <!-- RISERVA -->
+        <td>
+            <% if entratum.riserva == true %>
+              <%= link_to "", submittop_entratum_path(entratum.id), method: :put, class: "fa fa-thumbs-o-down" %>
+            <% else %>
+              <%= link_to "", submitdown_entratum_path(entratum.id), method: :put, class: "fa fa-thumbs-o-up" %>
+            <% end %>
+        </td> <!-- Fine Riserva -->
+        <td><!-- in lavorazione -->
+          <% if entratum.inlavorazione == false %>
+            <%= link_to "", inlavorazioneon_entratum_path(entratum.id), method: :put, class: "fa fa-caret-square-o-right" %>
+          <% else %>
+            <%= link_to "", inlavorazioneoff_entratum_path(entratum.id), method: :put, class: "fa fa-caret-square-o-left" %>
+            <% end %>
+        </td><!-- fine in lavorazione -->
+        <td><%= link_to '', entratum, class: 'fa fa-search-plus' %></td>
+        <td><%= link_to '', edit_entratum_path(entratum), class: 'fa fa-pencil-square-o' %></td>
+        <td><%= link_to '', entratum, method: :delete, data: { confirm: 'Are you sure?' }, class: 'fa fa-times-circle' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Entratum', new_entratum_path %>

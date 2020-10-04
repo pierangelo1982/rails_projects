@@ -1,0 +1,49 @@
+<div class="col-lg-8">
+  <h1>STORICO PNEUMATICI</h1>
+</div>
+
+<div class="col-lg-4">
+  </br>
+  <%= link_to 'INSERISCI NUOVO SET DI PNEUMATICI', new_tyre_path, class: 'btn btn-default' %>
+</div>
+
+<hr>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Propietario</th>
+      <th>Veicolo</th>
+      <th>Targa</th>
+      <th>Misura</th>
+      <th>Tipologia</th>
+      <th><i class="fa fa-building"></i></th>
+      <th><i class="fa fa-cubes"></i></th>
+      <th><i class="fa fa-align-justify"></i></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tyres.each do |tyre| %>
+      <tr>
+        <td><%= tyre.car.owner.denominazione %></td>
+        <td><%= tyre.car.targa %></td>
+        <td><%= tyre.car.marca %>/<%= tyre.car.modello %></td>
+        <td><%= tyre.modello %></td>
+        <td><%= tyre.tipologia %></td>
+        <td><%= tyre.shelf.try(:nome) %></td>
+        <td><%= tyre.block.try(:nome) %></td>
+        <td><%= tyre.floor.try(:nome) %></td>
+        <td><%= link_to 'Vedi', tyre, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Modifica', edit_tyre_path(tyre), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Cancella', tyre, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

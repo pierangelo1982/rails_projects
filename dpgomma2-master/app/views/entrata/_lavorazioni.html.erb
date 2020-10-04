@@ -1,0 +1,37 @@
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Pezzo</th>
+      <th>Lavorazione</th>
+      <th>Quantita</th>
+      <th>Colli</th>
+      <th>Peso</th>
+      <th>Prezzo</th>
+      <th>Iva</th>
+      <th>TOTALE</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entratum.entratadata.where('quantita >?', 0).each do |entratadatum| %>
+      <tr>
+        <td><%= entratadatum.lavorazione.pezzo.nome %></td>
+        <td><%= entratadatum.lavorazione.titolo %></td>
+        <td><%= number_with_delimiter(entratadatum.quantita, delimiter: ".") %></td>
+        <td><%= entratadatum.colli %></td>
+        <td><%= number_with_delimiter(entratadatum.peso, delimiter: ".") %></td>
+        <td><%= entratadatum.entratadatumtotale %></td>
+        <td><%= entratadatum.entratumtotaleiva %></td>
+        <td><%= entratadatum.entratumtotaleivato %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+
+<%= link_to 'Nuovo DDT di Entrata', '/pages/entrata' %>

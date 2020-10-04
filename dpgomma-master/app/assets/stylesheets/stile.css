@@ -1,0 +1,130 @@
+body {
+	font-family: 'Ubuntu', sans-serif;
+	color: #000000;
+}
+
+.logodp {
+	height: 90px;
+}
+
+.navbar {
+	border-radius: 0px;
+}
+
+.navbar-inverse {
+	background-color: #212f5c;
+	border-color: #212f5c;
+}
+
+.navbar-inverse .navbar-nav>li>a,
+.navbar-inverse .navbar-nav>li>a:link {
+	/*color: #ffffff;*/
+	color: #aaaaaa;
+
+}
+
+.nav>li {
+	padding-top:20px;
+	padding-bottom: 10px;
+}
+
+.nav>li>a {
+	position: relative;
+	display: block;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:1px;
+	padding-top:1px;
+}
+
+.fa-2x {
+	text-align: center;
+
+}
+
+.linkmenu {
+	text-align: center;
+}
+
+.formstandard {
+	padding-left:0px;
+
+}
+
+.nested {
+	background-color: #404040;
+	color: #ffffff;
+	padding-bottom:10px;
+}
+
+.cocoonx {
+	background-color: #D2D2D2;
+	color: #000000;
+	margin-bottom:10px;
+}
+
+.form-control {
+	margin-bottom: 15px;
+}
+
+.fa-times-circle {
+	color: red;
+}
+
+.fa-thumbs-o-down {
+	color: red;
+}
+
+.fa-thumbs-o-up {
+	color: green;
+}
+
+.fa-caret-square-o-right {
+	color: red;
+}
+
+.fa-caret-square-o-left {
+	color: green;
+}
+
+.fa-bell-slash {
+	color: red;
+}
+
+.fa-bell {
+	color: green;
+}
+
+
+footer {
+	margin-top:50px;
+	min-height: 100px;
+	background-color: #7bb928;
+}
+
+footer p {
+	color: #ffffff;
+}
+
+.intestario {
+	background-color: #439ad5;
+	border-radius: 10px;
+	color: #ffffff;
+}
+
+.anagrafica {
+	background-color: #212f5c;
+	color: #ffffff;
+	border-radius: 10px;
+}
+
+.numerofattura {
+	padding-top: 5px;
+	background-color: #7bb928;
+	color: #ffffff;
+	font-weight: 800;
+}
+
+.riepilogofatt {
+	text-align: right;
+}

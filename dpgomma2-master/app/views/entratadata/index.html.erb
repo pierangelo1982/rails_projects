@@ -1,0 +1,37 @@
+<h1>Listing entratadata</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Entrata</th>
+      <th>Pezzo</th>
+      <th>Lavorazione</th>
+      <th>Note</th>
+      <th>Quantita</th>
+      <th>Colli</th>
+      <th>Peso</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entratadata.each do |entratadatum| %>
+      <tr>
+        <td><%= entratadatum.entrata %></td>
+        <td><%= entratadatum.pezzo %></td>
+        <td><%= entratadatum.lavorazione %></td>
+        <td><%= entratadatum.note %></td>
+        <td><%= entratadatum.quantita %></td>
+        <td><%= entratadatum.colli %></td>
+        <td><%= entratadatum.peso %></td>
+        <td><%= link_to 'Show', entratadatum %></td>
+        <td><%= link_to 'Edit', edit_entratadatum_path(entratadatum) %></td>
+        <td><%= link_to 'Destroy', entratadatum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Entratadatum', new_entratadatum_path %>

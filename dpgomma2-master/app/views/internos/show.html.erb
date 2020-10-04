@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+
+    <div class="col-md-6 anagrafica">
+        <%= render 'anagrafica' %>
+    </div>
+
+    <div class="col-md-2">
+    </div>
+
+    <div class="col-md-4 intestario">
+        <%= render 'intestatario' %>
+    </div>
+
+    <div class="col-md-12">
+      <hr>
+    </div>
+
+
+<div class="col-md-12 numerofattura">
+<p>DDT Numero: <%= @interno.id %>  Del: <%= @interno.data %></p>
+</div>
+
+<div class="col-md-12"><br></div>
+
+<div class="col-md-6">
+<p>
+  <strong>Rif ddt:</strong>
+  <%= @interno.rif_ddt %>
+</p>
+</div>
+
+<div class="col-md-6">
+<p>
+  <strong>Note:</strong>
+  <%= @interno.note %>
+</p>
+</div>
+
+<div class="col-md-4">
+<p>
+  <strong>Trasporto:</strong>
+  <%= @interno.trasporto %>
+</p>
+</div>
+
+<div class="col-md-4">
+<p>
+  <strong>Colli:</strong>
+  <%= @interno.colli %>
+</p>
+</div>
+
+<div class="col-md-4"><p>
+  <strong>Aspetto:</strong>
+  <%= @interno.aspetto %>
+</p>
+</div>
+
+<div class="col-md-12">
+<p>
+  <strong>Note:</strong>
+  <%= @interno.note %>
+</p>
+</div>
+
+<div class="col-md-12">
+<%= render 'internolav' %>
+</div>
+
+<div class="col-md-12">
+<br>
+<%= link_to 'Nuovo DDT Interno', new_internodatum_path, class: 'btn btn-info btn-xs' %>
+
+<%= link_to 'Modifica', edit_interno_path(@interno), class: 'btn btn-info btn-xs' %>
+<%= link_to 'indice', internos_path, class: 'btn btn-info btn-xs' %>
+</div>
+
+</div><!-- ROW -->

@@ -1,0 +1,82 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Azienda:</strong>
+  <%= @exit.azienda.denominazione %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @exit.data %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @exit.numero %>
+</p>
+
+
+<%= render 'entrata' %>
+
+<p>
+  <strong>Colli:</strong>
+  <%= @exit.colli %>
+</p>
+
+<p>
+  <strong>Quantita:</strong>
+  <%= @exit.quantita %>
+</p>
+
+<p>
+  <strong>Scarti:</strong>
+  <%= @exit.scarti %>
+</p>
+
+<p>
+  <strong>Netto:</strong>
+  <%= @exit.netto %>
+</p>
+
+<p>
+  <strong>Tax:</strong>
+  <%= @exit.tax %>
+</p>
+
+<p>
+  <strong>Totale:</strong>
+  <%= @exit.totale %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @exit.note %>
+</p>
+
+<p>
+  <strong>Tipo trasporto:</strong>
+  <%= @exit.tipo_trasporto %>
+</p>
+
+<p>
+  <strong>Aspetto:</strong>
+  <%= @exit.aspetto %>
+</p>
+
+<p>
+  <strong>Responsabile trasporto:</strong>
+  <%= @exit.responsabile_trasporto %>
+</p>
+
+<p>
+  <strong>Altro:</strong>
+  <%= @exit.altro %>
+</p>
+
+<p>
+  <strong>Consegnato:</strong>
+  <%= @exit.consegnato %>
+</p>
+
+<%= link_to 'Edit', edit_exit_path(@exit) %> |
+<%= link_to 'Back', exits_path %>

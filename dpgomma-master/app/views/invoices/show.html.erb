@@ -1,0 +1,76 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-md-6 anagrafica">
+    <%= render 'anagrafica' %>
+</div>
+
+<div class="col-md-2">
+</div>
+
+<div class="col-md-4 intestario">
+    <%= render 'intestatario' %>
+</div>
+
+<div class="col-md-12">
+  <hr>
+</div>
+
+
+<div class="col-md-12 numerofattura">
+<p>Fattura Numero: <%= @invoice.numero %>  Del: <%= @invoice.data %></p>
+</div>
+
+<!-- ASSOCIAZIO DDT -->
+<div class="col-lg-12">
+  <%= render 'entrata' %>
+</div>
+<!-- FINE ASSOCIAZIO -->
+
+
+
+<div class="col-md-5">
+<p>
+  <strong>Coordinate Bancarie</strong><br>
+  Banca Popolare di Sondrio<br>
+  ABI: 05696  CAB: 53470<br>
+  IBAN: IT 31 I 05696 53470 000007887X24
+</p>
+<p>
+  <br>
+  <strong>Modalità di Pagamento:</strong><br>
+  <%= @invoice.pagamento %>
+</p>
+</div>
+
+
+<div class="col-md-3">
+</div>
+
+
+<div class="col-md-4 riepilogofatt">
+<p>
+  <strong>Imponibile:</strong>
+  <%= @invoice.netto %>
+</p>
+
+<p>
+  <strong>Iva:</strong>
+  22%
+</p>
+
+<p>
+  <strong>Importo Iva:</strong>
+  <%= @invoice.tax %>
+</p>
+
+<h3>
+  <strong>Totale:</strong>
+  <%= @invoice.totale %>
+</h3>
+</div>
+
+
+<div class="col-md-12">
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>
+</div>

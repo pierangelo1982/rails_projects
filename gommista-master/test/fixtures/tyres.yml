@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  car_id: 
+  marca: MyString
+  modello: MyString
+  tipologia: MyString
+  consegna: 2014-07-05 00:15:10
+  ritiro: 2014-07-05 00:15:10
+  km: MyString
+  usura: MyString
+  scaffale: MyString
+  blocco: MyString
+  piano: MyString
+  colonna: MyString
+  created: 2014-07-05 00:15:10
+  modified: 2014-07-05 00:15:10
+
+two:
+  car_id: 
+  marca: MyString
+  modello: MyString
+  tipologia: MyString
+  consegna: 2014-07-05 00:15:10
+  ritiro: 2014-07-05 00:15:10
+  km: MyString
+  usura: MyString
+  scaffale: MyString
+  blocco: MyString
+  piano: MyString
+  colonna: MyString
+  created: 2014-07-05 00:15:10
+  modified: 2014-07-05 00:15:10

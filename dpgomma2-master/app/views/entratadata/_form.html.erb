@@ -1,0 +1,45 @@
+<%= form_for(@entratadatum) do |f| %>
+  <% if @entratadatum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entratadatum.errors.count, "error") %> prohibited this entratadatum from being saved:</h2>
+
+      <ul>
+      <% @entratadatum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :entrata_id %><br>
+    <%= f.text_field :entrata_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pezzo_id %><br>
+    <%= f.text_field :pezzo_id %>
+  </div>
+  <div class="field">
+    <%= f.label :lavorazione_id %><br>
+    <%= f.text_field :lavorazione_id %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="field">
+    <%= f.label :quantita %><br>
+    <%= f.text_field :quantita %>
+  </div>
+  <div class="field">
+    <%= f.label :colli %><br>
+    <%= f.text_field :colli %>
+  </div>
+  <div class="field">
+    <%= f.label :peso %><br>
+    <%= f.text_field :peso %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

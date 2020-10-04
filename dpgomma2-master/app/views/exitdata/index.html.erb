@@ -1,0 +1,33 @@
+<h1>Listing exitdata</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Azienda</th>
+      <th>Quantita</th>
+      <th>Pezzo</th>
+      <th>Lavorazione</th>
+      <th>Descrizione</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exitdata.each do |exitdatum| %>
+      <tr>
+        <td><%= exitdatum.azienda %></td>
+        <td><%= exitdatum.quantita %></td>
+        <td><%= exitdatum.pezzo %></td>
+        <td><%= exitdatum.lavorazione %></td>
+        <td><%= exitdatum.descrizione %></td>
+        <td><%= link_to 'Show', exitdatum %></td>
+        <td><%= link_to 'Edit', edit_exitdatum_path(exitdatum) %></td>
+        <td><%= link_to 'Destroy', exitdatum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Exitdatum', new_exitdatum_path %>

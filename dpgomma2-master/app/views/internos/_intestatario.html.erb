@@ -1,0 +1,11 @@
+<h3 style="text-align: right">Spett.le <%= @interno.operatore.try(:denominazione) %></h3>
+  	<p style="text-align: right">
+  		P.iva: <%= @interno.operatore.try(:piva) %><br>
+  		Cod.Fisc:<%= @interno.operatore.try(:codfisc) %><br>
+		<%= @interno.operatore.try(:indirizzo) %>  -  <%= @interno.operatore.try(:cap) %> - <%= @interno.operatore.try(:citta) %><br>
+		Tel: <%= @interno.operatore.try(:tel) %><br>
+   	<br>
+   	<br>
+   	<br>
+   	<br>
+</p>

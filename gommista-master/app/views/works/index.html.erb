@@ -1,0 +1,45 @@
+<div class="col-lg-8">
+  <h1>STORICO INTERVENTI</h1>
+</div>
+
+<div class="col-lg-4">
+  </br>
+  <%= link_to 'Inserisci Nuova Operazione', new_work_path, class: 'btn btn-default' %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Targa</th>
+      <th>Pneumatici</th>
+      <th>Intervento</th>
+      <th>Prezzo</th>
+      <th>Lavori</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @works.each do |work| %>
+      <tr>
+        <td><%= work.car.try(:targa) %></td>
+        <td><%= work.tyre.try(:marca) %></td>
+        <td></td>
+        <td><%= work.prezzo %></td>
+        <td>
+           <% @worktypes.where(work_id: work.id).each do |ww| %>
+          <p><%= ww.worktypology.nome %></p>
+          <% end %>
+        </td>
+        <td><%= link_to 'Vedi', work, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Modifica', edit_work_path(work), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Cancella', work, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

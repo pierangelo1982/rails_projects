@@ -1,0 +1,78 @@
+<%= form_for(@pezzo) do |f| %>
+  <% if @pezzo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pezzo.errors.count, "error") %> prohibited this pezzo from being saved:</h2>
+
+      <ul>
+      <% @pezzo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-12 col-md-6 col-md-6 formstandard"> <!-- Form Standard -->
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :azienda_id %><br>
+    <%= f.collection_select :azienda_id, Azienda.all, :id, :denominazione, {include_blank: true}, class: 'form-control', :required => true %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <%= f.label :codice, 'codice prodotto' %><br>
+    <%= f.text_field :codice, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <%= f.label :nome, 'nome prodotto' %><br>
+    <%= f.text_field :nome, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :descrizione %><br>
+    <%= f.text_field :descrizione, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :note %><br>
+    <%= f.text_area :note, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :prezzo %><br>
+    <%= f.text_field :prezzo, class: 'form-control' %>
+  </div>
+   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :immagine %><br>
+    <%= f.text_field :immagine, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :scheda_tecnica %><br>
+    <%= f.text_field :scheda_tecnica, class: 'form-control' %>
+  </div>
+
+</div><!-- FORM STANDARS -->
+
+
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 nested"><!-- NESTED COCOON -->
+   <div class="col-lg-12" style="margin-left: 0px;">
+    <h3>LAVORAZIONI ASSOCIATE</h3>
+    <fieldset id="lavoraziones">
+      <%= f.fields_for (:lavoraziones) do |item| %>
+        <%= render 'lavorazione_fields', f: item %>
+      <% end %>
+      <div class="col-lg-1">
+      <br>
+      <%= link_to_add_association 'aggiungi', f, :lavoraziones, { class:"btn btn-primary" } %>
+      </div>
+    </fieldset>
+  </div>
+
+</div><!-- fine nested -->
+
+</div><!-- FINE ROW -->
+
+
+  <div class="col-xs-12">
+    <br>
+    <br>
+    <%= f.submit 'SALVA', class: 'btn btn-primary' %>
+  </div>
+<% end %>

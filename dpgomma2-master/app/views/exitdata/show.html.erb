@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Azienda:</strong>
+  <%= @exitdatum.azienda %>
+</p>
+
+<p>
+  <strong>Quantita:</strong>
+  <%= @exitdatum.quantita %>
+</p>
+
+<p>
+  <strong>Pezzo:</strong>
+  <%= @exitdatum.pezzo %>
+</p>
+
+<p>
+  <strong>Lavorazione:</strong>
+  <%= @exitdatum.lavorazione %>
+</p>
+
+<p>
+  <strong>Descrizione:</strong>
+  <%= @exitdatum.descrizione %>
+</p>
+
+<%= link_to 'Edit', edit_exitdatum_path(@exitdatum) %> |
+<%= link_to 'Back', exitdata_path %>

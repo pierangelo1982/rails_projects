@@ -1,0 +1,79 @@
+<%= form_for(@entratum) do |f| %>
+  <% if @entratum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entratum.errors.count, "error") %> prohibited this entratum from being saved:</h2>
+
+      <ul>
+      <% @entratum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-xs-12">
+    <% if params[:temp_azienda] %>
+    <%= f.label :azienda_id %><br>
+    <%= f.collection_select :azienda_id, Azienda.where('id=?', params[:temp_azienda]), :id, :denominazione, {include_blank: true}, class: 'form-control', :required => true %>
+    <% else %>
+    <%= f.collection_select :azienda_id, Azienda.all, :id, :denominazione, {include_blank: true}, class: 'form-control', :required => true %>
+    <% end %>
+  </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+    <%= f.label :importaddt %><br>
+    <%= f.file_field :importaddt, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+    <%= f.label :numero %><br>
+    <%= f.text_field :numero, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+    <%= f.label :data %><br>
+    <%= f.text_field :data, class: 'form-control' %>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+    <%= f.label :consegnato_da %><br>
+    <%= f.text_field :consegnato_da, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <%= f.label :imballo %><br>
+    <%= f.text_field :imballo, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <%= f.label :colli %><br>
+    <%= f.text_field :colli, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.label :riserva %><br>
+    <%= f.check_box :riserva %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.label :note %><br>
+    <%= f.text_area :note, class: 'form-control' %>
+  </div>
+
+
+  <!-- NESTED -->
+ <div class="col-lg-12" style="margin-left: 0px;">
+    <h3>MERCE DA LAVORARE</h3>
+    <fieldset id="entratadata">
+      <%= f.fields_for (:entratadata) do |item| %>
+        <%= render 'entratadatum_fields', f: item %>
+      <% end %>
+      <div class="col-lg-1">
+      <br>
+      <%= link_to_add_association 'aggiungi', f, :entratadata, { class:"btn btn-primary" } %>
+      </div>
+    </fieldset>
+  </div>
+
+  <!-- FINE NESTED -->
+
+
+  <div class="col-xs-12">
+    <br>
+    <br>
+    <%= f.submit 'SALVA' %>
+  </div>
+<% end %>

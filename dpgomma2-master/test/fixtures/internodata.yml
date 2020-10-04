@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  interno_id: 
+  descrizione: MyString
+  quantita: 1
+
+two:
+  interno_id: 
+  descrizione: MyString
+  quantita: 1

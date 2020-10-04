@@ -1,0 +1,55 @@
+<div class="row">
+
+<div class="col-lg-5">
+  <h1>ARCHIVIO AUTOVEICOLI</h1>
+</div>
+
+<div class="col-lg-5">
+  <% if Car.exists?(targa: session['ciao']) %>
+    <h3>Stai operando sulla targa: <%= session['ciao'] %></h3>
+  <% else %>
+    <h3>Nessuna Targa Selezionata</h3>
+  <% end %>
+</div>
+
+<div class="col-lg-2">
+  </br>
+  <%= link_to 'Inserisci nuova targa', new_car_path, class: 'btn btn-default' %>
+</div>
+
+</div><!-- row -->
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Targa</th>
+      <th>Cliente</th>
+      <th>Marca</th>
+      <th>Modello</th>
+      <th>Anno</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cars.each do |car| %>
+      <tr>
+        <td><%= car.targa %></td>
+        <td><%= car.owner.try(:denominazione) %></td>
+        <td><%= car.marca %></td>
+        <td><%= car.modello %></td>
+        <td><%= car.anno %></td>
+        <td><%= link_to 'Vedi', car, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Modifica', edit_car_path(car), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Cancella', car, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+        <td><a href="/cars/<%= car.id %>/pdf.pdf" target="_blank"><i class="fa fa-print fa-2x"></i></a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

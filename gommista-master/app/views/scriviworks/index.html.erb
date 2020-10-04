@@ -1,0 +1,35 @@
+<h1>Listing scriviworks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Extrawork</th>
+      <th>Descrizione</th>
+      <th>Codice</th>
+      <th>Quantita</th>
+      <th>Importo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scriviworks.each do |scriviwork| %>
+      <tr>
+        <td><%= scriviwork.extrawork %></td>
+        <td><%= scriviwork.descrizione %></td>
+        <td><%= scriviwork.codice %></td>
+        <td><%= scriviwork.quantita %></td>
+        <td><%= scriviwork.importo %></td>
+        <td><%= link_to 'Show', scriviwork %></td>
+        <td><%= link_to 'Edit', edit_scriviwork_path(scriviwork) %></td>
+        <td><%= link_to 'Destroy', scriviwork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scriviwork', new_scriviwork_path %>

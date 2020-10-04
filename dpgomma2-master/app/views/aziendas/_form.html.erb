@@ -1,0 +1,104 @@
+<%= form_for(@azienda) do |f| %>
+  <% if @azienda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@azienda.errors.count, "error") %> prohibited this azienda from being saved:</h2>
+
+      <ul>
+      <% @azienda.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-xs-12">
+    <%= f.label :denominazione %><br>
+    <%= f.text_field :denominazione, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <%= f.label :piva %><br>
+    <%= f.text_field :piva, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <%= f.label :codfisc %><br>
+    <%= f.text_field :codfisc, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <%= f.label :indirizzo %><br>
+    <%= f.text_field :indirizzo, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+    <%= f.label :cap %><br>
+    <%= f.text_field :cap, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :citta %><br>
+    <%= f.text_field :citta, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :tel %><br>
+    <%= f.text_field :tel, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :fax %><br>
+    <%= f.text_field :fax, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :cell %><br>
+    <%= f.text_field :cell, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :web %><br>
+    <%= f.text_field :web, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :pec %><br>
+    <%= f.text_field :pec, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :referente %><br>
+    <%= f.text_field :referente, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :note %><br>
+    <%= f.text_area :note, class: 'form-control' %>
+  </div>
+
+
+<!-- NESTED BANCA -->
+      <%= f.fields_for(:banks) do |item| %>
+  <div class="col-xs-12 banktab">
+      <div class="col-xs-12">
+        <h3>Coordinate Bancarie</h3>
+      </div>
+          <div class="col-xs-12">
+            <%= item.label :nome, 'Nome del Gruppo Bancario' %><br>
+            <%= item.text_field :nome, class: 'form-control' %>
+          </div>
+          <div class="col-md-4">
+            <%= item.label :abi, 'ABI' %><br>
+            <%= item.text_field :abi, class: 'form-control' %>
+          </div>
+          <div class="col-md-4">
+            <%= item.label :cab, 'CAB' %><br>
+            <%= item.text_field :cab, class: 'form-control' %>
+          </div>
+          <div class="col-md-4">
+            <%= item.label :numeroconto, 'Numero Conto Corrente' %><br>
+            <%= item.text_field :numeroconto, class: 'form-control' %>
+          </div>
+          <div class="col-xs-12">
+            <%= item.label :iban, 'Codice Iban' %><br>
+            <%= item.text_field :iban, class: 'form-control' %>
+          </div>                                    
+  </div>
+<% end %> <!-- fine nested banca -->
+
+  <div class="actions">
+    <%= f.submit 'SALVA' %>
+  </div>
+<% end %>

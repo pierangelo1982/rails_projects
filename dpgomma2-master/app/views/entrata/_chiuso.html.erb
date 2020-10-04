@@ -1,0 +1,43 @@
+<h3>Merce in Lavorazione - Chiuso(rif. ddt Interno)</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Azienda</th>
+      <th>Operatore</th>
+      <th>Data</th>
+      <th>Riconsegnato</th>
+      <th>Rif ddt</th>
+      <th>Note</th>
+      <th>Trasporto</th>
+      <th>Colli</th>
+      <th>Aspetto</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Interno.all.each do |interno| %>
+      <tr>
+        <td><%= interno.azienda %></td>
+        <td><%= interno.operatore %></td>
+        <td><%= interno.data %></td>
+        <td><%= interno.riconsegnato %></td>
+        <td><%= interno.rif_ddt %></td>
+        <td><%= interno.note %></td>
+        <td><%= interno.trasporto %></td>
+        <td><%= interno.colli %></td>
+        <td><%= interno.aspetto %></td>
+        <td><%= interno.note %></td>
+        <td><%= link_to 'Show', interno %></td>
+        <td><%= link_to 'Edit', edit_interno_path(interno) %></td>
+        <td><%= link_to 'Destroy', interno, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuovo DDT interno', '/pages/interno' %>

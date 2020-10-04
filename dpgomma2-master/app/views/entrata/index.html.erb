@@ -1,0 +1,33 @@
+<div class="col-md-8">
+	<h3>Merce in Entrata (rif. ddt)</h3>
+</div>
+
+<div class="col-md-4">
+	<%= link_to 'Nuovo DDT di Entrata', '/pages/entrata', class: 'btn btn-info btn-xs' %>
+</div>
+
+
+
+
+<%= grid(@tasks_grid) do |g|
+
+	g.column name:  'ID', attribute: 'id'
+    g.column name:  'Azienda',  attribute: 'denominazione', attribute: 'azienda_id' do |entratum| # joined table
+    entratum.azienda.denominazione
+  	end
+    g.column name:  'Numero DDT', attribute: 'numero'
+    g.column name:  'Data', attribute: 'data', filter: false do |entratum| entratum.data.strftime "%d-%m-%Y"
+    end
+    g.column name:  'Data Ricezione', attribute: 'data_ricezione', filter: false
+    g.column name:  'Colli', attribute: 'colli', filter: false
+    g.column do |entratum| link_to('', entratum, class: 'fa fa-search-plus')
+  	end
+	g.column do |entratum| link_to('', edit_entratum_path(entratum), class: 'fa fa-pencil-square-o')
+	end
+	g.column do |entratum| link_to('', entratum, method: :delete, data: { confirm: 'Are you sure?' }, class: 'fa fa-times-circle')
+	end
+end -%>
+
+
+
+

@@ -1,0 +1,23 @@
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">in entrata</a></li>
+    <li role="presentation"><a href="#inlavorazioneon" aria-controls="profile" role="tab" data-toggle="tab">in lavorazione</a></li>
+    <li role="presentation"><a href="#ultimato" aria-controls="messages" role="tab" data-toggle="tab">ultimato</a></li>
+    <li role="presentation"><a href="#consegnato" aria-controls="settings" role="tab" data-toggle="tab">consegnato</a></li>
+    <li role="presentation"><a href="#fatturato" aria-controls="settings" role="tab" data-toggle="tab">fatturato</a></li>
+    <li role="presentation"><a href="#pagato" aria-controls="settings" role="tab" data-toggle="tab">pagato</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home"><%= render 'inlavorazioneoff' %></div>
+    <div role="tabpanel" class="tab-pane" id="inlavorazioneon"><%= render 'inlavorazioneon' %></div>
+    <div role="tabpanel" class="tab-pane" id="ultimato"><%= render 'chiuso' %></div>
+    <div role="tabpanel" class="tab-pane" id="consegnato"><%= render 'consegnato' %></div>
+    <div role="tabpanel" class="tab-pane" id="fatturato"><%= render 'fatturato' %></div>
+    <div role="tabpanel" class="tab-pane" id="pagato"><%= render 'fatturatopagato' %></div>
+  </div>
+
+</div>

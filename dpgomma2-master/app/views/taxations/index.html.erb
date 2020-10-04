@@ -1,0 +1,29 @@
+<h1>Listing taxations</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Valore</th>
+      <th>Titolo</th>
+      <th>Descrizione</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @taxations.each do |taxation| %>
+      <tr>
+        <td><%= taxation.valore %></td>
+        <td><%= taxation.titolo %></td>
+        <td><%= taxation.descrizione %></td>
+        <td><%= link_to 'Vedi', taxation, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Modifica', edit_taxation_path(taxation), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Cancella', taxation, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'AGGIUNGI TASSAZIONE', new_taxation_path, class: 'btn btn-info' %>

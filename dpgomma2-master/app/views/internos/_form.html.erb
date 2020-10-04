@@ -1,0 +1,100 @@
+<%= form_for(@interno) do |f| %>
+  <% if @interno.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@interno.errors.count, "error") %> prohibited this interno from being saved:</h2>
+
+      <ul>
+      <% @interno.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-xs-6">
+    <% if params[:temp_azienda] %>
+    <%= f.label :azienda_id %><br>
+    <%= f.collection_select :azienda_id, Azienda.where('id=?', params[:temp_azienda]), :id, :denominazione, {include_blank: true}, class: 'form-control', :required => true %>
+    <% else %>
+    <%= f.label :azienda_id %><br>
+    <%= f.collection_select :azienda_id, Azienda.all, :id, :denominazione, {include_blank: true}, class: 'form-control', :required => true %>
+    <% end %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.label :operatore_id %><br>
+    <%= f.collection_select :operatore_id, Operatore.order(:denominazione), :id, :denominazione, {include_blank: true}, class: 'form-control' %>
+
+  </div>
+  <div class="col-xs-6">
+    <%= f.label :data %><br>
+    <%= f.date_select :data, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.label :rif_ddt %><br>
+    <%= f.text_field :rif_ddt, class: 'form-control' %>
+  </div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!-- NESTED COCOON -->
+    <h3>LAVORAZIONI ASSOCIATE</h3>
+
+
+   <table class="table table-striped">
+                                 <thead>
+                                  <tr>
+                                    <th>Pezzo</th>
+                                    <th>id</th>
+                                    <th>Lavorazione</th>
+                                    <th>Quantità in magazzino</th>
+                                    <th>Quantità</th>
+                                  </tr>
+                                </thead>
+
+                                <tbody>
+                                  <% Pezzo.where('azienda_id =?', params[:temp_azienda]).each do |pz| %>
+                                    <% pz.lavoraziones.where('pezzo_id', pz.id).each do |lav| %>
+                                      <%= f.fields_for (:internodata) do |item| %>
+                                    <tr>
+                                      <td><%= lav.pezzo.nome %></td>
+                                      <td><%= item.hidden_field :lavorazione_id, :value=>lav.id, class: 'form-control' %><%= lav.id %></td>
+                                      <td><%= lav.titolo %></td>
+                                      <td><%= @entradatum.where('lavorazione_id=?', lav.id).sum(:quantita) - @exitdatum.where('lavorazione_id=?', lav.id).sum(:quantita) - @exitdatum.where('lavorazione_id=?', lav.id).sum(:reso) %></td>
+                                      <td><%= item.number_field :quantita, :value=>'0', class: 'form-control' %></td>
+                                      <td></td>
+                                      <% end %>
+                                    </tr>
+                                    <% end %>
+                                    <% end %>
+                                </tbody>
+                              </table>
+
+</div><!-- fine nested -->
+
+
+
+
+
+  <div class="col-xs-12">
+    <%= f.label :note %><br>
+    <%= f.text_area :note, class: 'form-control' %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.label :trasporto %><br>
+    <%= f.text_field :trasporto, class: 'form-control' %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.label :colli %><br>
+    <%= f.text_field :colli, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.label :aspetto %><br>
+    <%= f.text_field :aspetto, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.label :note %><br>
+    <%= f.text_area :note, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.submit 'SALVA',  class: 'btn btn-info btn-md' %>
+  </div>
+<% end %>

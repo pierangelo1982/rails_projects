@@ -1,0 +1,13 @@
+<h1>Pages#fattura</h1>
+<p>Find me in app/views/pages/fattura.html.erb</p>
+
+
+
+  <%= form_tag ('/invoice/new') do %>
+  	    <%= select_tag(:temp_azienda, Azienda.all, :id, :denominazione, {include_blank: true}, class: 'form-control') %>
+
+
+  <div class="actions">
+    <%= f.submit 'Invia' %>
+  </div>
+  <% end %>

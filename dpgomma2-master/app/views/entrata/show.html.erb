@@ -1,0 +1,83 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-xs-12 col-sm-12 col-md-12">
+<p>
+  <strong>Azienda:</strong>
+  <%= @entratum.azienda.denominazione %>
+</p>
+</div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-12">
+<p>
+<%= link_to 'Vedi DDT in allegato', @entratum.importaddt.url, class: 'btn btn-primary btn-lg'  %>
+</p>
+</div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-4">
+<p>
+  <strong>numero:</strong>
+  <%= @entratum.numero %>
+</p>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-4">
+<p>
+  <strong>Data:</strong>
+  <%= @entratum.data %>
+</p>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-4">
+<p>
+  <strong>Data ricezione:</strong>
+  <%= @entratum.data_ricezione %>
+</p>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-6">
+<p>
+  <strong>Consegnato da:</strong>
+  <%= @entratum.consegnato_da %>
+</p>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-6">
+<p>
+  <strong>Imballo:</strong>
+  <%= @entratum.imballo %>
+</p>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-6">
+<p>
+  <strong>Colli:</strong>
+  <%= @entratum.colli %>
+</p>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-6">
+<p>
+  <strong>Riserva:</strong>
+  <%= @entratum.riserva %>
+</p>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12">
+<p>
+  <strong>Note:</strong>
+  <%= @entratum.note %>
+</p>
+</div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-6">
+</div>
+<hr>
+
+<%= render 'lavorazioni' %>
+
+
+<%= link_to 'Edit', edit_entratum_path(@entratum) %> |
+<%= link_to 'Back', entrata_path %>

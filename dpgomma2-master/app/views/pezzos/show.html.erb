@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-md-6">
+  <%= image_tag @pezzo.immagine.url, class: 'img-responsive' %>
+</div>
+<div class="col-md-6">
+<p>
+  <strong>Azienda:</strong>
+  <%= @pezzo.azienda.denominazione %>
+</p>
+
+<p>
+  <strong>Codice:</strong>
+  <%= @pezzo.codice %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @pezzo.nome %>
+</p>
+
+<p>
+  <strong>Descrizione:</strong>
+  <%= @pezzo.descrizione %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @pezzo.note %>
+</p>
+</div>
+
+<div class="col-md-12">
+<h1>Lavorazioni Associate</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Pezzo</th>
+      <th>Codice</th>
+      <th>Titolo</th>
+      <th>Descrizione</th>
+      <th>Prezzo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pezzo.lavoraziones.each do |lavorazione| %>
+      <tr>
+        <td><%= lavorazione.pezzo.nome %></td>
+        <td><%= lavorazione.codice %></td>
+        <td><%= lavorazione.titolo %></td>
+        <td><%= lavorazione.descrizione %></td>
+        <td><%= lavorazione.prezzo %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'AGGIUNGI', new_pezzo_path(@pezzo) %> <br>
+<%= link_to 'MODIFICA', edit_pezzo_path(@pezzo) %> <br>
+<%= link_to 'Indice', pezzos_path %>
+</div>

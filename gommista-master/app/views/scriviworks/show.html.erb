@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Extrawork:</strong>
+  <%= @scriviwork.extrawork %>
+</p>
+
+<p>
+  <strong>Descrizione:</strong>
+  <%= @scriviwork.descrizione %>
+</p>
+
+<p>
+  <strong>Codice:</strong>
+  <%= @scriviwork.codice %>
+</p>
+
+<p>
+  <strong>Quantita:</strong>
+  <%= @scriviwork.quantita %>
+</p>
+
+<p>
+  <strong>Importo:</strong>
+  <%= @scriviwork.importo %>
+</p>
+
+<%= link_to 'Edit', edit_scriviwork_path(@scriviwork) %> |
+<%= link_to 'Back', scriviworks_path %>

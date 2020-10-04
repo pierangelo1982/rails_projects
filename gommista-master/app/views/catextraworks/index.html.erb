@@ -1,0 +1,31 @@
+<h1>Listing catextraworks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Altro</th>
+      <th>Prezzo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @catextraworks.each do |catextrawork| %>
+      <tr>
+        <td><%= catextrawork.nome %></td>
+        <td><%= catextrawork.altro %></td>
+        <td><%= catextrawork.prezzo %></td>
+        <td><%= link_to 'Show', catextrawork %></td>
+        <td><%= link_to 'Edit', edit_catextrawork_path(catextrawork) %></td>
+        <td><%= link_to 'Destroy', catextrawork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Catextrawork', new_catextrawork_path %>

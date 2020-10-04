@@ -1,0 +1,33 @@
+<%= form_for(@internodatum) do |f| %>
+  <% if @internodatum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@internodatum.errors.count, "error") %> prohibited this internodatum from being saved:</h2>
+
+      <ul>
+      <% @internodatum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :interno_id %><br>
+    <%= f.text_field :interno_id %>
+  </div>
+  <div class="field">
+    <%= f.label :lavorazione_id %><br>
+    <%= f.text_field :lavorazione_id %>
+  </div>
+  <div class="field">
+    <%= f.label :descrizione %><br>
+    <%= f.text_field :descrizione %>
+  </div>
+  <div class="field">
+    <%= f.label :quantita %><br>
+    <%= f.number_field :quantita %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

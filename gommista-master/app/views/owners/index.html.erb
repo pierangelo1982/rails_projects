@@ -1,0 +1,43 @@
+<div class="col-lg-5">
+<h3>ANAGRAFICA CLIENTI</h3>
+</div>
+<div class="col-lg-3">
+  <br>
+  <%= link_to 'INSERISCI NUOVO CLIENTE', new_owner_path, class: 'btn btn-default', style: 'float: right'%>
+</div>
+<div class="col-lg-4">
+    <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+<form accept-charset="UTF-8" action="/owners/" method="save" name="ricerca" style="float: right; margin-top:25px;">
+      <B>RICERCA: </b><input name="ricerca" type="text" value="" />
+    </form>
+</div>
+<hr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Denominazione</th>
+      <th>Telefono</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @owners.each do |owner| %>
+      <tr>
+        <td><%= owner.denominazione %></td>
+        <td><%= owner.telefono %></td>
+        <td><a href="mailto:<%= owner.email %>"><%= owner.email %></a></td>
+        <td><%= owner.car %></td>
+        <td><%= link_to 'Mostra', owner, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Modifica', edit_owner_path(owner), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Cancella', owner, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

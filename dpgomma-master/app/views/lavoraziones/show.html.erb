@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pezo:</strong>
+  <%= @lavorazione.pezo %>
+</p>
+
+<p>
+  <strong>Codice:</strong>
+  <%= @lavorazione.codice %>
+</p>
+
+<p>
+  <strong>Titolo:</strong>
+  <%= @lavorazione.titolo %>
+</p>
+
+<p>
+  <strong>Descrizione:</strong>
+  <%= @lavorazione.descrizione %>
+</p>
+
+<p>
+  <strong>Prezzo:</strong>
+  <%= @lavorazione.prezzo %>
+</p>
+
+<p>
+  <strong>Sconto:</strong>
+  <%= @lavorazione.sconto %>
+</p>
+
+<%= link_to 'Edit', edit_lavorazione_path(@lavorazione) %> |
+<%= link_to 'Back', lavoraziones_path %>

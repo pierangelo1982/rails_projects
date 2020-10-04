@@ -1,0 +1,69 @@
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Cod.Art</th>
+      <th>Descrizione:</th>
+      <th>Quantita</th>
+      <th>Prezzo Unitario</th>
+      <th>Sconto</th>
+      <th>Importo</th>
+    </tr>
+  </thead>
+
+<% @invoice.exits.each do |exit| %>
+  <tbody>
+    <% exit.exitdata.where('quantita >? OR reso >?', '0', '0').each do |ex| %>
+      <tr>
+        <td><%= ex.lavorazione.pezzo.nome %></td>
+        <td>
+          <%= ex.lavorazione.titolo %>
+          <% if ex.inscatolamentoprezzo > 0 %> + Inscatolamento <% end %>
+          <% if ex.reso > 0 %> <br>+ N.Pezzi <%= ex.reso %> resi non lavorati <% end %>
+           (Rif. DDT: <%= exit.id %> del <%= exit.data %>)
+         </td>
+        <td class="soldi">
+          <%= ex.quantita %><br>
+          <% if ex.reso > 0 %><%= ex.reso %><% end %>
+        </td>
+        <td class="soldi">
+          <%= ex.lavorazione.prezzo + ex.inscatolamentoprezzo %><br>
+          <% if ex.reso > 0 %><%= ex.costoreso %><% end %>
+        </td>
+        <td></td>
+        <td class="soldi"><%= number_to_currency(ex.exitdatumtotale, :unit=>'€. ') %></td>
+      </tr>
+    <% end %>
+  <% end %>
+
+  </tbody>
+
+
+<!-- extra -->
+<tbody>
+    <% @invoice.invoiceextras.each do |invoiceextra| %>
+      <tr>
+        <td><%= invoiceextra.try(:codice) %></td>
+        <td>
+          <%= invoiceextra.descrizione %>
+         </td>
+        <td class="soldi">
+          <%= invoiceextra.quantita %>
+        </td>
+        <td class="soldi">
+          <%= invoiceextra.prezzounitario %>
+        </td>
+        <td></td>
+        <td class="soldi"><%= number_to_currency(invoiceextra.prezzo, :unit=>'€. ') %></td>
+      </tr>
+    <% end %>
+</tbody>
+
+
+
+
+</table>
+<br>
+
+

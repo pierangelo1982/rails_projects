@@ -1,0 +1,38 @@
+<div class="col-xs-8">
+  <h1>Fatturazione</h1>
+</div>
+<div class="col-xs-4">
+  <%= link_to 'Nuova Fattura', '/pages/invoice', class: 'btn btn-info btn-md' %>
+</div>
+
+<%= grid(@tasks_grid) do |g|
+    g.column name:  'ID', attribute: 'id', filter: false
+    g.column name:  'Azienda',  attribute: 'denominazione', attribute: 'azienda_id' do |inv| # joined table
+    inv.azienda.denominazione
+    end
+    g.column name:  'Data', attribute: 'data', filter: false do |inv| inv.data.strftime "%d-%m-%Y"
+    end
+    g.column name:  'Numero' do |inv| inv.number_invoice
+    end
+    g.column name:  'Netto',  attribute: 'netto', filter: false, class: 'soldi' do |inv| number_to_currency(inv.netto, :unit=>'€. ')
+    end
+    g.column name:  'Tax',  attribute: 'tax', filter: false, class: 'soldi' do |inv| number_to_currency(inv.tax, :unit=>'€. ')
+    end
+    g.column name:  'Iva %',  attribute: 'taxation_id' do |inv| inv.taxation.valore
+    end
+    g.column name:  'Totale',  attribute: 'totale', filter: false, class: 'soldi' do |inv| number_to_currency(inv.totale, :unit=>'€. ')
+    end
+    g.column name:  'Pagamento', attribute: 'pagamento', filter: false
+    g.column do |invoice| link_to('Vedi', invoice, class: 'btn btn-info btn-xs')
+    end
+    g.column do |invoice| link_to('Modifica', edit_invoice_path(invoice),  class: 'btn btn-warning btn-xs')
+    end
+    g.column do |invoice| link_to('Cancella', invoice, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' })
+    end
+    g.column do |invoice| link_to('', "/invoices/#{invoice.id}/fattura.pdf", class: 'fa fa-print fa-2x', target: '_Blank')
+    end
+end -%>
+
+
+
+

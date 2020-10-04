@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  azienda_id: 
+  quantita: 1
+  pezzo_id: 
+  lavorazione_id: 
+  descrizione: MyString
+
+two:
+  azienda_id: 
+  quantita: 1
+  pezzo_id: 
+  lavorazione_id: 
+  descrizione: MyString

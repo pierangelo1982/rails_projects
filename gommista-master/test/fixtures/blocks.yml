@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shelf_id: 
+  nome: MyString
+
+two:
+  shelf_id: 
+  nome: MyString

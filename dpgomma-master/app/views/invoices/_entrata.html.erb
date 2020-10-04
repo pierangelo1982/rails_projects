@@ -1,0 +1,37 @@
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Cod.Art</th>
+      <th>Descrizione:</th>
+      <th>Quantita</th>
+      <th>Prezzo Unitario</th>
+      <th>Sconto</th>
+      <th>Importo</th>
+      <th>Iva</th>
+    </tr>
+  </thead>
+
+    <% @invoice.exits.each do |exit| %>
+  <tbody>
+  <% exit.entrata.each do |entratum| %>
+    <% entratum.entratadata.each do |entratadatum| %>
+      <tr>
+        <td><%= entratadatum.pezzo.nome %></td>
+        <td><%= entratadatum.lavorazione.titolo %> (Rif. DDT: <%= exit.id %> del <%= exit.data %>) </td>
+        <td><%= entratadatum.quantita %></td>
+        <td><%= entratadatum.lavorazione.prezzo %></td>
+        <td></td>
+        <td><%= entratadatum.entratadatumtotale %></td>
+        <td><%= entratadatum.entratumtotaleiva %></td>
+      </tr>
+    <% end %>
+  <% end %>
+<% end %>
+
+  </tbody>
+</table>
+<br>
+
+

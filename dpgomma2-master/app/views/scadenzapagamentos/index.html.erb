@@ -1,0 +1,29 @@
+<h1>Listing scadenzapagamentos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Invoice</th>
+      <th>Scadenza</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scadenzapagamentos.each do |scadenzapagamento| %>
+      <tr>
+        <td><%= scadenzapagamento.invoice %></td>
+        <td><%= scadenzapagamento.scadenza %></td>
+        <td><%= scadenzapagamento.note %></td>
+        <td><%= link_to 'Show', scadenzapagamento %></td>
+        <td><%= link_to 'Edit', edit_scadenzapagamento_path(scadenzapagamento) %></td>
+        <td><%= link_to 'Destroy', scadenzapagamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scadenzapagamento', new_scadenzapagamento_path %>

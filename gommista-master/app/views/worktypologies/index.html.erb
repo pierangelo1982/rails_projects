@@ -1,0 +1,29 @@
+<h1>Listing worktypologies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Prezzo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @worktypologies.each do |worktypology| %>
+      <tr>
+        <td><%= worktypology.nome %></td>
+        <td><%= worktypology.prezzo %></td>
+        <td><%= link_to 'Show', worktypology %></td>
+        <td><%= link_to 'Edit', edit_worktypology_path(worktypology) %></td>
+        <td><%= link_to 'Destroy', worktypology, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Worktypology', new_worktypology_path %>

@@ -1,0 +1,35 @@
+<h3>Pezzi e lavorazioni associate</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Azienda</th>
+      <th>Codice</th>
+      <th>Nome</th>
+      <th>Descrizione</th>
+      <th>Note</th>
+      <th>Prezzo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pezzos.each do |pezzo| %>
+      <tr>
+        <td><%= pezzo.azienda.denominazione %></td>
+        <td><%= pezzo.codice %></td>
+        <td><%= pezzo.nome %></td>
+        <td><%= pezzo.descrizione %></td>
+        <td><%= pezzo.note %></td>
+        <td><%= pezzo.prezzo %></td>
+        <td><%= link_to 'Show', pezzo %></td>
+        <td><%= link_to 'Edit', edit_pezzo_path(pezzo) %></td>
+        <td><%= link_to 'Destroy', pezzo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Aggiungi Pezzo', new_pezzo_path %>

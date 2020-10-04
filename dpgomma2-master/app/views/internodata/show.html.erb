@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Interno:</strong>
+  <%= @internodatum.interno %>
+</p>
+
+<p>
+  <strong>Descrizione:</strong>
+  <%= @internodatum.descrizione %>
+</p>
+
+<p>
+  <strong>Quantita:</strong>
+  <%= @internodatum.quantita %>
+</p>
+
+<%= link_to 'Edit', edit_internodatum_path(@internodatum) %> |
+<%= link_to 'Back', internodata_path %>

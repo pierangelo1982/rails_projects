@@ -1,0 +1,81 @@
+<%= form_for(@azienda) do |f| %>
+  <% if @azienda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@azienda.errors.count, "error") %> prohibited this azienda from being saved:</h2>
+
+      <ul>
+      <% @azienda.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-xs-12">
+    <%= f.label :denominazione %><br>
+    <%= f.text_field :denominazione, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <%= f.label :piva %><br>
+    <%= f.text_field :piva, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <%= f.label :codfisc %><br>
+    <%= f.text_field :codfisc, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <%= f.label :indirizzo %><br>
+    <%= f.text_field :indirizzo, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+    <%= f.label :cap %><br>
+    <%= f.text_field :cap, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :citta %><br>
+    <%= f.text_field :citta, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :tel %><br>
+    <%= f.text_field :tel, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :fax %><br>
+    <%= f.text_field :fax, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :cell %><br>
+    <%= f.text_field :cell, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :web %><br>
+    <%= f.text_field :web, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <%= f.label :pec %><br>
+    <%= f.text_field :pec, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :referente %><br>
+    <%= f.text_field :referente, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :note %><br>
+    <%= f.text_area :note, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :logo %><br>
+    <%= f.text_field :logo, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,44 @@
+<h3>Merce Consegnata (DDT)</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Azienda</th>
+      <th>Data</th>
+      <th>Numero</th>
+      <th>Colli</th>
+      <th>Quantita</th>
+      <th>Scarti</th>
+      <th>Netto</th>
+      <th>Tax</th>
+      <th>Totale</th>
+      <th>Consegnato</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exits.each do |exit| %>
+      <tr>
+        <td><%= exit.azienda.denominazione %></td>
+        <td><%= exit.data %></td>
+        <td><%= exit.numero %></td>
+        <td><%= exit.colli %></td>
+        <td><%= exit.quantita %></td>
+        <td><%= exit.scarti %></td>
+        <td><%= exit.netto %></td>
+        <td><%= exit.tax %></td>
+        <td><%= exit.totale %></td>
+        <td><%= exit.consegnato %></td>
+        <td><%= link_to 'Show', exit %></td>
+        <td><%= link_to 'Edit', edit_exit_path(exit) %></td>
+        <td><%= link_to 'Destroy', exit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuovo DDT di Uscita', '/pages/exit' %>
+

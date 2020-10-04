@@ -1,0 +1,47 @@
+<div class="col-lg-8">
+  <h1>STORICO LAVORI SUL VEICOLO</h1>
+  <h3>Lavori extra pneumatici (elettrauto, carrozzeria, meccanica ecc...)
+</div>
+
+<div class="col-lg-4">
+  <br>
+  <%= link_to 'Inserisci Lavori sul Veicolo', new_extrawork_path, class: 'btn btn-default' %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Targa</th>
+      <th>Descrizione</th>
+      <!--<th>Operazioni</th> -->
+      <!-- <th>Somma</th> -->
+      <th>Data</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @extraworks.each do |extrawork| %>
+      <tr>
+        <td><%= extrawork.car.targa %><br>
+            <%= extrawork.car.owner.denominazione %>
+        </td>
+        <td><%= extrawork.descrizione %></td>
+        <!--<td>
+          <% @extralavoroworks.where(extrawork_id: extrawork.id).each do |ww| %>
+            <p><%= ww.catextrawork.try(:nome) %></p>
+          <% end %>
+        </td> -->
+        <!--<td>
+            <p>€. <%= @extralavoroworks.sum(:importo, :conditions => {:extrawork_id => extrawork.id}) %></p>
+          </td> -->
+
+        <td><%= extrawork.created_at.strftime "%d-%m-%Y %H:%M:%S" %></td>
+        <td><%= link_to 'Vedi', extrawork, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Modifica', edit_extrawork_path(extrawork), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Cancella', extrawork, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 

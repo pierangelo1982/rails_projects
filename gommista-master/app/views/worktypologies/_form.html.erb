@@ -1,0 +1,25 @@
+<%= form_for(@worktypology) do |f| %>
+  <% if @worktypology.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@worktypology.errors.count, "error") %> prohibited this worktypology from being saved:</h2>
+
+      <ul>
+      <% @worktypology.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :prezzo %><br>
+    <%= f.text_field :prezzo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+<div class="col-md-4">
+  <h2>SET PNEUMATICO</h2>
+<p>
+  <strong>TARGA:</strong>
+  <%= @tyre.car.targa %>
+</p>
+
+<p>
+  <strong>Marca Pneumatico:</strong>
+  <%= @tyre.marca %>
+</p>
+
+<p>
+  <strong>Modello Pneumatico:</strong>
+  <%= @tyre.modello %>
+</p>
+
+<p>
+  <strong>Tipologia:</strong>
+  <%= @tyre.tipologia %>
+</p>
+
+<p>
+  <strong>Consegna:</strong>
+  <%= @tyre.consegna.strftime "%d-%m-%Y %H:%M:%S" %>
+</p>
+
+<p>
+  <strong>Ritiro:</strong>
+  <%= @tyre.ritiro.strftime "%d-%m-%Y %H:%M:%S" %>
+</p>
+
+<p>
+  <strong>Km:</strong>
+  <%= @tyre.km %>
+</p>
+
+<p>
+  <strong>Usura:</strong>
+  <%= @tyre.usura %>
+</p>
+
+<p>
+  <strong>Scaffale:</strong>
+  <%= @tyre.shelf.nome %>
+</p>
+
+<p>
+  <strong>Blocco:</strong>
+  <%= @tyre.block.nome %>
+</p>
+
+<p>
+  <strong>Piano:</strong>
+  <%= @tyre.floor.nome %>
+</p>
+
+<p>
+  <strong>Colonna:</strong>
+ 
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @tyre.created %>
+</p>
+
+<p>
+  <strong>Modified:</strong>
+  <%= @tyre.modified %>
+</p>
+
+<%= link_to 'Edit', edit_tyre_path(@tyre) %> |
+<%= link_to 'Back', tyres_path %>
+
+</div>
+
+<div class="col-md-4">
+
+<h2>Macchina Propietaria</h2>
+<p>TARGA: <%= @tyre.car.targa %> </p>
+<p>MARCA: <%= @tyre.car.marca %> </p>
+<p>MODELLO: <%= @tyre.car.modello %> </p>
+
+</div>
+
+<div class="col-md-4">
+
+<h2>Propietario </h2>
+
+<p>DENOMINAZIONE: <%= @tyre.car.owner.denominazione %> </p>
+<p> <%= @tyre.car.owner.citta %> </p>
+</div>

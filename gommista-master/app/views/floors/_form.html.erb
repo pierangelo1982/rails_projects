@@ -1,0 +1,25 @@
+<%= form_for(@floor) do |f| %>
+  <% if @floor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@floor.errors.count, "error") %> prohibited this floor from being saved:</h2>
+
+      <ul>
+      <% @floor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :block_id %><br>
+    <%= f.collection_select :block_id, Block.all, :id, :selectshelf, {include_blank: true}%>
+  </div>
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

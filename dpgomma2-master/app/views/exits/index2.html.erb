@@ -1,0 +1,91 @@
+<div class="col-xs-8">
+  <h1>DDT</h1>
+</div>
+
+
+
+<%= grid(@tasks_grid) do |g|
+    g.column name:  'ID', attribute: 'id', filter: false
+    g.column name:  'Azienda',  attribute: 'denominazione', attribute: 'azienda_id' do |ex| # joined table
+    ex.azienda.denominazione
+    end
+
+    g.column name:  'Numero' do |ex| ex.number_exit
+    end
+    g.column name:  'Data', attribute: 'data', filter: false do |entratum| entratum.data.strftime "%d-%m-%Y"
+    end
+    g.column name:  'Netto',  attribute: 'netto', filter: false, class: 'soldi' do |ex| number_to_currency(ex.netto, :unit=>'€. ')
+    end
+    g.column name:  'Tax',  attribute: 'tax', filter: false, class: 'soldi' do |ex| number_to_currency(ex.tax, :unit=>'€. ')
+    end
+    g.column name:  'Totale',  attribute: 'totale', filter: false, class: 'soldi' do |ex| number_to_currency(ex.totale, :unit=>'€. ')
+    end
+    g.column do |exit| link_to('Vedi', exit, class: 'btn btn-info btn-xs')
+    end
+    g.column do |exit| link_to('Modifica', edit_exit_path(exit),  class: 'btn btn-warning btn-xs')
+    end
+    g.column do |exit| link_to('Cancella', exit, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' })
+    end
+    g.column do |exit| link_to('', "/exits/#{exit.id}/pdf.pdf", class: 'fa fa-print fa-2x', target: '_Blank')
+    end
+
+end -%>
+
+
+
+
+
+
+<div class="col-xs-4">
+    <form accept-charset="UTF-8" action="/exits/" method="save" name="annuale" style="float: right">
+      
+      <label>FILTRA PER ANNO: </label>
+      <select name="annuale" class="form-control">
+      <option value="2014">2014</option>
+      <option value="2015">2015</option>
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+    </select>
+      <input type="submit" value="Filtra" class="btn btn-primary" style="float: right">
+    </form>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Azienda</th>
+      <th>Data</th>
+      <th>Numero</th>
+      <th>Netto</th>
+      <th>Tax</th>
+      <th>Totale</th>
+      <th>Consegnato</th>
+      <th colspan="3"></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exits.each do |exit| %>
+      <tr>
+        <td><%= exit.azienda.denominazione %></td>
+        <td><%= exit.data.strftime "%d-%m-%Y" %></td>
+        <td><%= exit.number_exit %></td>
+        <td><%= exit.netto %></td>
+        <td><%= exit.tax %></td>
+        <td><%= exit.totale %></td>
+        <td><%= exit.consegnato %></td>
+        <td><%= link_to 'Vedi', exit, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Modifica', edit_exit_path(exit),  class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Cancella', exit, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <a href="/exits/<%= exit.id %>/pdf.pdf" class="fa fa-print fa-2x" style="float: right" target="_Blank"></a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuovo DDT di Uscita', '/pages/exit', class: 'btn btn-info btn-xs' %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  invoice_id: 
+  scadenza: 2015-02-09
+  note: MyString
+
+two:
+  invoice_id: 
+  scadenza: 2015-02-09
+  note: MyString

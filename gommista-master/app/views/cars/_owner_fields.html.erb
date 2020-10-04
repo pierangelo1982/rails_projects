@@ -1,0 +1,68 @@
+
+<%= form_for(@owner) do |f| %>
+  <% if @owner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
+
+      <ul>
+      <% @owner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-lg-12">
+    <%= f.label :denominazione %><br>
+    <%= f.text_field :denominazione, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :indirizzo %><br>
+    <%= f.text_field :indirizzo, class: 'form-control' %>
+  </div>
+  <div class="col-lg-2">
+    <%= f.label :cap %><br>
+    <%= f.text_field :cap, class: 'form-control' %>
+  </div>
+  <div class="col-lg-4">
+    <%= f.label :citta %><br>
+    <%= f.text_field :citta, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :telefono %><br>
+    <%= f.text_field :telefono, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :fax %><br>
+    <%= f.text_field :fax, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :cellulare %><br>
+    <%= f.text_field :cellulare, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :piva %><br>
+    <%= f.text_field :piva, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :codfisc %><br>
+    <%= f.text_field :codfisc, class: 'form-control' %>
+  </div>
+  <!--
+  <div class="col-lg-6">
+    <%= f.label :car %><br>
+    <%= f.text_field :car, class: 'form-control' %>
+  </div>
+  -->
+  <div class="col-lg-12">
+  </br>
+  <div class="actions">
+    <%= f.submit 'SALVA', class: 'btn btn-primary' %>
+  </div>
+</div>
+<% end %>
+

@@ -1,0 +1,29 @@
+<%= form_for(@catextrawork) do |f| %>
+  <% if @catextrawork.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@catextrawork.errors.count, "error") %> prohibited this catextrawork from being saved:</h2>
+
+      <ul>
+      <% @catextrawork.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :altro %><br>
+    <%= f.text_field :altro %>
+  </div>
+  <div class="field">
+    <%= f.label :prezzo %><br>
+    <%= f.text_field :prezzo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

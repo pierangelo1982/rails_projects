@@ -1,0 +1,10 @@
+    <% @aziendas.each do |azienda| %>
+
+            <h3><%= azienda.denominazione %></h3>
+
+            <%= azienda.entrata.entradatum.sum(:quantita) %>
+
+
+
+
+    <% end %>

@@ -1,0 +1,35 @@
+<h1>Listing lavoraziones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pezo</th>
+      <th>Codice</th>
+      <th>Titolo</th>
+      <th>Descrizione</th>
+      <th>Prezzo</th>
+      <th>Sconto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lavoraziones.each do |lavorazione| %>
+      <tr>
+        <td><%= lavorazione.pezo %></td>
+        <td><%= lavorazione.codice %></td>
+        <td><%= lavorazione.titolo %></td>
+        <td><%= lavorazione.descrizione %></td>
+        <td><%= lavorazione.prezzo %></td>
+        <td><%= lavorazione.sconto %></td>
+        <td><%= link_to 'Show', lavorazione %></td>
+        <td><%= link_to 'Edit', edit_lavorazione_path(lavorazione) %></td>
+        <td><%= link_to 'Destroy', lavorazione, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lavorazione', new_lavorazione_path %>

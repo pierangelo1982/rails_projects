@@ -1,0 +1,33 @@
+<%= form_for(@magazzino) do |f| %>
+  <% if @magazzino.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@magazzino.errors.count, "error") %> prohibited this magazzino from being saved:</h2>
+
+      <ul>
+      <% @magazzino.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :azienda_id %><br>
+    <%= f.text_field :azienda_id %>
+  </div>
+  <div class="field">
+    <%= f.label :npezzi %><br>
+    <%= f.number_field :npezzi %>
+  </div>
+  <div class="field">
+    <%= f.label :inlavorazio %><br>
+    <%= f.number_field :inlavorazio %>
+  </div>
+  <div class="field">
+    <%= f.label :pronti %><br>
+    <%= f.number_field :pronti %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<h1>Listing magazzinos</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Azienda</th>
+      <th>Npezzi</th>
+      <th>Inlavorazio</th>
+      <th>Pronti</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @magazzinos.each do |magazzino| %>
+      <tr>
+        <td><%= magazzino.azienda %></td>
+        <td><%= magazzino.npezzi %></td>
+        <td><%= magazzino.inlavorazio %></td>
+        <td><%= magazzino.pronti %></td>
+        <td><%= link_to 'Show', magazzino %></td>
+        <td><%= link_to 'Edit', edit_magazzino_path(magazzino) %></td>
+        <td><%= link_to 'Destroy', magazzino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Magazzino', new_magazzino_path %>

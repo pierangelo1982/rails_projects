@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  car: 
+  tyre_id: 
+  worktypology_id: 
+  descrizione: MyText
+  km: MyString
+  posteriore: MyString
+  anteriore: MyString
+  tempo: 2014-07-17 22:25:05
+  prezzo: MyString
+  created: 2014-07-17 22:25:05
+  modified: 2014-07-17 22:25:05
+
+two:
+  car: 
+  tyre_id: 
+  worktypology_id: 
+  descrizione: MyText
+  km: MyString
+  posteriore: MyString
+  anteriore: MyString
+  tempo: 2014-07-17 22:25:05
+  prezzo: MyString
+  created: 2014-07-17 22:25:05
+  modified: 2014-07-17 22:25:05

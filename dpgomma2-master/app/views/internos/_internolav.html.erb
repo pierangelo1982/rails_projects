@@ -1,0 +1,26 @@
+
+<h1></h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Pezzo</th>
+      <th>Lavorazione</th>
+      <th>Quantita</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @interno.internodata.where('quantita >?', 0).each do |internodatum| %>
+      <tr>
+        <td><%= internodatum.lavorazione.pezzo.nome %></td>
+        <td><%= internodatum.lavorazione.titolo %></td>
+        <td><%= internodatum.quantita %></td>
+        <td><%= link_to 'Show', internodatum %></td>
+        <td><%= link_to 'Edit', edit_internodatum_path(internodatum) %></td>
+        <td><%= link_to 'Destroy', internodatum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,101 @@
+
+  <%= form_for @invoice do |f| %>
+  <% if @invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+      <% @invoice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-12">
+    <%= f.label :azienda_id %><br>
+    <%= f.collection_select :azienda_id, Azienda.all, :id, :denominazione, {include_blank: true}, class: 'form-control' %>
+  </div>
+
+  <div class="col-md-12">
+    <%= f.label :data %><br>
+    <%= f.date_select :data %>
+  </div>
+  <div class="col-md-12">
+    <%= f.label :numero %><br>
+    <%= f.number_field :numero, class: 'col-md-12' %>
+  </div>
+
+
+<!--
+<div class="field">
+  <%= f.collection_check_boxes :exit_ids,  Exit.all, :id, :visione, class: 'form-control' %>
+</div>
+-->
+<div class="col-md-12">
+<h4>SELEZIONA DDT DA INSERIRE IN FATTI</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Azienda</th>
+              <th>N. DDT</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% Exit.all.each do |exit| %>
+
+              <tr>
+                <td>
+                <%= check_box_tag :exit_ids, exit.id, @invoice.exits.include?(exit), :name => 'invoice[exit_ids][]' %>
+                </td>
+                <td><%= exit.azienda.denominazione %></td>
+                <td><%= exit.numero %></td>
+                <td><%= exit.data %></td>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+
+</div>
+
+
+  <div class="field">
+    <%= f.label :netto %><br>
+    <%= f.text_field :netto, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :tax %><br>
+    <%= f.text_field :tax, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :totale %><br>
+    <%= f.text_field :totale, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :pagamento %><br>
+    <%= f.collection_select :pagamento, Tipopagamento.all, :titolo, :titolo, {include_blank: true}, class: 'form-control' %>
+
+  </div>
+  <div class="field">
+    <%= f.label :pagato %><br>
+    <%= f.check_box :pagato, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :inviata %><br>
+    <%= f.check_box :inviata, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+

@@ -1,0 +1,50 @@
+ <div class="navbar navbar-inverse">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <img src="/img/logo.png" class="logodp">
+        </a>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <%= link_to "", aziendas_path, class: 'fa fa-users fa-2x'  %>
+              <%= link_to "anagrafiche", aziendas_path, class: 'linkmenu' %>
+            </li>
+            <li>
+              <%= link_to "", pezzos_path, class: 'fa fa-cogs fa-2x'  %>
+              <%= link_to "pezzi e lavorazioni", pezzos_path, class: 'linkmenu' %>
+            </li>
+            <li>
+              <%= link_to "", entrata_path, class: 'fa fa-paper-plane fa-2x'  %>
+              <%= link_to "ddt in entrata", entrata_path, class: 'linkmenu' %>
+            </li>
+            <li>
+              <%= link_to "", '/pages/magazzino', class: 'fa fa-th-large fa-2x'  %>
+              <%= link_to "magazzino", '/pages/magazzino', class: 'linkmenu' %>
+            </li>
+            <li>
+              <%= link_to "", operatores_path, class: 'fa fa-life-ring fa-2x'  %>
+              <%= link_to "operatori", operatores_path, class: 'linkmenu' %>
+            </li>
+            <li>
+              <%= link_to "", internos_path, class: 'fa fa-refresh fa-2x'  %>
+              <%= link_to "ddt interno", internos_path, class: 'linkmenu' %>
+            </li>
+            <li>
+              <%= link_to "", exits_path, class: 'fa fa-bus fa-2x'  %>
+              <%= link_to "merce in uscita (ddt)", exits_path, class: 'linkmenu' %>
+            </li>
+
+            <li>
+              <%= link_to "", invoices_path, class: 'fa fa-usd fa-2x'  %>
+              <%= link_to "fatture", invoices_path, class: 'linkmenu' %>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>

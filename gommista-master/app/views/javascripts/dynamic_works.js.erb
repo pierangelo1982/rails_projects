@@ -1,0 +1,32 @@
+
+var tyres = new Array();
+<% for tyre in @tyres -%>
+  tyres.push(new Array(<%= tyre.car_id %>, '<%=h tyre.modello %>', <%= tyre.id %>));
+<% end -%>
+
+function carSelected() {
+  car_id = $('work_car_id').getValue();
+  options = $('work_tyre_id').options;
+  options.length = 1;
+  tyres.each(function(tyre) {
+    if (tyre[0] == car_id) {
+      options[options.length] = new Option(tyre[1], tyre[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('tyre').hide();
+  } else {
+    $('tyre').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  carSelected();
+  $('work_car_id').observe('change', carSelected);
+});
+
+
+
+
+
+/* clone fields_for */

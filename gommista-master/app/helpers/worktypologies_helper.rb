@@ -1,0 +1,2 @@
+module WorktypologiesHelper
+end

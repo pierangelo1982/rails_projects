@@ -1,0 +1,149 @@
+
+<%= form_for(@car) do |f| %>
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+      <% @car.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-lg-6">
+    <%= f.label :targa %><br>
+    <% if params[:tmp_targa] %>
+      <%= f.text_field :targa, class: 'form-control', :required => true, value: params[:tmp_targa].upcase %>
+    <% else %>
+      <%= f.text_field :targa, class: 'form-control', :required => true %>
+    <% end %>
+  </div>
+  <div class="col-lg-6">
+
+
+    <%= f.label 'Proprietario' %>    <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal">
+  Aggiungi Anagrafica
+</button><br>
+    <%= f.collection_select :owner_id, Owner.order('denominazione').all, :id, :denominazione, {include_blank: true}, class: 'form-control', :required => true %>
+  </div>
+
+
+  <div class="col-lg-6">
+    <%= f.label :marca %><br>
+    <%= f.text_field :marca, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :modello %><br>
+    <%= f.text_field :modello, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :anno %><br>
+    <%= f.text_field :anno, class: 'form-control' %>
+  </div>
+
+  <div class="col-lg-6">
+    <%= f.label :telaio, 'Numero di Telaio' %><br>
+    <%= f.text_field :telaio, class: 'form-control' %>
+  </div>
+
+  <div class="col-lg-12">
+    <%= f.label 'Carica Libretto' %><br>
+    <%= f.file_field :libretto %>
+  </div>
+
+<div class="col-lg-12"></div>
+
+  <div class="col-lg-12">
+  </br>
+  <div class="actions">
+    <%= f.submit 'SALVA', class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<% end %>
+
+
+<!-- Modal ANAGRAFICA -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">AGGIUNGI ANAGRAFICA</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(@owner, validate: true, remote: true, html:{class: 'form-horizontal new_car_owner', "data-type" => :json}) do |f| %>
+          <% if @owner.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
+
+              <ul>
+              <% @owner.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="col-lg-12">
+            <%= f.label :denominazione %><br>
+            <%= f.text_field :denominazione, class: 'form-control' %>
+          </div>
+          <div class="col-lg-6">
+            <%= f.label :indirizzo %><br>
+            <%= f.text_field :indirizzo, class: 'form-control' %>
+          </div>
+          <div class="col-lg-2">
+            <%= f.label :cap %><br>
+            <%= f.text_field :cap, class: 'form-control' %>
+          </div>
+          <div class="col-lg-4">
+            <%= f.label :citta %><br>
+            <%= f.text_field :citta, class: 'form-control' %>
+          </div>
+          <div class="col-lg-6">
+            <%= f.label :telefono %><br>
+            <%= f.text_field :telefono, class: 'form-control' %>
+          </div>
+          <div class="col-lg-6">
+            <%= f.label :fax %><br>
+            <%= f.text_field :fax, class: 'form-control' %>
+          </div>
+          <div class="col-lg-6">
+            <%= f.label :cellulare %><br>
+            <%= f.text_field :cellulare, class: 'form-control' %>
+          </div>
+          <div class="col-lg-6">
+            <%= f.label :email %><br>
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+          <div class="col-lg-6">
+            <%= f.label :piva %><br>
+            <%= f.text_field :piva, class: 'form-control' %>
+          </div>
+          <div class="col-lg-6">
+            <%= f.label :codfisc %><br>
+            <%= f.text_field :codfisc, class: 'form-control' %>
+          </div>
+          <!--
+          <div class="col-lg-6">
+            <%= f.label :car %><br>
+            <%= f.text_field :car, class: 'form-control' %>
+          </div>
+          -->
+          <div class="col-lg-12">
+          </br>
+          <div class="actions">
+            <%= f.submit 'SALVA', class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

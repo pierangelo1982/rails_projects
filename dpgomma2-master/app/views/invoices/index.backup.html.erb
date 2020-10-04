@@ -1,0 +1,63 @@
+<h1>Fatturazione</h1>
+
+<div class="col-xs-12">
+    <form accept-charset="UTF-8" action="/invoices/" method="save" name="annuale" style="float: right">
+      
+      <label>FILTRA PER ANNO: </label>
+      <select name="annuale" class="form-control">
+      <option value="2014">2014</option>
+      <option value="2015">2015</option>
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+    </select>
+      <input type="submit" value="Filtra" class="btn btn-primary" style="float: right">
+    </form>
+</div>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Azienda</th>
+      <th>Data</th>
+      <th>Numero</th>
+      <th>Netto</th>
+      <th>Tax</th>
+      <th>Iva %</th>
+      <th>Totale</th>
+      <th>Note</th>
+      <th>Pagamento</th>
+      <th>Pagato</th>
+      <th>Inviata</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.azienda.denominazione %></td>
+        <td><%= invoice.data.strftime "%d-%m-%Y" %></td>
+        <td><%= invoice.number_invoice %></td>
+        <td><%= invoice.netto %></td>
+        <td><%= invoice.tax %></td>
+        <td><%= invoice.taxation.valore %></td>
+        <td><%= invoice.totale %></td>
+        <td><%= invoice.note %></td>
+        <td><%= invoice.pagamento %></td>
+        <td><%= invoice.pagato %></td>
+        <td><%= invoice.inviata %></td>
+        <td><%= link_to 'Vedi', invoice, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Modifica', edit_invoice_path(invoice), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Cancella', invoice, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <a href="/invoices/<%= invoice.id %>/fattura.pdf" class="fa fa-print fa-2x" style="float: right" target="_Blank"></a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuova Fattura', '/pages/invoice', class: 'btn btn-info btn-md' %>

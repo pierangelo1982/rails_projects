@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Azienda:</strong>
+  <%= @pezzo.azienda.denominazione %>
+</p>
+
+<p>
+  <strong>Codice:</strong>
+  <%= @pezzo.codice %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @pezzo.nome %>
+</p>
+
+<p>
+  <strong>Descrizione:</strong>
+  <%= @pezzo.descrizione %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @pezzo.note %>
+</p>
+
+<p>
+  <strong>Prezzo:</strong>
+  <%= @pezzo.prezzo %>
+</p>
+
+<%= link_to 'Edit', edit_pezzo_path(@pezzo) %> |
+<%= link_to 'Back', pezzos_path %>

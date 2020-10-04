@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @worktypology.nome %>
+</p>
+
+<p>
+  <strong>Prezzo:</strong>
+  <%= @worktypology.prezzo %>
+</p>
+
+<%= link_to 'Edit', edit_worktypology_path(@worktypology) %> |
+<%= link_to 'Back', worktypologies_path %>
