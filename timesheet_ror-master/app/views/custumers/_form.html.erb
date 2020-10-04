@@ -1,0 +1,85 @@
+<%= form_for(@custumer) do |f| %>
+  <% if @custumer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@custumer.errors.count, "error") %> prohibited this custumer from being saved:</h2>
+
+      <ul>
+      <% @custumer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :denominazione %><br>
+    <%= f.text_field :denominazione %>
+  </div>
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :cognome %><br>
+    <%= f.text_field :cognome %>
+  </div>
+  <div class="field">
+    <%= f.label :piva %><br>
+    <%= f.text_field :piva %>
+  </div>
+  <div class="field">
+    <%= f.label :codfisc %><br>
+    <%= f.text_field :codfisc %>
+  </div>
+  <div class="field">
+    <%= f.label :telefono %><br>
+    <%= f.text_field :telefono %>
+  </div>
+  <div class="field">
+    <%= f.label :fax %><br>
+    <%= f.text_field :fax %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :web %><br>
+    <%= f.text_field :web %>
+  </div>
+  <div class="field">
+    <%= f.label :indirizzo %><br>
+    <%= f.text_field :indirizzo %>
+  </div>
+  <div class="field">
+    <%= f.label :civico %><br>
+    <%= f.text_field :civico %>
+  </div>
+  <div class="field">
+    <%= f.label :cap %><br>
+    <%= f.text_field :cap %>
+  </div>
+  <div class="field">
+    <%= f.label :citta %><br>
+    <%= f.text_field :citta %>
+  </div>
+  <div class="field">
+    <%= f.label :latitudine %><br>
+    <%= f.text_field :latitudine %>
+  </div>
+  <div class="field">
+    <%= f.label :longitudine %><br>
+    <%= f.text_field :longitudine %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.text_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

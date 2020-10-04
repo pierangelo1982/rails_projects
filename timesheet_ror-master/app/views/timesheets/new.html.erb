@@ -1,0 +1,16 @@
+          <% if user_signed_in? %>
+
+
+<h1>New Timesheet</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', timesheets_path %>
+
+
+<% else %>
+
+<h2><a href="/users/sign_in">Accesso Riservato | Loggati</a></h2>
+
+
+<% end %>

@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+
+          <% if user_signed_in? %>
+
+
+<h1>Indice Operazioni</h1>
+
+<form accept-charset="UTF-8" action="/timesheets" method="save" name="ricerca" style="float: right; margin-top:50px;">
+  <div class="col-xs-12 col-sm-3">
+      <label>DA:</label><br>
+      <input name="begin" type="text" value="" />
+  </div>
+  <div class="col-xs-12 col-sm-3">
+      <label>A:</label><br>
+      <!--input name="end" type="text" value="" /-->
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    <label>NOME:</label><vr>
+    <input name="ricerca" type="text" value="" />
+  </div>
+  <div class="col-xs-12 col-sm-3">
+      <button type="submit">CERCA</button>
+  </div>
+</form>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Persona</th>
+      <th>Cliente</th>
+      <th>Data</th>
+      <th>Inizio</th>
+      <th>Fine</th>
+      <th>Ore</th>
+      <th>Confermato</th>
+      <th>Mappa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timesheets.each do |timesheet| %>
+      <tr>
+        <td><%= timesheet.worker.nome + ' ' + timesheet.worker.cognome %></td>
+        <td><%= timesheet.custumer.try(:denominazione) %></td>
+        <td><%= timesheet.data %></td>
+        <td><%= timesheet.inizio %></td>
+        <td><%= timesheet.fine %></td>
+        <td><%= number_with_precision(timesheet.ore, :precision => 1) %></td>
+        <td>
+          <% if timesheet.confermato == false %>
+            <%= link_to "", accettatosi_timesheet_path(timesheet.id), method: :put, class: "fa fa-thumbs-down fa-2x" %>
+          <% else %>
+            <%= link_to "", accettatono_timesheet_path(timesheet.id), method: :put, class: "fa fa-thumbs-up fa-2x" %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', timesheet, class: 'fa fa-map-marker' %></td>
+        <td><%= link_to 'Show', timesheet, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Edit', edit_timesheet_path(timesheet), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Destroy', timesheet, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Timesheet', new_timesheet_path %>
+
+<% else %>
+<h2><a href="/users/sign_in">Accesso Riservato | Loggati</a></h2>
+<% end %>
+

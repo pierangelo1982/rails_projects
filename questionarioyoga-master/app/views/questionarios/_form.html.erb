@@ -1,0 +1,72 @@
+<%= form_for(@questionario) do |f| %>
+  <% if @questionario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@questionario.errors.count, "error") %> prohibited this questionario from being saved:</h2>
+
+      <ul>
+      <% @questionario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<!-- NESTED QUESTIONARIODATA -->
+<% Category.order('position').all.each do |cat| %>
+  <div class="col-xs-12 categoriatab">
+    <h2 class="titolocat"><%= cat.titolo %></h2>
+    <% cat.questions.all.each do |question| %>
+      <div class="col-xs-12 questione">
+      <%= f.fields_for(:questionariodata) do |item| %>
+           <div class="col-xs-12">
+            <%= item.hidden_field :question_id, :value => question.id%><strong><%= question.codice %> - <%= question.question %></strong>
+            <br>
+          </div>
+          <div class="col-xs-12">
+            <% question.answers.each do |answer| %>
+              <%= item.radio_button :answer_id, answer.id %> <%= answer.option %>&nbsp;&nbsp;&nbsp;
+            <% end %>
+          </div>
+          <div class="col-xs-12" style="padding-top:10px;">
+            <% if question.id == 7 %>
+              <%= item.label :altro, "Altre Attività", class: 'altro' %><br>
+              <%= item.text_field :altro, class: 'form-control' %> 
+            <% elsif question.id == 87 %>
+              <%= item.text_field :altro, class: 'form-control' %> 
+            <% elsif question.id == 88 %>
+              <%= item.text_field :altro, class: 'form-control' %>
+            <% elsif question.id != 1 %>
+              <%= item.label :altro, class: 'altro' %><br>
+              <%= item.text_field :altro, class: 'form-control' %>             
+            <% end %>
+          </div>
+        <% end %>
+      </div><!-- col-xs-12 questione -->
+    <% end %>
+  </div> <!-- end div categoria tab -->
+<% end %>
+<!-- END QUESTIONARIO DATA -->
+
+
+  <div class="col-xs-12">
+   <!-- <%= f.label :altro %><br>
+    <%= f.text_area :altro, class: 'form-control' %> -->
+  </div>
+  <div class="col-xs-12 text-center">
+    <%= f.submit 'INVIA', class: 'btn-primary btninvia' %>
+  </div>
+<% end %>
+
+<div class="col-xs-12">
+    <h3 style="text-align: center">Ti ringraziamo di cuore per il tempo che ci hai riservato rispondendo al nostro test.
+      <br>
+      <br>
+        <img src="/img/logofucsia.png" class="logo">
+    </h3>
+    <h4 style="text-align: center">
+      CENTRO COMMERCIALE MIRALAGO
+      <br>
+    </h4>
+    <p class="piva"> Via G.Mazzini, 4 - 25030 PARATICO (BS)  -  Tel. +39.348.6957224 - yoga.wellness@gmail.com  - P.IVA: 03357160161</p>
+</div>

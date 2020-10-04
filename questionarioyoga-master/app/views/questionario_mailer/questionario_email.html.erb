@@ -1,0 +1,15 @@
+<% @questionario.questionariodata.each do |questionario| %>
+<div class="col-xs-12 questione">
+	<h4><strong><%= questionario.question.try(:codice) %> - <%= questionario.question.try(:question) %></strong></h4>
+	<%= questionario.answer.try(:option) %>
+	<br>
+	<% if questionario.altro.present? %>
+		<strong>Altro: </strong> <%= questionario.try(:altro) %>
+	<% end %>
+</div>
+<div class="col-xs-12">
+	<hr>
+</div>
+
+<% end %>
+

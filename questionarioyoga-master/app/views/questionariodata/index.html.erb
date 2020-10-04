@@ -1,0 +1,29 @@
+<h1>Listing questionariodata</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Questionario</th>
+      <th>Question</th>
+      <th>Answer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questionariodata.each do |questionariodatum| %>
+      <tr>
+        <td><%= questionariodatum.questionario %></td>
+        <td><%= questionariodatum.question %></td>
+        <td><%= questionariodatum.answer %></td>
+        <td><%= link_to 'Show', questionariodatum %></td>
+        <td><%= link_to 'Edit', edit_questionariodatum_path(questionariodatum) %></td>
+        <td><%= link_to 'Destroy', questionariodatum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Questionariodatum', new_questionariodatum_path %>

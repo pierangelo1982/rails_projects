@@ -1,0 +1,138 @@
+body {
+	/*background-color: #7dbfe1; */
+	background-color: #cccccc;
+	font-family: 'Metrophobic', sans-serif;
+	color: #5c5e5f;
+}
+
+
+label {
+	font-family: 'Metrophobic', sans-serif;
+	font-size: 13px;
+}
+
+a:link,
+a:active {
+	color: #ffffff;
+}
+a:hover {
+	color: #ffffff;
+	background-color: transparent;
+	}
+
+.categoriatab {
+	/*background-color: #7dbfe1;*/
+	/*background-color: #003;*/
+	background-color: #B2B2B2;
+	border-radius: 10px;
+	margin-bottom: 30px;
+}
+
+.cocoonx {
+	background-color: #7dbfe1;
+	background-color: #003;
+	border-radius: 10px;
+	margin-bottom:20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	color: #ffffff;
+}
+
+.questione {
+	background-color: #EFEFEF;
+	/*background-color: #003; */
+	border-radius: 10px;
+	margin-bottom:20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	color: #000000;
+}
+
+.logo {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.logo_bianco {
+	text-align: center;
+	width:50%;
+}
+
+.titolo {
+	float: right;
+	margin-top:20px;
+	color: #ea1bc1;
+}
+
+.titolocat {
+	color: #000000;
+}
+
+.btninvia {
+	font-size: 18px;
+	background-color: #ea1bc1;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.altro {
+	font-family: 'Metrophobic', sans-serif;
+}
+
+.piva {
+	text-align: center;
+	font-size: 14px;
+}
+
+footer {
+	height: 100px;
+	background-color: #003;
+	margin-top: 30px;
+	color: #ffffff;
+	font-size: 12px;
+}
+footer a,
+footer a:link;
+footer a:hover;
+footer a:active;
+footer a:visited {
+	color: #ffffff;
+}
+
+
+
+#contatore ul {
+	margin-left: 0px;
+	padding-left: 0px;
+	margin-top:10px;
+}
+
+#contatore ul li {
+	display: inline-block;
+	margin: 0 0 10px 0;
+	margin-right:30px;
+	text-align: center;
+}
+
+#contatore .badge {
+	text-align: center;
+}
+
+#contatore .panel-default>.panel-heading {
+  color: #333;
+  background-color: #B2B2B2;
+  border-color: #B2B2B2;
+}
+
+
+#contatore .fa-chevron-circle-down {
+	float: right;
+}
+
+#contatore .panel-title {
+	color: #000000;
+}
+
+#contatore a:link, a:active {
+  color: #000000;
+}

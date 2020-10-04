@@ -1,0 +1,2 @@
+module AddLatitudeLongitudeToTimesheetsHelper
+end

@@ -1,0 +1,27 @@
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>DATA DI COMPILAZIONE</th>
+      <th>PDF</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questionarios.each do |questionario| %>
+      <tr>
+        <td><%= questionario.id %></td>
+        <td><%= questionario.created_at.strftime "%d-%m-%Y" %></td>
+        <td><a href="/questionarios/<%= questionario.id %>/pdf.pdf" target="_Blank"><i class="fa fa-file-pdf-o fa-2x"></i></a></td>
+        <td><%= link_to 'Vedi', questionario, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Cancella', questionario, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'NUOVO QUESTIONARIO', new_questionario_path %>

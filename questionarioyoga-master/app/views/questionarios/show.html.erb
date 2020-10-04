@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+
+<% @questionario.questionariodata.each do |questionario| %>
+<div class="col-xs-12 questione">
+	<strong><%= questionario.question.try(:codice) %> - <%= questionario.question.try(:question) %></strong><br>
+	<%= questionario.answer.try(:option) %>
+	<br>
+	<% if questionario.altro.present? %>
+		<strong>Altro: </strong> <%= questionario.try(:altro) %>
+	<% end %>
+</div>
+
+<% end %>
+
+<div class="col-xs-12">
+<p>
+  <strong>Altro:</strong>
+  <%= @questionario.altro %>
+</p>
+</div>
+
+<!--
+<%= link_to 'Edit', edit_questionario_path(@questionario) %> |
+<%= link_to 'Back', questionarios_path %> -->

@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+
+          <% if user_signed_in? %>
+ 
+<h1>Tabella</h1>
+
+
+
+<%= grid(@timesheets) do |g|
+  
+  g.column name:  'ID', attribute: 'id', filter: false
+    g.column name:  'Nome',  attribute: 'denominazione', attribute: 'worker_id', filter: :true do |w| # joined table
+    w.worker.nome
+    end
+    g.column name:  'Cliente',  attribute: 'denominazione', attribute: 'custumer_id', filter: :true do |w| # joined table
+    w.custumer.denominazione
+    end
+  g.column name:  'Data', attribute: 'data', filter_type: :rails_datetime_helper do |inv| inv.data.strftime "%d-%m-%Y"
+    end
+  g.column name:  'Inizio', attribute: 'inizio', filter: false do |inv| inv.inizio.strftime "%H:%M:%S"
+    end
+  g.column name:  'Fine', attribute: 'fine', filter: false do |inv| inv.fine.strftime "%H:%M:%S"
+    end
+  g.column name:  'Ore:', attribute: 'ore', filter: false do |inv| number_with_precision(inv.ore, :precision => 1)
+  end
+  g.column name:  'Confermato:', attribute: 'confermato', filter: true
+
+  g.column do |timesheet| link_to('Vedi', timesheet, class: 'btn btn-info btn-xs')
+    end
+  g.column do |timesheet| link_to('Modifica', edit_timesheet_path(timesheet),  class: 'btn btn-warning btn-xs')
+    end
+  g.column do |timesheet| link_to('Cancella', timesheet, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' })
+    end
+
+end -%>
+
+
+<br>
+
+<%= link_to 'New Timesheet', new_timesheet_path %>
+
+
+
+
+<% else %>
+
+<h2><a href="/users/sign_in">Accesso Riservato | Loggati</a></h2>
+
+<% end %>

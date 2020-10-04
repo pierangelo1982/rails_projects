@@ -1,0 +1,48 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+api key AIzaSyAEl5JQ1WItSnhpoir5OmiZDVGFkv_EXWw
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
+
+
+
+curl -X POST -H "Content-Type: application/json" -d '{"player": {"worker_id": "1","location": "ciao"}}' localhost:3000/players.json
+
+
+curl -X POST -H "Content-Type: application/json" -d '{"worker_id": 1,"location": "ciao ciao"}' http://timesheet.web-dev.info/timesheets.json
+
+curl -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST http://timesheet.web-dev.info/timesheets.json -d '{"worker_id": "1", "location": "alnitek82"}' '''
+
+
+curl  -H "Accept: application/json" -H "Content-type: application/json" http://timesheet.web-dev.info/timesheets.json -X POST -d '{"timesheet":{"worker_id":1, "location": "aiutoooo"}}' 
+
+
+
+
+soluzione problema passenger su ina verisone di ruby della vps: 
+gem update --system 2.4.8 --no-ri --no-rdoc - fixed it details are here https://github.com/remomueller/documentation/issues/7
+

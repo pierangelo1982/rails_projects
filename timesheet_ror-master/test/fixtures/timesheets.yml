@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  worker_id: 
+  data: 2016-04-12
+  inizio: 2016-04-12 15:47:06
+  fine: 2016-04-12 15:47:06
+  ore: 9.99
+  costo: 9.99
+  location: MyText
+  latitudine: 1.5
+  longitudine: 1.5
+  confermato: false
+
+two:
+  worker_id: 
+  data: 2016-04-12
+  inizio: 2016-04-12 15:47:06
+  fine: 2016-04-12 15:47:06
+  ore: 9.99
+  costo: 9.99
+  location: MyText
+  latitudine: 1.5
+  longitudine: 1.5
+  confermato: false

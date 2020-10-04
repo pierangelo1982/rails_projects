@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  role_id: 
+  nome: MyString
+  cognome: MyString
+  codfisc: MyString
+  piva: MyString
+  indirizzo: MyString
+  cap: MyString
+  citta: MyString
+  provincia: MyString
+  telefono: MyString
+  cellulare: MyString
+  costo_ora: MyString
+  email: MyString
+  password: MyString
+  active: false
+
+two:
+  role_id: 
+  nome: MyString
+  cognome: MyString
+  codfisc: MyString
+  piva: MyString
+  indirizzo: MyString
+  cap: MyString
+  citta: MyString
+  provincia: MyString
+  telefono: MyString
+  cellulare: MyString
+  costo_ora: MyString
+  email: MyString
+  password: MyString
+  active: false

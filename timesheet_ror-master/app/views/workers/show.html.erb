@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @worker.role.title %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @worker.nome %>
+</p>
+
+<p>
+  <strong>Cognome:</strong>
+  <%= @worker.cognome %>
+</p>
+
+<p>
+  <strong>Codfisc:</strong>
+  <%= @worker.codfisc %>
+</p>
+
+<p>
+  <strong>Piva:</strong>
+  <%= @worker.piva %>
+</p>
+
+<p>
+  <strong>Indirizzo:</strong>
+  <%= @worker.indirizzo %>
+</p>
+
+<p>
+  <strong>Cap:</strong>
+  <%= @worker.cap %>
+</p>
+
+<p>
+  <strong>Citta:</strong>
+  <%= @worker.citta %>
+</p>
+
+<p>
+  <strong>Provincia:</strong>
+  <%= @worker.provincia %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @worker.telefono %>
+</p>
+
+<p>
+  <strong>Cellulare:</strong>
+  <%= @worker.cellulare %>
+</p>
+
+<p>
+  <strong>Costo ora:</strong>
+  <%= @worker.costo_ora %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @worker.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @worker.password %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @worker.active %>
+</p>
+
+<%= link_to 'Edit', edit_worker_path(@worker) %> |
+<%= link_to 'Back', workers_path %>

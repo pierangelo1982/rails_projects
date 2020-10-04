@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lavoratori</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Nome</th>
+      <th>Cognome</th>
+      <th>Telefono</th>
+      <th>Cellulare</th>
+      <th>Email</th>
+      <th>Active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @workers.each do |worker| %>
+      <tr>
+        <td><%= worker.role.title %></td>
+        <td><%= worker.nome %></td>
+        <td><%= worker.cognome %></td>
+        <td><%= worker.telefono %></td>
+        <td><%= worker.cellulare %></td>
+        <td><%= worker.email %></td>
+        <td><%= worker.active %></td>
+        <td><%= link_to 'Show', worker, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Edit', edit_worker_path(worker), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Destroy', worker, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Worker', new_worker_path %>

@@ -1,0 +1,75 @@
+<%= form_for(@timesheet) do |f| %>
+  <% if @timesheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@timesheet.errors.count, "error") %> prohibited this timesheet from being saved:</h2>
+
+      <ul>
+      <% @timesheet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-xs-12 col-sm-6">
+    <%= f.label :worker_id %><br>
+    <%= f.collection_select :worker_id, Worker.all, :id, :nome, {include_blank: true}, class: 'form-control' %>
+  </div>
+
+  <div class="col-xs-12 col-sm-6">
+    <%= f.label :custumer_id %><br>
+    <%= f.collection_select :custumer_id, Custumer.all, :id, :denominazione, {include_blank: true}, class: 'form-control' %>
+  </div>
+
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :data %><br>
+    <%= f.date_select :data, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :inizio %><br>
+    <%= f.datetime_select :inizio, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :fine %><br>
+    <%= f.datetime_select :fine, class: 'form-control' %>
+  </div>
+
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :location %><br>
+    <%= f.text_area :location, class: 'form-control' %>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <%= f.label :latitudine %><br>
+    <%= f.text_field :latitudine, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <%= f.label :longitudine %><br>
+    <%= f.text_field :longitudine, class: 'form-control' %>
+  </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <%= f.label :latitudine_fine %><br>
+    <%= f.text_field :latitudine_fine, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <%= f.label :longitudine_fine %><br>
+    <%= f.text_field :longitudine_fine, class: 'form-control' %>
+  </div>
+
+  <div class="col-xs-12">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :confermato %><br>
+    <%= f.check_box :confermato %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.submit %>
+  </div>
+
+
+<% end %>

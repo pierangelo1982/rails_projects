@@ -1,0 +1,140 @@
+<p id="notice"><%= notice %></p>
+
+          <% if user_signed_in? %>
+
+
+<div class="col-xs-12 col-sm-4">
+<p>
+  <strong>Persona:</strong>
+  <%= @timesheet.worker.nome %> <%= @timesheet.worker.cognome %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @timesheet.custumer.denominazione %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @timesheet.data %>
+</p>
+
+<p>
+  <strong>Inizio:</strong>
+  <%= @timesheet.inizio %>
+</p>
+
+<p>
+  <strong>Fine:</strong>
+  <%= @timesheet.fine %>
+</p>
+
+<p>
+  <strong>Ore:</strong>
+  <%= number_with_precision(@timesheet.ore, :precision => 1) %>
+</p>
+
+<p>
+  <strong>Costo:</strong>
+  <%= @timesheet.costo %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @timesheet.location %>
+</p>
+
+<p>
+  <strong>Latitudine:</strong>
+  <%= @timesheet.latitudine %>
+</p>
+
+<p>
+  <strong>Longitudine:</strong>
+  <%= @timesheet.longitudine %>
+</p>
+
+<p>
+  <strong>Latitudine Fine:</strong>
+  <%= @timesheet.latitudine_fine %>
+</p>
+
+<p>
+  <strong>Longitudine_fine:</strong>
+  <%= @timesheet.longitudine_fine %>
+</p>
+<p>
+  <strong>Note:</strong>
+  <%= @timesheet.note %>s
+</p>
+
+<p>
+  <strong>Confermato:</strong>
+ <% if @timesheet.confermato == false %>
+    <%= link_to "", accettatosi_timesheet_path(@timesheet.id), method: :put, class: "fa fa-thumbs-down fa-2x" %>
+  <% else %>
+    <%= link_to "", accettatono_timesheet_path(@timesheet.id), method: :put, class: "fa fa-thumbs-up fa-2x" %>
+  <% end %>
+</p>
+</div>
+
+
+
+<div id="map" class="col-xs-12 col-sm-8" style="height:600px;"></div>
+
+<script type="text/javascript">
+function initMap() {
+
+var LocationData = [
+    [<%= @timesheet.latitudine %>, <%= @timesheet.longitudine %>, "INIZIO", "<%= @timesheet.inizio %>"],
+    [<%= @timesheet.latitudine %>, <%= @timesheet.longitudine_fine %>, "FINE", "<%= @timesheet.fine %>"] 
+];
+ 
+function initialize()
+{
+    var map = 
+        new google.maps.Map(document.getElementById('map'));
+    var bounds = new google.maps.LatLngBounds();
+    var infowindow = new google.maps.InfoWindow();
+     
+    for (var i in LocationData)
+    {
+        var p = LocationData[i];
+        var latlng = new google.maps.LatLng(p[0], p[1]);
+        bounds.extend(latlng);
+         
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: p[3]
+        });
+     
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(this.title);
+            infowindow.open(map, this);
+        });
+    }
+     
+    map.fitBounds(bounds);
+}
+
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+}
+</script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEl5JQ1WItSnhpoir5OmiZDVGFkv_EXWw&callback=initMap">
+    </script>
+
+<%= link_to 'Edit', edit_timesheet_path(@timesheet) %> |
+<%= link_to 'Back', timesheets_path %>
+
+
+<% else %>
+
+<h2><a href="/users/sign_in">Accesso Riservato | Loggati</a></h2>
+
+
+<% end %>
