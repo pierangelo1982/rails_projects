@@ -1,0 +1,144 @@
+<%= form_for(purchase_invoice) do |f| %>
+
+
+
+<div class="row">
+
+  <% if purchase_invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(purchase_invoice.errors.count, "error") %> prohibited this purchase_invoice from being saved:</h2>
+
+      <ul>
+      <% purchase_invoice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-field col s12">
+    <%= f.collection_select :address_book_id, AddressBook.all, :id, :name, {include_blank: true}, class: 'select-dropdown', required: true %>
+    <%= f.label :address_book_id, 'Denominazione' %>
+  </div>
+
+  <div class="input-field col s12">
+    <%= f.collection_select :tax_id, Tax.all, :id, :name, {include_blank: true}, class: 'select-dropdown' %>
+    <%= f.label :tax_id, 'Tasse' %>
+  </div>
+
+  <div class="input-field col s6">
+    <%= f.label :invoice_number, 'Numero Fattura' %>
+    <%= f.number_field :invoice_number %>
+  </div>
+
+  <div class="col s6">
+    <%= f.label :invoice_date, 'Data' %>
+    <%= f.text_field :invoice_date, class: 'datepicker' %>
+  </div>
+
+  <div class="input-field col s12">
+    <%= f.label :discount, 'Sconto' %>
+    <%= f.number_field :discount %>
+  </div>
+
+
+  <!-- Items Fattura -->
+  <div class="col s12" id="banks">
+    <h4 class="light">Articoli Fattura:</h4>
+      <%= f.fields_for (:purchase_invoice_items) do |item| %>
+        <%= render 'purchase_invoice_item_fields', f: item %>
+      <% end %>
+      <div class="col s12">
+      <%= link_to_add_association 'AGGIUNGI', f, :purchase_invoice_items, { class:'btn cyan darken-2' } %>
+      </div>
+  </div>
+  <!-- fine -->
+
+  <div class="input-field col s4">
+    <%= f.label :total_pretax, 'Totale Pre Tasse' %>
+    <%= f.text_field :total_pretax %>
+  </div>
+
+  <div class="input-field col s4">
+    <%= f.label :total_tax_price, 'Totale Tasse' %>
+    <%= f.text_field :total_tax_price %>
+  </div>
+
+  <div class="input-field col s4">
+    <%= f.label :total_price, 'Totale' %>
+    <%= f.text_field :total_price %>
+  </div>
+
+  <div class="input-field col s12">
+    <%= f.label :note %>
+    <%= f.text_area :note, class: 'materialize-textarea' %>
+  </div>
+
+  <div class="input-field col s12">
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Allegato</span>
+        <input type="file">
+        <%= f.file_field :attachment, class: 'file-path validate' %>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+  </div>
+
+  <div class="input-field col s6">
+    <%= f.collection_select :payment_method_id, PaymentMethod.all, :id, :name, {include_blank: true}, class: 'select-dropdown' %>
+    <%= f.label :payment_method_id, 'Metodo di Pagamento' %>
+  </div>
+
+    <!-- scadenze di pagamento -->
+  <div class="input field col s6">
+    <div class="col s12" id="banks">
+      <label>Scadenze Pagamento</label>
+        <%= f.fields_for (:purchase_payment_deadlines) do |item| %>
+          <%= render 'purchase_payment_deadline_fields', f: item %>
+        <% end %>
+        <div class="col s12">
+        <%= link_to_add_association 'AGGIUNGI', f, :purchase_payment_deadlines, { class:'btn cyan darken-2' } %>
+        </div>
+    </div>
+  </div>
+
+  <div class="input-field col s12">
+    <%= f.check_box :paid, class: "filled-in", id: "filled-in-box" %>
+    <%= f.label :paid, 'Pagato', for: "filled-in-box" %>
+  </div>
+
+  <div class="input-field col s12">
+    <%= f.label :other, 'Altro' %>
+    <%= f.text_area :other, class: 'materialize-textarea' %>
+  </div>
+
+  <div class="col s12">
+    <%= f.submit 'Invia', class: 'btn col-s12 cyan darken-2' %>
+  </div>
+
+</div><!-- row -->
+
+<% end %>
+
+
+<script type="text/javascript">
+// datepicker
+$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+
+// select
+$(document).ready(function() {
+    $('select').material_select();
+  });
+
+// non sovrappone la scritta dove c'è cpntenuto in form
+$(document).ready(function() {
+    Materialize.updateTextFields();
+  });
+</script>
+

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address_book: one
+  name: MyString
+  abi: MyString
+  cab: MyString
+  iban: MyString
+  note: MyText
+
+two:
+  address_book: two
+  name: MyString
+  abi: MyString
+  cab: MyString
+  iban: MyString
+  note: MyText

@@ -1,0 +1,90 @@
+<%= form_for(@custumer) do |f| %>
+  <% if @custumer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@custumer.errors.count, "error") %> prohibited this custumer from being saved:</h2>
+
+      <ul>
+      <% @custumer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :denominazione %><br>
+    <%= f.text_field :denominazione, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <%= f.label :piva %><br>
+    <%= f.text_field :piva, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <%= f.label :codfisc %><br>
+    <%= f.text_field :codfisc, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :indirizzo %><br>
+    <%= f.text_field :indirizzo, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+    <%= f.label :cap %><br>
+    <%= f.text_field :cap, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+    <%= f.label :citta %><br>
+    <%= f.text_field :citta, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+    <%= f.label :provincia %><br>
+    <%= f.text_field :provincia, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :telefono %><br>
+    <%= f.text_field :telefono, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :fax %><br>
+    <%= f.text_field :fax, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :cellulare %><br>
+    <%= f.text_field :cellulare, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <%= f.label :web %><br>
+    <%= f.text_field :web, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.label :note %><br>
+    <%= f.text_area :note, class: 'form-control' %>
+  </div>
+
+  <div id="indirizzo-spedizione" class="col-xs-12" style="margin-top:30px;">
+    <h3>INDIRIZZO SPEDIZIONE SE DIVERSO DA INDIRIZZO FATTURAZIONE</h3>
+     <%= render partial: 'address', locals: { f: f } %>
+  </div>
+
+  <div id="banca-cliente" class="col-md-12">
+     <h3>AGGIUNGI COORDINATE BANCARIE CLIENTE</h3>
+    <fieldset id="custumer_bank_data">
+      <%= f.fields_for (:custumer_banks) do |item| %>
+        <%= render 'custumer_bank_fields', f: item %>
+      <% end %>
+      <div class="col-lg-1">
+      <br>
+      <%= link_to_add_association 'aggiungi', f, :custumer_banks, { class:"btn btn-primary" } %>
+      </div>
+    </fieldset>
+  <!-- FINE NESTED -->
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

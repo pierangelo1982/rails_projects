@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Purchase invoice:</strong>
+  <%= @purchase_payment_deadline.purchase_invoice %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @purchase_payment_deadline.price %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @purchase_payment_deadline.data %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @purchase_payment_deadline.paid %>
+</p>
+
+<%= link_to 'Edit', edit_purchase_payment_deadline_path(@purchase_payment_deadline) %> |
+<%= link_to 'Back', purchase_payment_deadlines_path %>

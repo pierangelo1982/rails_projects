@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codice: MyString
+  titolo: MyString
+  descrizione: MyText
+  quantita: 1
+  prezzo_unitario: 9.99
+  importo: 9.99
+  tax_id: 
+
+two:
+  codice: MyString
+  titolo: MyString
+  descrizione: MyText
+  quantita: 1
+  prezzo_unitario: 9.99
+  importo: 9.99
+  tax_id: 

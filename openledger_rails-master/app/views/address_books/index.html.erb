@@ -1,0 +1,34 @@
+
+<h1 class="header">Anagrafica Clienti</h1>
+
+<table class="responsive-table striped">
+  <thead>
+    <tr>
+      <th>Denominazione</th>
+      <th>P.Iva</th>
+      <th>Cod.Fisc</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @address_books.each do |address_book| %>
+      <tr>
+        <td><%= address_book.name %></td>
+        <td><%= address_book.vat %></td>
+        <td><%= address_book.tax_code %></td>
+        <td><%= address_book.phone %></td>
+        <td><%= address_book.email %></td>
+        <td><%= link_to 'launch', address_book, class: 'material-icons' %></td>
+        <td><%= link_to 'mode_edit', edit_address_book_path(address_book), class: 'material-icons' %></td>
+        <td><%= link_to 'delete_forever', address_book, class: 'material-icons', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Aggiungi Anagrafica', new_address_book_path, class: 'btn red-motowork' %>

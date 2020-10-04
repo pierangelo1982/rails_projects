@@ -1,0 +1,43 @@
+
+
+
+	<% @product_category.each do |category| %>
+	<div class="col s12 z-depth-4">
+      	<h4><%= category.name %></h4>
+			<table class="responsive-table striped">
+			  <thead>
+			    <tr>
+			      <th>Code</th>
+			      <th>Prodotto</th>
+			      <th>Prezzo<br>Riservato</th>
+			      <th>Magazzino</br>Reale</th>
+			      <th>Qt.<br>in uscita</th>
+			      <th>Magazzino<br>Virtuale</th>
+			      <th>Qt.<br>Uscite</th>
+			      <th>Valore<br>Magazzino</th>
+			      <th colspan="3"></th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% category.products.each do |product| %>
+			      <tr>
+			        <td><%= product.code %></td>
+			        <td><%= product.name %><br></td>
+			        <td><%= money(product.reserved_price) %></td>
+			        <td><%= product.quantity %></td>
+			        <td><span class="new badge" data-badge-caption="in sospeso"><%= SparePart.where('product_id=?', product.id).sum(:quantity) %></span></td>
+			        <td><%= product.quantity - SparePart.where('product_id=?', product.id).sum(:quantity) %></td>
+			        <td>0</td>
+			        <td><%= money(product.warehouse_value) %></td>
+			        <td><%= link_to 'launch', product, class: 'material-icons' %></td>
+			        <td><%= link_to 'mode_edit', edit_product_path(product), class: 'material-icons' %></td>
+			        <td><%= link_to 'delete_forever', product, method: :delete, class: 'material-icons', data: { confirm: 'Sei sicuro di voler eliminare il prodotto?' } %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+	</div>
+
+	<div class="col s12"><hr></div>
+    <% end %>

@@ -1,0 +1,40 @@
+<%= form_for(tax) do |f| %>
+  <% if tax.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tax.errors.count, "error") %> prohibited this tax from being saved:</h2>
+
+      <ul>
+      <% tax.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="input-field inline">
+    <%= f.label :value %>
+    <%= f.number_field :value %>
+  </div>
+
+  <div class="input-field">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'materialize-textarea' %>
+  </div>
+
+  <div class="input-field">
+    <%= f.submit 'invia', class: 'btn col-s12 cyan darken-2' %>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+// non sovrappone la scritta dove c'è cpntenuto in form
+$(document).ready(function() {
+    Materialize.updateTextFields();
+  });
+</script>

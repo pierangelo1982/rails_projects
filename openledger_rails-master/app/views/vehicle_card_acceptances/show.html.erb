@@ -1,0 +1,91 @@
+<div class="col s12 z-depth-4">
+  <div class="row">
+    <p class="col s4">
+      <strong>Data Ricezione Veicolo:</strong><br>
+      <%= @vehicle_card_acceptance.date_vehicle_reception %>
+    </p>
+
+    <p class="col s4">
+      <strong>Impiegato:</strong><br>
+      <%= @vehicle_card_acceptance.employee.name %>
+    </p>
+
+    <p class="col s4">
+      <strong>Nr. Documento:</strong><br>
+      <%= @vehicle_card_acceptance.document_number %>
+    </p>
+  </div>
+</div>
+
+
+<div class="col s12 z-depth-4">
+  <div class="row">
+      <p class="col s12">
+        <strong>Denominazione:</strong>
+        <%= @vehicle_card_acceptance.address_book.name %>
+      </p>
+      <p class="col s6">
+        <strong>P.iva:</strong><br>
+        <%= @vehicle_card_acceptance.address_book.vat %>
+      </p>
+      <p class="col s6">
+        <strong>Cod.Fisc:</strong><br>
+        <%= @vehicle_card_acceptance.address_book.tax_code %>
+      </p>
+      <p class="col s12">
+        <strong>Indirizzo:</strong><br>
+        <%= @vehicle_card_acceptance.address_book.address %>, <%= @vehicle_card_acceptance.address_book.address_nr %><br>
+        <%= @vehicle_card_acceptance.address_book.zip %> <%= @vehicle_card_acceptance.address_book.city %><br>
+      </p>
+      <p class="col s4">
+        <strong>Tel:</strong><br>
+        <%= @vehicle_card_acceptance.address_book.phone %>
+      </p>
+      <p class="col s4">
+        <strong>Fax:</strong><br>
+        <%= @vehicle_card_acceptance.address_book.fax %>
+      </p>
+      <p class="col s4">
+        <strong>Email:</strong><br>
+        <a hreg="mailto:<%= @vehicle_card_acceptance.address_book.email %>"><%= @vehicle_card_acceptance.address_book.email %></a>
+      </p>
+  </div>
+</div>
+
+
+<div class="col s12 z-depth-4">
+  <div class="row">
+      <p class="col s4">
+        <strong>Km:</strong><br>
+        <%= @vehicle_card_acceptance.km %>
+      </p>
+      <p class="col s4">
+        <strong>Numero Targa/Telaio:</strong><br>
+        <%= @vehicle_card_acceptance.serial_number %>
+      </p>
+      <p class="col s4">
+        <strong>Anno Veicolo:</strong><br>
+        <%= @vehicle_card_acceptance.vehicle_year %>
+      </p>
+      <p class="col s6">
+        <strong>Data Immatricolazione:</strong><br>
+        <%= @vehicle_card_acceptance.vehicle_registered_in.strftime("%d/%m/%Y") %>
+      </p>
+      <p class="col s6">
+        <strong>Modello Veicolo:</strong><br>
+        <%= @vehicle_card_acceptance.vehicle_model %>
+      </p>
+  </div>
+</div>
+
+<div class="col s12 z-depth-4">
+  <div class="row">
+    <p class="col s12">
+      <strong>Note:</strong>
+      <%= @vehicle_card_acceptance.note %>
+    </p>
+  </div>
+</div>
+
+
+

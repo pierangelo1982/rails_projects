@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="header">Categorie Prodotti</h1>
+
+<table class="responsive-table striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product_categories.each do |product_category| %>
+      <tr>
+        <td><%= product_category.name %></td>
+        <td><%= link_to 'launch', product_category, class: 'material-icons' %></td>
+        <td><%= link_to 'mode_edit', edit_product_category_path(product_category), class: 'material-icons' %></td>
+        <td><%= link_to 'delete_forever', product_category, method: :delete, class: 'material-icons', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Aggiungi', new_product_category_path, class: 'btn cyan darken-2' %>

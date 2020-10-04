@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tasse</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Titolo</th>
+      <th>Valore</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @taxes.each do |tax| %>
+      <tr>
+        <td><%= tax.titolo %></td>
+        <td><%= tax.valore %></td>
+        <td><%= link_to 'Vedi', tax, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Modifica', edit_tax_path(tax), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Elimina', tax, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Aggiungi', new_tax_path, class: 'btn btn-info btn-md' %>

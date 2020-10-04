@@ -1,0 +1,103 @@
+
+
+<div id="prodotto-dettaglio" class="row">
+
+<div class="col s12 z-depth-4">
+  <p>
+    <strong>Codice:</strong> <%= @product.code %>
+  </p>
+  <p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+</div>
+
+
+<div class="col s12"><br><br></div>
+
+
+<div class="col s12 z-depth-4">
+    <p class="col s4">
+      <strong>Product category:</strong>
+      <%= @product.product_category.name %>
+    </p>
+    <p class="col s4">
+      <strong>Brand:</strong>
+      <%= @product.brand.name %>
+    </p>
+    <p class="col s4">
+      <strong>Supplier:</strong>
+      <%= @product.supplier.name %>
+    </p>
+  </div>
+
+  <div class="col s12"><br><br></div>
+</div>
+
+
+
+<div class="col s12 z-depth-4 blu-motowork">
+<p class="p-dettaglio col s12">
+  <strong>Positione Magazzino:</strong>
+  <%= @product.position %>
+</p>
+</div>
+
+<div class="col s12"><br><br></div>
+
+<div class="col s12 z-depth-4">
+  <div class="row">
+    <p class="col s3">
+      <strong>Prezzo Unitario:</strong>
+      <%= money(@product.price) %>
+    </p>
+
+    <p class="col s3">
+      <strong>Tassa:</strong>
+      <%= @product.tax.value %>
+    </p>
+
+    <p class="col s3">
+      <strong>Sconto:</strong>
+      <%= @product.discount %>
+    </p>
+
+    <p class="col s3">
+      <strong>Sconto 2:</strong>
+      <%= @product.discount_two %>
+    </p>
+
+    <p class="col s3">
+      <strong>Prezzo Riservato:</strong>
+      <%= @product.reserved_price %>
+    </p>
+
+    <p class="col s3">
+      <strong>Prezzo di Vendità:</strong>
+      <%= @product.selling_price %>
+    </p>
+
+    <p class="col s3">
+      <strong>Quantità Disponibile:</strong>
+      <%= @product.quantity %>
+    </p>
+
+    <p class="col s3">
+      <strong>Soglia Minima Magazzino:</strong>
+      <%= @product.minimum_quantity %>
+    </p>
+  </div>
+</div>
+
+<div class="col s12 z-depth-4 red-motowork">
+  <p class="p-dettaglio">
+    <strong>Valore Magazzino:</strong>
+    <%= @product.warehouse_value %>
+  </p>
+</div>
+

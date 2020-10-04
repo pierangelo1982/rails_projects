@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Payment Deadlines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Invoice</th>
+      <th>Data</th>
+      <th>Testo</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_deadlines.each do |payment_deadline| %>
+      <tr>
+        <td><%= payment_deadline.invoice %></td>
+        <td><%= payment_deadline.data %></td>
+        <td><%= payment_deadline.testo %></td>
+        <td><%= payment_deadline.note %></td>
+        <td><%= link_to 'Show', payment_deadline %></td>
+        <td><%= link_to 'Edit', edit_payment_deadline_path(payment_deadline) %></td>
+        <td><%= link_to 'Destroy', payment_deadline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Payment deadline', new_payment_deadline_path %>

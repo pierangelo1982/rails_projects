@@ -1,0 +1,31 @@
+<div class="col-lg-12 cocoonx">
+	<div class="col-lg-11" style="margin-left: 0px; padding-left: 0px;">
+
+  <div class="col-xs-12">
+    <%= f.label :banca %><br>
+    <%= f.text_field :banca, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :abi %><br>
+    <%= f.text_field :abi, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :cab %><br>
+    <%= f.text_field :cab, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :numero_conto %><br>
+    <%= f.text_field :numero_conto, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.label :iban %><br>
+    <%= f.text_field :iban, class: 'form-control' %>
+  </div>
+	
+	</div><!-- col-lg-11 -->
+	
+	<div class="col-lg-1">
+    	<br>
+			<%=link_to_remove_association("rimuovi", f, { wrapper_class: 'cocoonx', class:"btn btn-danger"}) %>
+	</div>
+</div>

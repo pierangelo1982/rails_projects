@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MOTOWORK - MAGAZZINO</title>
+    <%= csrf_meta_tags %>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+	<%= render 'layouts/components/nav.html' %>
+
+  <div class="container">
+
+      <% if !notice.nil? %>
+      <p id="notice" class="z-depth-4">
+        <%= notice %>
+      </p>
+      <% end %>
+
+    <div class="section">
+
+   	<%= yield %>
+
+    </div><!-- section -->
+  </div> <!-- container -->
+
+  <%= render 'layouts/components/footer.html' %>
+
+ 
+  </body>
+</html>

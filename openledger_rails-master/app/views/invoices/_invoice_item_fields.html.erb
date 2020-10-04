@@ -1,0 +1,68 @@
+<div class="col s12 cyan lighten-3 z-depth-1 cocoonx">
+
+	<div class="col s10">
+
+		<div class="input-field col 3">
+			<%= f.label :code %><br>
+		    <%= f.text_field :code %>
+		</div>
+		<div class="input-field col s9">
+			<%= f.label :name %><br>
+		    <%= f.text_field :name %>
+		</div>
+
+		<div class="input-field col s12">
+    		<%= f.label :description %>
+    		<%= f.text_area :description, class: 'materialize-textarea' %>
+  		</div>
+		
+		<div class="input-field col s3">
+			<%= f.label :unit_price %>
+		    <%= f.text_field :unit_price %>
+		</div>
+		<div class="input-field col s3">
+    		<%= f.label :quantity, 'Quantita' %>
+    		<%= f.number_field :quantity %>
+  		</div>
+  		<div class="input-field col s3">
+    		<%= f.label :discount, 'Sconto %' %>
+    		<%= f.number_field :discount %>
+  		</div>
+  		<div class="input-field col s3">
+    		<%= f.collection_select :tax_id, Tax.all, :id, :name, {include_blank: true}, class: 'select-dropdown' %>
+    		<%= f.label :tax_id, 'Tasse' %><br>
+  		</div>
+
+  		<script type="text/javascript">
+  			// select
+			$(document).ready(function() {
+			    $('select').material_select();
+			  });
+			// non sovrappone la scritta dove c'è cpntenuto in form
+			$(document).ready(function() {
+			    Materialize.updateTextFields();
+			  });
+  		</script>
+
+		<!--div class="input-field col s4">
+			<%= f.label :price_pretax %><br>
+		    <%= f.text_field :price_pretax %>
+		</div>
+		<div class="input-field col s4">
+			<%= f.label :tax_price %><br>
+		    <%= f.text_field :tax_price %>
+		</div>
+		<div class="input-field col s4">
+			<%= f.label :total_price %><br>
+		    <%= f.text_field :total_price %>
+		</div -->
+
+	</div>
+
+	<div class="col s2">
+	<%=link_to_remove_association("RIMUOVI", f, { wrapper_class: 'cocoonx', class: 'btn cyan darken-2'}) %>
+	</div>
+
+</div>
+
+

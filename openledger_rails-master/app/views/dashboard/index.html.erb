@@ -1,0 +1,22 @@
+
+
+
+<script>
+window.onload = function()
+{
+document.getElementById('mira').focus()
+}
+</script>
+
+
+ <form accept-charset="UTF-8" method='post' action='/products/edit_qt'>
+ 	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+ 	
+ 	<label>Codice Prodotto</label>
+ 	<input type="text" name='codice' placeholder='' class="form-control" id="mira">
+ 	
+ 	<button class="btn waves-effect waves-light red-motowork" type="submit" name="action">INVIA
+    <i class="material-icons right">send</i>
+  	</button>
+        
+ </form>

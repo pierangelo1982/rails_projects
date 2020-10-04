@@ -1,0 +1,2 @@
+json.extract! vehicle_card_acceptance, :id, :date_vehicle_reception, :employee_id, :document_number, :address_book_id, :km, :serial_number, :vehicle_year, :vehicle_registered_in, :vehicle_model, :note, :created_at, :updated_at
+json.url vehicle_card_acceptance_url(vehicle_card_acceptance, format: :json)

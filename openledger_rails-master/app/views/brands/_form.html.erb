@@ -1,0 +1,32 @@
+<%= form_for(brand) do |f| %>
+  <% if brand.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
+
+      <ul>
+      <% brand.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, 'Denominazione' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <!--div class="field">
+    <%= f.label :description, 'Descrizione' %>
+    <%= f.text_area :description, class: 'materialize-textarea' %>
+  </div-->
+
+  <div class="field">
+    <%= f.label :discount, 'Sconto %' %>
+    <%= f.number_field :discount %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Invia', class: 'btn red-motowork' %>
+  </div>
+<% end %>

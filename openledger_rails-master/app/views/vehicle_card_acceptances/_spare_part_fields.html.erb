@@ -1,0 +1,88 @@
+<div class="col s12 cyan lighten-3 z-depth-1 cocoonx" onclick="filtra(this)">
+
+	<div class="col s10">
+		<div class="col s12">
+			<div class="input-field col s12">
+				<label>Codice:</label>
+		    	<input type="text" id="codice" />
+			</div>
+		</div>
+
+		<div class="col s12" id="prodotto-select">
+			<%= f.label :product_id, 'pezzo di ricambio' %>
+			<%= f.collection_select :product_id, Product.all, :id, :name, {include_blank: true}, class: 'select-dropdown' %>
+		</div>
+		<div class="col s12">
+		<%= f.hidden_field :product_id, id: 'prodotto-nascosto'  %>
+		</div>
+		<div class="col s12" id="descrizione"></div>
+
+		<div class="col s3">
+    		<%= f.label :quantity, 'Quantita' %>
+    		<%= f.number_field :quantity %>
+  		</div>
+		<div class="input-field col s3">
+			<%= f.label :unit_price %>
+		    <%= f.text_field :unit_price, id: 'unit_price' %>
+		</div>
+  		<div class="col s3">
+    		<%= f.label :discount, 'Sconto %' %>
+    		<%= f.number_field :discount %>
+  		</div>
+  		<div class="col s3">
+			<%= f.label :total_price %>
+		    <%= f.text_field :total_price %>
+		</div>
+
+
+
+	<script>
+	function filtra(object) {
+	    var url = 'http://localhost:3000/products.json';
+	    var input_valore = object.querySelector('#codice');// ottengo elemento input field
+	    var input_unit_price = object.querySelector('#unit_price');// ottengo elemento input field
+	    var label_descrizione = object.querySelector('#descrizione');// ottengo elemento input field
+	    var input_prodotto_id = object.querySelector('#prodotto-select');// ottengo elemento input field
+	    var input_prodotto_nascosto_id = object.querySelector('#prodotto-nascosto');
+
+	    $("#banks").on("change paste keyup", "#codice", function() {
+	      console.log('mio input:', input_valore.value);
+	      $.getJSON(url, function(data) {
+	        console.log('data:', data)
+	        for (var i = 0; i < data.length - 1; i++) {
+	          if (data[i]['code']==input_valore.value) {
+	            console.log("list:", data[i]['code']);
+	            input_unit_price.value = data[i]['selling_price'];
+	            label_descrizione.innerHTML = '<p><strong>' + data[i]['name'] + '</strong><br>' + data[i]['descrizione'] + '</p>';
+	            jQuery(input_prodotto_id).hide();
+	            jQuery(input_prodotto_nascosto_id).show();
+	            input_prodotto_nascosto_id.value = data[i]['id'];
+	          };
+	        };
+	      });
+	    }); 
+	};
+	</script>
+
+
+
+			
+	<script type="text/javascript">
+		// select
+		$(document).ready(function() {
+			$('select').material_select();
+		});
+	</script>
+
+	</div><!-- col s10 -->
+
+	<div class="col s2">
+	<%=link_to_remove_association("RIMUOVI", f, { wrapper_class: 'cocoonx', class: 'btn cyan darken-2'}) %>
+	</div>
+
+</div><!-- cocoonx -->
+
+
+
+
+

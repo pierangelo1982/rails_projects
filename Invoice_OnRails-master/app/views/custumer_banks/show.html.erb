@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Custumer:</strong>
+  <%= @custumer_bank.custumer %>
+</p>
+
+<p>
+  <strong>Banca:</strong>
+  <%= @custumer_bank.banca %>
+</p>
+
+<p>
+  <strong>Abi:</strong>
+  <%= @custumer_bank.abi %>
+</p>
+
+<p>
+  <strong>Cab:</strong>
+  <%= @custumer_bank.cab %>
+</p>
+
+<p>
+  <strong>Numero conto:</strong>
+  <%= @custumer_bank.numero_conto %>
+</p>
+
+<p>
+  <strong>Iban:</strong>
+  <%= @custumer_bank.iban %>
+</p>
+
+<%= link_to 'Edit', edit_custumer_bank_path(@custumer_bank) %> |
+<%= link_to 'Back', custumer_banks_path %>

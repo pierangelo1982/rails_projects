@@ -1,0 +1,114 @@
+<%= form_for(product) do |f| %>
+
+<div class="row">
+
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col s12 sfondo-codice z-depth-4">
+    <%= f.label :code, 'codice' %>
+    <%= f.text_field :code %>
+  </div>
+
+  <div class="col s4">
+     <%= f.label :product_category_id, 'categoria' %>
+     <%= f.collection_select :product_category_id, ProductCategory.all, :id, :name, {include_blank: true}, class: 'select-dropdown', required: true %>
+  </div>
+
+  <div class="col s4">
+     <%= f.label :brand_id, 'marca' %>
+    <%= f.collection_select :brand_id, Brand.all, :id, :name, {include_blank: true}, class: 'select-dropdown', required: true %>
+  </div>
+
+  <div class="col s4">
+    <%= f.label :supplier_id, 'fornitore' %>
+    <%= f.collection_select :supplier_id, Supplier.all, :id, :name, {include_blank: true}, class: 'select-dropdown', required: true %>
+  </div>
+
+  <div class="col s12">
+    <%= f.label :name, 'prodotto' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="col s12">
+    <%= f.label :description, 'descrizione' %>
+    <%= f.text_area :description, class: 'materialize-textarea' %>
+  </div>
+
+  <div class="col s12">
+    <%= f.label :position, 'posizione nel magazzino' %>
+    <%= f.text_field :position %>
+  </div>
+
+  <div class="col s6">
+    <%= f.label :price, 'prezzo' %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="col s6">
+    <%= f.label :tax_id, 'tassazione' %>
+    <%= f.collection_select :tax_id, Tax.all, :id, :name, {include_blank: true}, class: 'select-dropdown', required: true %>
+  </div>
+
+  <div class="col s6">
+    <%= f.label :discount, 'sconto' %>
+    <%= f.number_field :discount %>
+  </div>
+
+  <div class="col s6">
+    <%= f.label :discount_two, 'secondo sconto' %>
+    <%= f.number_field :discount_two %>
+  </div>
+
+  <div class="col s6">
+    <%= f.label :reserved_price, 'prezzo riservato' %>
+    <%= f.text_field :reserved_price %>
+  </div>
+
+  <div class="col s6">
+    <%= f.label :selling_price, 'prezzo di vendita' %>
+    <%= f.text_field :selling_price %>
+  </div>
+
+  <div class="col s6">
+    <%= f.label :quantity, 'quantita' %>
+    <%= f.number_field :quantity %>
+  </div>
+
+  <div class="col s6">
+    <%= f.label :minimum_quantity, 'quantita minima' %>
+    <%= f.number_field :minimum_quantity %>
+  </div>
+
+  <!--div class="col s12">
+    <%= f.label :warehouse_value, 'valore magazzino' %>
+    <%= f.text_field :warehouse_value %>
+  </div-->
+
+  <div class="col s12">
+    <%= f.submit 'Invia', class: 'btn col-s12 red-motowork' %>
+  </div>
+
+</div><!-- row -->
+<% end %>
+
+
+<script type="text/javascript">
+// select
+$(document).ready(function() {
+    $('select').material_select();
+  });
+// non sovrappone la scritta dove c'è cpntenuto in form
+$(document).ready(function() {
+    Materialize.updateTextFields();
+  });
+</script>

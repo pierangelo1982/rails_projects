@@ -1,0 +1,134 @@
+<p id="notice"><%= notice %></p>
+
+<div id="inizio-invoice" class="row">
+    <div class="col s5">
+      <p class="txt_nr_fattura cyan lighten-3 z-depth-3">
+        <strong>Fattura Nr:</strong>
+        <%= @purchase_invoice.invoice_number %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <strong>Data:</strong>
+        <%= @purchase_invoice.invoice_date.strftime("%d/%m/%Y") %>
+      </p>
+    </div>
+
+    <div class="col s2"></div>
+
+    <div class="cyan lighten-3 col s5 z-depth-3">
+      <p class="right-align">
+        <strong>Spett.le:</strong><br>
+        <%= @purchase_invoice.address_book.name %><br>
+        P.IVA: <%= @purchase_invoice.address_book.vat %><br>
+        Cod.Fisc: <%= @purchase_invoice.address_book.tax_code %><br>
+        <%= @purchase_invoice.address_book.address %>, <%= @purchase_invoice.address_book.address_nr %><br>
+        <%= @purchase_invoice.address_book.zip %> <%= @purchase_invoice.address_book.city %><br>
+        <%= @purchase_invoice.address_book.country %><br>
+      </p>
+    </div>
+</div><!-- row -->
+
+
+
+
+<div id="invoice-items" class="row z-depth-3">
+  <table class="responsive-table striped">
+    <thead>
+      <tr>
+        <th>cod.</th>
+        <th>descrizione</th>
+        <th class="right-align">prezzo unitario</th>
+        <th class="right-align">qt.</th>
+        <th class="right-align">sconto</th>
+        <th class="right-align">iva</th>
+        <th class="right-align">totale</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @purchase_invoice.purchase_invoice_items.each do |item| %>
+        <tr>
+          <td><%= item.code %></td>
+          <td>
+            <strong><%= item.name %></strong><br>
+            <%= item.description %>
+          </td>
+          <td class="right-align"><%= money(item.unit_price) %></td>
+          <td class="right-align"><%= item.quantity %></td>
+          <td class="right-align"><%= item.discount %>%</td>
+          <td class="right-align"><%= item.tax.value %>%</td>
+          <td class="right-align"><%= money(item.total_price) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+<div class="row">
+
+    <div class="col s5 z-depth-3">
+      <p>
+        <strong>Metodo di Pagamento:</strong>
+        <%= @purchase_invoice.payment_method.name %>
+      </p>
+
+      <table class="responsive-table striped">
+        <thead>
+          <tr>
+            <th>Scadenza</th>
+            <th>€.</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @purchase_invoice.purchase_payment_deadlines.each do |payment| %>
+            <tr>
+              <td><%= payment.data.strftime("%d/%m/%Y") %></td>
+              <td><%= money(payment.price) %></td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+
+
+      <p>
+        <strong>Paid:</strong>
+        <i class="material-icons"><%= icon_tf(@purchase_invoice.paid) %></i>
+      </p>
+    </div>
+
+    <div class="col s3"></div>
+
+    <div class="col s4">
+      <div class="row z-depth-3">
+        <div class="col s6"><h5 class="right-align"><strong>Imponibile:</strong></h5></div>
+        <div class="col s6"><h5 class="right-align"><%= money(@purchase_invoice.total_pretax) %></h5></div>
+      </div>
+      <div class="row z-depth-3">
+        <div class="col s6"><h5 class="right-align"><strong>Imposta:</strong></h5></div>
+        <div class="col s6"><h5 class="right-align"><%= money(@purchase_invoice.total_tax_price) %></h5></div>
+      </div>
+      <div class="row z-depth-3">
+        <div class="col s6"><h5 class="right-align"><strong>Totale:</strong></h5></div>
+        <div class="col s6"><h5 class="right-align"><%= money(@purchase_invoice.total_price) %></h5></div>
+      </div>
+    </div>
+
+</div><!-- row -->
+
+
+<p>
+  <strong>Allegato:</strong>
+  <%= link_to 'attach_file', @purchase_invoice.attachment.url, target: '_blank', class: 'material-icons' %>
+</p>
+
+<% unless @purchase_invoice.other.empty? %>
+<p>
+  <strong>Other:</strong>
+  <%= @purchase_invoice.other %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_purchase_invoice_path(@purchase_invoice) %> |
+<%= link_to 'Back', purchase_invoices_path %>

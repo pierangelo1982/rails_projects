@@ -1,0 +1,96 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Denominazione:</strong>
+  <%= @custumer.denominazione %>
+</p>
+
+<p>
+  <strong>Piva:</strong>
+  <%= @custumer.piva %>
+</p>
+
+<p>
+  <strong>Codfisc:</strong>
+  <%= @custumer.codfisc %>
+</p>
+
+<p>
+  <strong>Indirizzo:</strong>
+  <%= @custumer.indirizzo %>
+</p>
+
+<p>
+  <strong>Cap:</strong>
+  <%= @custumer.cap %>
+</p>
+
+<p>
+  <strong>Citta:</strong>
+  <%= @custumer.citta %>
+</p>
+
+<p>
+  <strong>Provincia:</strong>
+  <%= @custumer.provincia %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @custumer.telefono %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @custumer.fax %>
+</p>
+
+<p>
+  <strong>Cellulare:</strong>
+  <%= @custumer.cellulare %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @custumer.email %>
+</p>
+
+<p>
+  <strong>Web:</strong>
+  <%= @custumer.web %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @custumer.note %>
+</p>
+
+
+<h3>COORDINATE BANCARIE DEL CLIENTE</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Banca</th>
+      <th>Abi</th>
+      <th>Cab</th>
+      <th>Numero conto</th>
+      <th>Iban</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @custumer.custumer_banks.each do |custumer_bank| %>
+      <tr>
+        <td><%= custumer_bank.banca %></td>
+        <td><%= custumer_bank.abi %></td>
+        <td><%= custumer_bank.cab %></td>
+        <td><%= custumer_bank.numero_conto %></td>
+        <td><%= custumer_bank.iban %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_custumer_path(@custumer) %> |
+<%= link_to 'Back', custumers_path %>

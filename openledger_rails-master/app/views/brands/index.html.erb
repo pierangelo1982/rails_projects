@@ -1,0 +1,28 @@
+
+<h1 class="header">Marchi</h1>
+
+<table class="responsive-table striped">
+  <thead>
+    <tr>
+      <th>Denominazione</th>
+      <th>Sconto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @brands.each do |brand| %>
+      <tr>
+        <td><%= brand.name %></td>
+        <td><%= brand.discount %></td>
+        <td><%= link_to 'launch', brand, class: 'material-icons' %></td>
+        <td><%= link_to 'mode_edit', edit_brand_path(brand), class: 'material-icons'  %></td>
+        <td><%= link_to 'delete_forever', brand, method: :delete, class: 'material-icons', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Aggiungi', new_brand_path, class: 'btn red-motowork' %>

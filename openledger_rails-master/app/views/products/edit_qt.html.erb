@@ -1,0 +1,68 @@
+
+<div class="row">
+	
+	<div class="col s6 z-depth-4">
+		<table>
+        <thead>
+          <tr>
+              <th data-field="id">ico</th>
+              <th data-field="name">Titolo</th>
+              <th data-field="price">Valore</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td><i class="material-icons">view_week</i></td>
+            <td>Codice Barcode:</td>
+            <td><%= @product.code %></td>
+          </tr>
+
+          <tr>
+            <td><i class="material-icons">storage</i></td>
+            <td>Nome Prodotto::</td>
+            <td><%= @product.name %></td>
+          </tr>
+
+          <tr>
+            <td><i class="material-icons">local_grocery_store</i></td>
+            <td>Quantità:</td>
+            <td><%= @product.quantity %></td>
+          </tr>
+
+          <tr>
+          	<td><i class="material-icons">storage</i></td>
+          	<td>Prezzo Unitario</td>
+          	<td><%= money(@product.price) %></td>
+          </tr>
+
+          <tr>
+            <td><i class="material-icons">location_on</i></td>
+            <td>Posizione Magazzino</td>
+            <td><%= @product.position %></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+	</div>
+
+	<div class="col s1"><br></div>
+
+	<div class="col s5" style="padding-top:60px;">
+		<form accept-charset="UTF-8" method='put' action='/products/<%= @product.id %>/update_qt'>
+		 	<label>Aggiungi Quantità:</label>
+		 	<input type="number" name='quantita' value="1" class="form-control" id="mira">
+		 	<button class="btn waves-effect waves-light red-motowork" type="submit" name="action">Aggiungi
+		    <i class="material-icons right">salva</i>
+		  	</button>     
+		</form></div>
+	<div class="col s12"><br><br><br><br><br></div>
+	
+
+	<div class="col s12">
+	</div>
+
+</div>
+
+

@@ -1,0 +1,87 @@
+body {
+	font-family: 'Play', sans-serif;
+}
+
+label {
+	margin-top:30px;
+}
+
+.navbar-default {
+    background-color: #004C99;
+    border-color: #004C99;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #004C99;
+    color: #ffffff;
+}
+
+.navbar-default .navbar-brand {
+	color: #ffffff;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #ffffff;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+#banca-cliente {
+	margin-top:30px;
+	margin-bottom:30px;
+}
+.cocoonx {
+	margin-top:15px;
+	margin-bottom:15px;
+	padding-top:20px;
+	padding-bottom:20px;
+	border-radius: 10px;
+	background-color: #C0C0C0;
+}
+
+.cocoonxx {
+	margin-top:15px;
+	margin-bottom:15px;
+	padding-top:20px;
+	padding-bottom:20px;
+	border-radius: 10px;
+	background-color: #C0C0C0;
+}
+
+
+#pagina-fattura h2 {
+	text-align: center;
+}
+
+#pagina-fattura h3 {
+	text-align: center;
+}
+
+#anagrafica-cliente p {
+	background-color: #004C99;
+	color: #ffffff;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+.pagamento,
+.scadenze,
+.note {
+	background-color: #004C99;
+	padding:10px;
+	border-radius: 10px;
+	color:#ffffff;
+}
+
+
+
+
+footer {
+	background-color: #004C99;
+	color: #ffffff;
+	margin-top:30px;
+	padding-top: 20px;
+	padding-bottom: 70px;
+}

@@ -1,0 +1,46 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
+
+
+
+## change column
+'''
+rails g migration change_totale_type_for_invoices
+'''
+'''
+class ChangeTotaleTypeForInvoiceArticles < ActiveRecord::Migration
+  def change
+  	change_table :invoice_articles do |t|
+  		t.change :prezzo_unitario, :decimal, :precision => 60, :scale => 3, :default => 0
+  		t.change :importo, :decimal, :precision => 60, :scale => 3, :default => 0
+  		t.change :totale_ivato, :decimal, :precision => 60, :scale => 3, :default => 0
+  	end
+  end
+end
+'''

@@ -1,0 +1,38 @@
+<%= form_for(@address) do |f| %>
+  <% if @address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :custumer_id %><br>
+    <%= f.collection_select :custumer_id, Custumer.all, :id, :denominazione, {include_blank: true}, class: 'form-control', :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :via %><br>
+    <%= f.text_field :via %>
+  </div>
+  <div class="field">
+    <%= f.label :cap %><br>
+    <%= f.text_field :cap %>
+  </div>
+  <div class="field">
+    <%= f.label :citta %><br>
+    <%= f.text_field :citta %>
+  </div>
+  <div class="field">
+    <%= f.label :provincia %><br>
+    <%= f.text_field :provincia %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>

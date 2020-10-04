@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  purchase_invoice: one
+  price: 9.99
+  data: 2017-01-09
+  paid: false
+
+two:
+  purchase_invoice: two
+  price: 9.99
+  data: 2017-01-09
+  paid: false

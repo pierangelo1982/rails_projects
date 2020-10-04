@@ -1,0 +1,9 @@
+
+
+<div id="home" class="col-xs-12">
+	<%= form_tag("/welcome/index", method: "get", class: 'form-group') do %>
+	  <%= label_tag(:q, "Insert City:") %>
+	  <%= text_field_tag :city, "", class: 'form-control' %>
+	  <%= submit_tag("Search", class: 'btn btn-primary search-btn') %>
+	<% end %>
+</div>

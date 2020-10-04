@@ -1,0 +1,83 @@
+// materializecss
+@import "materialize";
+
+
+.header {
+	color: #26c6da;
+	font-size: 3.2rem;
+}
+
+.logo {
+	width: 200px;
+	margin-top: 7px;
+}
+
+.blu-motowork {
+	background-color: #3f83c2;
+}
+.red-motowork{
+	background-color: #c8353b;
+}
+
+#banks {
+	margin-top:30px;
+	margin-bottom:30px;
+}
+#descrizione p {
+	font-size:16pt;
+	padding:10px;
+	background-color:#3f83c2;
+	color:#ffffff;
+}
+.cocoonx2,
+.cocoonx {
+	margin-top:10px;
+	margin-bottom:20px;
+}
+
+.cocoonx2 .btn,
+.cocoonx .btn {
+	margin-top:30px;
+}
+
+#inizio-invoice {
+	margin-bottom: 50px;
+}
+
+#inizio-invoice .txt_nr_fattura {
+	padding: 5px 10px;
+}
+
+#invoice-items {
+	margin-bottom:50px;
+}
+
+#notice {
+	background-color: #c8353b;
+	color: #ffffff;
+	padding:10px;
+	text-align: center;
+}
+
+.sfondo-codice {
+	background-color: #f5f5f5;
+	margin-bottom: 30px;	
+}
+
+.p-dettaglio {
+	padding: 10px;
+	color: #ffffff;
+}
+
+footer.page-footer {
+    margin-top: 20px;
+    padding-top: 20px;
+	background-color: #3f83c2;
+}
+
+footer a,
+footer a:link,
+footer a:hover,
+footer a:active {
+	color:#ffffff;
+}

@@ -1,0 +1,45 @@
+<%= form_for(@invoice_article) do |f| %>
+  <% if @invoice_article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invoice_article.errors.count, "error") %> prohibited this invoice_article from being saved:</h2>
+
+      <ul>
+      <% @invoice_article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codice %><br>
+    <%= f.text_field :codice, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :titolo %><br>
+    <%= f.text_field :titolo, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :descrizione %><br>
+    <%= f.text_area :descrizione, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :quantita %><br>
+    <%= f.number_field :quantita, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :prezzo_unitario %><br>
+    <%= f.text_field :prezzo_unitario, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :importo %><br>
+    <%= f.text_field :importo, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :tax_id %><br>
+    <%= f.text_field :tax_id, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

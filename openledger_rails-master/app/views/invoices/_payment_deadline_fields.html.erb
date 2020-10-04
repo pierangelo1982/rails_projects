@@ -1,0 +1,40 @@
+<div class="col s12 cyan lighten-3 z-depth-1 cocoonx2">
+
+	<div class="col s10">
+
+	  <div class="input-field col s4">
+	    <%= f.label :price %>
+	    <%= f.text_field :price %>
+	  </div>
+
+	  <div class="input-field col s4">
+	    <%= f.label :data %>
+	    <%= f.text_field :data, class: 'datepicker' %>
+	  </div>
+
+	  <div class="input-field col s2">
+	    <%= f.check_box :paid, class: "filled-in", id: "filled-in-box" %>
+    	<%= f.label :paid, 'Pagato', for: "filled-in-box" %>
+	  </div>
+		
+
+		<script type="text/javascript">
+		// datepicker
+		$('.datepicker').pickadate({
+		    selectMonths: true, // Creates a dropdown to control month
+		    selectYears: 15 // Creates a dropdown of 15 years to control year
+		  });
+
+		// select
+		$(document).ready(function() {
+		    $('select').material_select();
+		  });
+		</script>
+
+  	</div>
+
+	<div class="col s2">
+	<%=link_to_remove_association("-", f, { wrapper_class: 'cocoonx2', class: 'btn cyan darken-2'}) %>
+	</div>
+
+</div><!-- col s12 -->

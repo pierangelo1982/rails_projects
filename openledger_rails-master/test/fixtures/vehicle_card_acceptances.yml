@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_vehicle_reception: 2017-02-04 17:57:25
+  employee: one
+  document_number: 1
+  address_book: one
+  km: 1
+  serial_number: MyString
+  vehicle_year: MyString
+  vehicle_registered_in: 2017-02-04 17:57:25
+  vehicle_model: MyString
+  note: MyText
+
+two:
+  date_vehicle_reception: 2017-02-04 17:57:25
+  employee: two
+  document_number: 1
+  address_book: two
+  km: 1
+  serial_number: MyString
+  vehicle_year: MyString
+  vehicle_registered_in: 2017-02-04 17:57:25
+  vehicle_model: MyString
+  note: MyText

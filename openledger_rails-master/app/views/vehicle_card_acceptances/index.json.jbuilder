@@ -1,0 +1,1 @@
+json.array! @vehicle_card_acceptances, partial: 'vehicle_card_acceptances/vehicle_card_acceptance', as: :vehicle_card_acceptance

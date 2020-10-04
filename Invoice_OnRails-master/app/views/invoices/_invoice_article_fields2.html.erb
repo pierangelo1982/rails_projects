@@ -1,0 +1,39 @@
+<div class="col-lg-12 cocoonx">
+	<div class="col-lg-10" style="margin-left: 0px; padding-left: 0px;">
+	
+
+<div class="col-xs-12 col-sm-3 col-md-3-col-lg-3">
+    <%= f.label :codice %><br>
+    <%= f.text_field :codice, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+    <%= f.label :titolo %><br>
+    <%= f.text_field :titolo, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.label :descrizione %><br>
+    <%= f.text_area :descrizione, class: 'form-control' %>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :quantita %><br>
+    <%= f.number_field :quantita, class: 'form-control', :required => true %>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :prezzo_unitario %><br>
+    <%= f.text_field :prezzo_unitario, class: 'form-control', :required => true %>
+  </div>
+
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <%= f.label :tax_id, "IVA" %><br>
+    <%= f.collection_select :tax_id, Tax.all, :id, :titolo, {include_blank: true}, class: 'form-control', :required => true %>
+  </div>
+
+	
+	</div><!-- col-lg-11 -->
+	
+	<div class="col-lg-2">
+    	<br>
+			<%=link_to_remove_association("rimuovi", f, { wrapper_class: 'cocoonx', class:"btn btn-danger"}) %>
+			<br>
+	</div>
+</div>

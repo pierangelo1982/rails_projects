@@ -1,0 +1,34 @@
+
+<h1 class="header">Scheda Accettazione Veicolo</h1>
+
+<table class="responsive-table striped">
+  <thead>
+    <tr>
+      <th>data ricezione</th>
+      <th>Impiegato</th>
+      <th>nr.</th>
+      <th>Cliente</th>
+      <th>Vehicle model</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicle_card_acceptances.each do |vehicle_card_acceptance| %>
+      <tr>
+        <td><%= vehicle_card_acceptance.date_vehicle_reception.strftime("%d/%m/%Y")  %></td>
+        <td><%= vehicle_card_acceptance.employee.name %></td>
+        <td><%= vehicle_card_acceptance.document_number %></td>
+        <td><%= vehicle_card_acceptance.address_book.name %></td>
+        <td><%= vehicle_card_acceptance.vehicle_model %></td>
+        <td><%= link_to 'launch', vehicle_card_acceptance, class: 'material-icons' %></td>
+        <td><%= link_to 'mode_edit', edit_vehicle_card_acceptance_path(vehicle_card_acceptance), class: 'material-icons' %></td>
+        <td><%= link_to 'delete_forever', vehicle_card_acceptance, method: :delete, class: 'material-icons', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Aggiungi', new_vehicle_card_acceptance_path, class: 'btn red-motowork' %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Codice:</strong>
+  <%= @invoice_article.codice %>
+</p>
+
+<p>
+  <strong>Titolo:</strong>
+  <%= @invoice_article.titolo %>
+</p>
+
+<p>
+  <strong>Descrizione:</strong>
+  <%= @invoice_article.descrizione %>
+</p>
+
+<p>
+  <strong>Quantita:</strong>
+  <%= @invoice_article.quantita %>
+</p>
+
+<p>
+  <strong>Prezzo unitario:</strong>
+  <%= @invoice_article.prezzo_unitario %>
+</p>
+
+<p>
+  <strong>Importo:</strong>
+  <%= @invoice_article.importo %>
+</p>
+
+<p>
+  <strong>Tax:</strong>
+  <%= @invoice_article.tax %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_article_path(@invoice_article) %> |
+<%= link_to 'Back', invoice_articles_path %>

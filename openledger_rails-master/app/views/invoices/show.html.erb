@@ -1,0 +1,127 @@
+<p id="notice"><%= notice %></p>
+
+<div id="inizio-invoice" class="row">
+    <div class="col s5">
+      <p class="txt_nr_fattura cyan lighten-3 z-depth-3">
+        <strong>Fattura Nr:</strong>
+        <%= @invoice.invoice_number %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <strong>Data:</strong>
+        <%= @invoice.invoice_date.strftime("%d/%m/%Y") %>
+      </p>
+    </div>
+
+    <div class="col s2"></div>
+
+    <div class="cyan lighten-3 col s5 z-depth-3">
+      <p class="right-align">
+        <strong>Spett.le:</strong><br>
+        <%= @invoice.address_book.name %><br>
+        P.IVA: <%= @invoice.address_book.vat %><br>
+        Cod.Fisc: <%= @invoice.address_book.tax_code %><br>
+        <%= @invoice.address_book.address %>, <%= @invoice.address_book.address_nr %><br>
+        <%= @invoice.address_book.zip %> <%= @invoice.address_book.city %><br>
+        <%= @invoice.address_book.country %><br>
+      </p>
+    </div>
+</div><!-- row -->
+
+<div id="invoice-items" class="row z-depth-3">
+  <table class="responsive-table striped">
+    <thead>
+      <tr>
+        <th>cod.</th>
+        <th>descrizione</th>
+        <th class="right-align">prezzo unitario</th>
+        <th class="right-align">qt.</th>
+        <th class="right-align">sconto</th>
+        <th class="right-align">iva</th>
+        <th class="right-align">totale</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @invoice.invoice_items.each do |item| %>
+        <tr>
+          <td><%= item.code %></td>
+          <td>
+            <strong><%= item.name %></strong><br>
+            <%= item.description %>
+          </td>
+          <td class="right-align"><%= money(item.unit_price) %></td>
+          <td class="right-align"><%= money(item.quantity) %></td>
+          <td class="right-align"><%= item.discount %>%</td>
+          <td class="right-align"><%= item.tax.value %>%</td>
+          <td class="right-align"><%= money(item.total_price) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+
+    <div class="col s5 z-depth-3">
+      <p>
+        <strong>Metodo di Pagamento:</strong>
+        <%= @invoice.payment_method.name %>
+      </p>
+
+      <table class="responsive-table striped">
+        <thead>
+          <tr>
+            <th>Scadenza</th>
+            <th>€.</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @invoice.payment_deadlines.each do |payment| %>
+            <tr>
+              <td><%= payment.data.strftime("%d/%m/%Y") %></td>
+              <td><%= money(payment.price) %></td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+
+
+      <p>
+        <strong>Paid:</strong>
+        <i class="material-icons"><%= icon_tf(@invoice.paid) %></i>
+      </p>
+    </div>
+
+    <div class="col s3"></div>
+
+    <div class="col s4">
+      <div class="row z-depth-3">
+        <div class="col s6"><h5 class="right-align"><strong>Imponibile:</strong></h5></div>
+        <div class="col s6"><h5 class="right-align"><%= money(@invoice.total_pretax) %></h5></div>
+      </div>
+      <div class="row z-depth-3">
+        <div class="col s6"><h5 class="right-align"><strong>Imposta:</strong></h5></div>
+        <div class="col s6"><h5 class="right-align"><%= money(@invoice.total_tax_price) %></h5></div>
+      </div>
+      <div class="row z-depth-3">
+        <div class="col s6"><h5 class="right-align"><strong>Totale:</strong></h5></div>
+        <div class="col s6"><h5 class="right-align"><%= money(@invoice.total_price) %></h5></div>
+      </div>
+    </div>
+
+</div><!-- row -->
+
+<div class="col s12">
+      <% unless @invoice.other.empty? %>
+      <p>
+        <strong>Other:</strong>
+        <%= @invoice.other %>
+      </p>
+      <% end %>
+      <% if !@invoice.note.empty? %>
+      <p>
+        <strong>Note:</strong>
+        <%= @invoice.note %>
+      </p>
+      <% end %>
+</div>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

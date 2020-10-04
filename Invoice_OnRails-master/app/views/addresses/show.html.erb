@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Custumer:</strong>
+  <%= @address.custumer %>
+</p>
+
+<p>
+  <strong>Via:</strong>
+  <%= @address.via %>
+</p>
+
+<p>
+  <strong>Cap:</strong>
+  <%= @address.cap %>
+</p>
+
+<p>
+  <strong>Citta:</strong>
+  <%= @address.citta %>
+</p>
+
+<p>
+  <strong>Provincia:</strong>
+  <%= @address.provincia %>
+</p>
+
+<%= link_to 'Edit', edit_address_path(@address) %> |
+<%= link_to 'Back', addresses_path %>

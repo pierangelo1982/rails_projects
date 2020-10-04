@@ -1,0 +1,1 @@
+json.array! @payment_deadlines, partial: 'payment_deadlines/payment_deadline', as: :payment_deadline

@@ -1,0 +1,109 @@
+<%= form_for(address_book) do |f| %>
+<div class="row">
+  <% if address_book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(address_book.errors.count, "error") %> prohibited this address_book from being saved:</h2>
+
+      <ul>
+      <% address_book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class=" col s12">
+    <%= f.label :name, 'Azienda' %>
+    <%= f.text_field :name, class: 'validate', required: true %>
+  </div>
+
+  <div class=" col s6">
+    <%= f.label :vat, 'P.Iva' %>
+    <%= f.text_field :vat %>
+  </div>
+
+  <div class=" col s6">
+    <%= f.label :tax_code, 'Cod.Fisc' %>
+    <%= f.text_field :tax_code %>
+  </div>
+
+  <div class=" col s10">
+    <%= f.label :address, 'Indirizzo' %>
+    <%= f.text_field :address, required: true %>
+  </div>
+
+  <div class=" col s2">
+    <%= f.label :address_nr, 'Nr. Civico' %>
+    <%= f.text_field :address_nr %>
+  </div>
+
+  <div class=" col s3">
+    <%= f.label :zip, 'Cap' %>
+    <%= f.text_field :zip, required: true %>
+  </div>
+
+  <div class=" col s5">
+    <%= f.label :city, 'Citta' %>
+    <%= f.text_field :city, required: true %>
+  </div>
+
+  <div class=" col s4">
+    <%= f.label :country, 'Nazione' %>
+    <%= f.text_field :country %>
+  </div>
+
+  <div class=" col s6">
+    <%= f.label :phone, 'Telefono' %>
+    <%= f.text_field :phone %>
+  </div>
+
+  <div class=" col s6">
+    <%= f.label :fax %>
+    <%= f.text_field :fax %>
+  </div>
+
+  <div class=" col s6">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class=" col s6">
+    <%= f.label :web %>
+    <%= f.text_field :web %>
+  </div>
+
+  <div class=" col s12">
+    <%= f.label :note %>
+    <%= f.text_field :note %>
+  </div>
+
+  <!--div class=" col s6">
+    <%= f.check_box :customer, class: "filled-in", id: "filled-in-box" %>
+    <%= f.label :customer, 'Cliente', for: "filled-in-box" %>
+  </div>
+
+  <div class=" col s6">
+    <%= f.check_box :supplier, class: "filled-in", id: "filled-in-box2" %>
+    <%= f.label :supplier, 'Fornitore', for: "filled-in-box2" %> 
+  </div-->
+
+
+  <!-- COORDINATE BANCARIE ASSOCIATE -->
+  <div class="col s12" id="banks">
+    <h4 class="light">COORDINATE BANCARIE CLIENTE</h4>
+      <%= f.fields_for (:address_book_banks) do |item| %>
+        <%= render 'address_book_bank_fields', f: item %>
+      <% end %>
+      <div class="col s12">
+      <%= link_to_add_association 'AGGIUNGI', f, :address_book_banks, { class:'btn red-motowork' } %>
+      </div>
+  </div>
+
+  <div class=" col s12">
+    <%= f.submit 'invia', class: 'btn col-s12 red-motowork' %>
+  </div>
+
+
+
+</div>
+<% end %>

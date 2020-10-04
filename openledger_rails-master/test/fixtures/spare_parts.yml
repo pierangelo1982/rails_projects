@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle_card_acceptance: one
+  product: one
+  quantity: 1
+  unit_price: 9.99
+  discount: 1
+  total_price: 9.99
+
+two:
+  vehicle_card_acceptance: two
+  product: two
+  quantity: 1
+  unit_price: 9.99
+  discount: 1
+  total_price: 9.99

@@ -1,0 +1,110 @@
+<%= form_for(vehicle_card_acceptance) do |f| %>
+<div class="row">
+
+  <% if vehicle_card_acceptance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vehicle_card_acceptance.errors.count, "error") %> prohibited this vehicle_card_acceptance from being saved:</h2>
+
+      <ul>
+      <% vehicle_card_acceptance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field col s4">
+    <%= f.label :date_vehicle_reception, 'data ricezione veicolo' %>
+    <%= f.text_field :date_vehicle_reception, class: 'datepicker' %>
+  </div>
+
+  <div class="field col s4">
+    <%= f.label :employee_id, 'impiegato' %>
+    <%= f.collection_select :employee_id, Employee.all, :id, :name, {include_blank: true}, class: 'select-dropdown', required: true %>
+  </div>
+
+  <div class="field col s4">
+    <%= f.label :document_number, 'numero documento' %>
+    <%= f.number_field :document_number %>
+  </div>
+
+  <div class="field col s12">
+    <%= f.label :address_book_id, 'Denominazione' %>
+    <%= f.collection_select :address_book_id, AddressBook.all, :id, :name, {include_blank: true}, class: 'select-dropdown', required: true %>
+  </div>
+
+  <div class="field col s4">
+    <%= f.label :km, 'kilometraggio veicolo' %>
+    <%= f.number_field :km %>
+  </div>
+
+  <div class="field col s4">
+    <%= f.label :serial_number, 'numero targa o telaio' %>
+    <%= f.text_field :serial_number %>
+  </div>
+
+  <div class="field col s4">
+    <%= f.label :vehicle_year, 'anno veicolo' %>
+    <%= f.text_field :vehicle_year %>
+  </div>
+
+  <div class="field col s4">
+    <%= f.label :vehicle_registered_in , 'veicolo immatricolato il' %>
+    <%= f.text_field :vehicle_registered_in, class: 'datepicker' %>
+  </div>
+
+  <div class="field col s8">
+    <%= f.label :vehicle_model, 'modello veicolo' %>
+    <%= f.text_field :vehicle_model %>
+  </div>
+
+
+
+  <!-- Pezzi di Ricambio -->
+  <div class="col s12" id="banks">
+    <h4 class="light">Pezzi di Ricambio:</h4>
+      <%= f.fields_for (:spare_parts) do |item| %>
+        <%= render 'spare_part_fields', f: item %>
+      <% end %>
+      <div class="col s12">
+      <%= link_to_add_association 'AGGIUNGI', f, :spare_parts, { class:'btn cyan darken-2' } %>
+      </div>
+  </div>
+  <!-- fine -->
+
+
+
+  <div class="field col s12">
+    <%= f.label :note %>
+    <%= f.text_area :note, class: 'materialize-textarea' %>
+  </div>
+
+  <div class="actions col s12">
+    <%= f.submit 'aggiungi', class: 'btn cyan darken-2' %>
+  </div>
+
+</div>
+
+<% end %>
+
+
+
+<script type="text/javascript">
+// datepicker
+$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+// select
+$(document).ready(function() {
+    $('select').material_select();
+  });
+// non sovrappone la scritta dove c'è cpntenuto in form
+/*
+$(document).ready(function() {
+    Materialize.updateTextFields();
+  });*/
+</script>
+
+
+

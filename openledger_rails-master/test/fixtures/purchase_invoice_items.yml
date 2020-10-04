@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  purchase_invoice: one
+  code: MyString
+  name: MyString
+  description: MyText
+  quantity: 1
+  discount: 1
+  unit_price: 9.99
+  tax: one
+  price_pretax: 9.99
+  tax_price: 9.99
+  total_price: 9.99
+
+two:
+  purchase_invoice: two
+  code: MyString
+  name: MyString
+  description: MyText
+  quantity: 1
+  discount: 1
+  unit_price: 9.99
+  tax: two
+  price_pretax: 9.99
+  tax_price: 9.99
+  total_price: 9.99

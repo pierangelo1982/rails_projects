@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  costumer_id: 
+  numero: 1
+  data: 2016-01-30
+  payment_type_id: 
+  tax_id: 
+  imponibile: 9.99
+  totale_iva: 9.99
+  totale: 9.99
+  note: MyText
+  pagato: false
+
+two:
+  costumer_id: 
+  numero: 1
+  data: 2016-01-30
+  payment_type_id: 
+  tax_id: 
+  imponibile: 9.99
+  totale_iva: 9.99
+  totale: 9.99
+  note: MyText
+  pagato: false

@@ -1,0 +1,1 @@
+json.partial! "vehicle_card_acceptances/vehicle_card_acceptance", vehicle_card_acceptance: @vehicle_card_acceptance

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  custumer_id: 
+  via: MyString
+  cap: MyString
+  citta: MyString
+  provincia: MyString
+
+two:
+  custumer_id: 
+  via: MyString
+  cap: MyString
+  citta: MyString
+  provincia: MyString

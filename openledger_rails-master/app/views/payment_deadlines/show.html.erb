@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Invoice:</strong>
+  <%= @payment_deadline.invoice %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @payment_deadline.price %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @payment_deadline.data %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @payment_deadline.paid %>
+</p>
+
+<%= link_to 'Edit', edit_payment_deadline_path(@payment_deadline) %> |
+<%= link_to 'Back', payment_deadlines_path %>

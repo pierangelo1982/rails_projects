@@ -1,0 +1,43 @@
+
+<h1 class="header">Prodotti</h1>
+
+<table class="responsive-table striped">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Prodotto</th>
+      <th>Prezzo</th>
+      <th>Sconto</th>
+      <th>Prezzo<br>Riservato</th>
+      <th>Prezzo<br>Vendità</th>
+      <th>Qt.</th>
+      <th>Valore<br>Magazzino</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.code %></td>
+        <td><%= product.name %><br></td>
+        <td><%= money(product.price) %></td>
+        <td>
+          <%= product.discount %>%<br>
+          <%= product.discount_two %>%
+        </td>
+        <td><%= money(product.reserved_price) %></td>
+        <td><%= money(product.selling_price) %></td>
+        <td><%= product.quantity %></td>
+        <td><%= money(product.warehouse_value) %></td>
+        <td><%= link_to 'launch', product, class: 'material-icons' %></td>
+        <td><%= link_to 'mode_edit', edit_product_path(product), class: 'material-icons' %></td>
+        <td><%= link_to 'delete_forever', product, method: :delete, class: 'material-icons', data: { confirm: 'Sei sicuro di voler eliminare il prodotto?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Aggiungi', new_product_path, class: 'btn red-motowork' %>

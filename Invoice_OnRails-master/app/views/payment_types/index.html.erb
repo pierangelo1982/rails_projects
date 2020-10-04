@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tipi di Pagamento</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Titolo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_types.each do |payment_type| %>
+      <tr>
+        <td><%= payment_type.titolo %></td>
+        <td><%= link_to 'Vedi', payment_type, class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Modifica', edit_payment_type_path(payment_type), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Elimina', payment_type, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Aggiungi', new_payment_type_path, class: 'btn btn-info btn-md' %>

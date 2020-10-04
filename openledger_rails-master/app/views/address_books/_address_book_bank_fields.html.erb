@@ -1,0 +1,26 @@
+<div class="col s12 cyan lighten-3 z-depth-1 cocoonx">
+
+	<div class="col s10">
+		<div class="col s12">
+			<%= f.label :name %><br>
+		    <%= f.text_field :name, class: 'form-control' %>
+		</div>
+		<div class="col s3">
+			<%= f.label :abi %><br>
+		    <%= f.text_field :abi, class: 'form-control' %>
+		</div>
+		<div class="col s3">
+			<%= f.label :cab %><br>
+		    <%= f.text_field :cab, class: 'form-control' %>
+		</div>
+		<div class="col s6">
+			<%= f.label :iban %><br>
+		    <%= f.text_field :iban, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="col s2">
+	<%=link_to_remove_association("RIMUOVI", f, { wrapper_class: 'cocoonx', class: 'btn cyan darken-2'}) %>
+	</div>
+
+</div>

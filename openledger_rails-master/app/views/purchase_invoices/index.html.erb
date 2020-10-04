@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="header">Fatture di Acquisto</h1>
+
+<table class="responsive-table striped">
+  <thead>
+    <tr>
+      <th>Denominazione</th>
+      <th>Nr.</th>
+      <th>Data</th>
+      <th>Imponibile</th>
+      <th>Tassa</th>
+      <th>Totale Tassa</th>
+      <th>Totale</th>
+      <th>Allegato</th>
+      <th>Pagato</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @purchase_invoices.each do |purchase_invoice| %>
+      <tr>
+        <td><%= purchase_invoice.address_book.name %></td>
+        <td><%= purchase_invoice.invoice_number %></td>
+        <td><%= purchase_invoice.invoice_date.strftime("%d/%m/%Y") %></td>
+        <td><%= money(purchase_invoice.total_pretax) %></td>
+        <td><%= purchase_invoice.tax.value %></td>
+        <td><%= money(purchase_invoice.total_tax_price) %></td>
+        <td><%= money(purchase_invoice.total_price) %></td>
+        <td><%= link_to 'attach_file', purchase_invoice.attachment.url, target: '_blank', class: 'material-icons' %></td>
+        <td>
+          <%= link_to icon_tf(purchase_invoice.paid), paid_status_purchase_invoice_path(purchase_invoice.id), method: :put, class: "material-icons" %>
+        </td>
+        <td><%= link_to 'launch', purchase_invoice, class: 'material-icons' %></td>
+        <td><%= link_to 'mode_edit', edit_purchase_invoice_path(purchase_invoice), class: 'material-icons' %></td>
+        <td><%= link_to 'delete_forever', purchase_invoice, method: :delete, class: 'material-icons', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Purchase Invoice', new_purchase_invoice_path, class: 'btn cyan darken-2' %>

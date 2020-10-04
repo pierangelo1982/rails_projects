@@ -1,0 +1,37 @@
+<%= form_for(purchase_payment_deadline) do |f| %>
+  <% if purchase_payment_deadline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(purchase_payment_deadline.errors.count, "error") %> prohibited this purchase_payment_deadline from being saved:</h2>
+
+      <ul>
+      <% purchase_payment_deadline.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :purchase_invoice_id %>
+    <%= f.text_field :purchase_invoice_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :data %>
+    <%= f.date_select :data %>
+  </div>
+
+  <div class="field">
+    <%= f.label :paid %>
+    <%= f.check_box :paid %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

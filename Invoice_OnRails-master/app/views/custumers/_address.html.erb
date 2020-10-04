@@ -1,0 +1,19 @@
+<%= f.fields_for :address do |a| %>
+<div class="col-xs-12">
+    <%= a.label :via %><br>
+    <%= a.text_field :via, class: 'form-control' %>
+  </div>
+  <div class="col-xs-3">
+    <%= a.label :cap %><br>
+    <%= a.text_field :cap, class: 'form-control'  %>
+  </div>
+  <div class="col-xs-7">
+    <%= a.label :citta %><br>
+    <%= a.text_field :citta, class: 'form-control'  %>
+  </div>
+  <div class="col-xs-2">
+    <%= a.label :provincia %><br>
+    <%= a.text_field :provincia, class: 'form-control'  %>
+  </div>
+
+  <% end %>
